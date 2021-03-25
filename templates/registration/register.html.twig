@@ -1,0 +1,50 @@
+{% extends 'baseLR.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block asideright %}
+
+
+    <h1>Inscription</h1>
+
+    {{ form_start(registrationForm) }}
+    {{ form_row(registrationForm.nom) }}
+    {{ form_row(registrationForm.prenom) }}
+    {{ form_row(registrationForm.dnaissance) }}
+    {{ form_row(registrationForm.adresse) }}
+    {{ form_row(registrationForm.numtel) }}
+    {{ form_row(registrationForm.email) }}
+    {{ form_row(registrationForm.plainPassword, {
+        label: 'Password'
+    }) }}
+
+    {{ form_row(registrationForm.type) }}
+
+    {#{{ form_row(registrationForm.role) }}#}
+    {#   {% if(registrationForm.role=='1')  % }
+        {{ form_row(registrationForm.matricule) }}
+        {{ form_row(registrationForm.cnam) }}
+        {{ form_row(registrationForm.cnss) }}
+        {{ form_row(registrationForm.specialite) }}
+        {{ form_row(registrationForm.disponabilite) }}
+    {% endif %}
+
+    {% if(registrationForm.role=='2')  % }
+        {{ form_row(registrationForm.matricule) }}
+        {{ form_row(registrationForm.cnam) }}
+        {{ form_row(registrationForm.cnss) }}
+    {% endif %}
+
+    {% if(registrationForm.role=='3')  % }
+        {{ form_row(registrationForm.societe) }}
+    {% endif %}
+    #}
+
+
+    {{ form_row(registrationForm.agreeTerms) }}
+    {{ form_row(registrationForm.captcha) }}
+
+    <button type="submit" class="btn btn-block btn-info"><h> Inscription</h></button>
+    <button type="reset" class="btn btn-block btn-info"><h> Annuler</h></button>
+    {{ form_end(registrationForm) }}
+{% endblock %}

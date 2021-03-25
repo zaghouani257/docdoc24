@@ -1,0 +1,41 @@
+{% extends 'baseLR.html.twig' %}
+
+
+
+{% block asideright %}
+
+  <span class="login100-form-title p-b-43">
+						Ajouter une Réclamation
+					</span>
+  {{ form_start(form) }}
+  <div ><B>
+      {{ form_label(form.motif,"Motif de réclamation : ") }}</B></div>
+  <div class="wrap-input100 validate-input">
+    <input class="input100" type="text" id="{{form_widget(form.motif)}}" >
+    <span class="focus-input100"></span>
+  {#  <span class="label-input100">Motif de réclamation</span>#}
+
+  </div >
+  <div ><B>
+      {{ form_label(form.description,"Déscription : ") }}</B></div>
+  <div class="wrap-input100 validate-input" >
+
+    <input class="input100" type="text" id="{{ form_widget(form.description) }}">
+    <span class="focus-input100"></span>
+     {#<span class="label-input100">Déscription</span>#}
+
+  <div class="flex-sb-m w-full p-t-3 p-b-32">
+    <div class="container-login100-form-btn">
+      <button class="login100-form-btn" type="submit" >
+        Confirmer
+      </button>
+    </div>
+    <div class="container-login100-form-btn">
+      <button class="login100-form-btn" type="reset" >
+        Annuler
+      </button>
+    </div>
+  </div>
+
+  {{ form_end(form) }}
+{% endblock %}

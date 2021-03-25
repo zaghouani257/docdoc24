@@ -1,0 +1,97 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block contentHeader %}
+<!doctype html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        {% block js %}
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script>
+                $(document).ready(function(){
+                    $("#myInput").on("keyup", function() {
+                        var value = $(this).val().toLowerCase();
+                        $("#myTable tr").filter(function() {
+                            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                        });
+                    });
+                });
+            </script>
+        {% endblock  %}
+    </head>
+    <body>
+    <h1> Liste des Médecins</h1>
+    <input placeholder="chercher" id="myInput" type="search" id="site-search"
+           aria-label="Search through site content">
+
+
+
+
+    <br><br>
+    <div class="card-body">
+    <table border="1">
+        <thead> <tr>
+
+            <th>id</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+           {# <th>Date de naissance</th>#}
+            <th>Email</th>
+            {#<th>Mot de passe</th>#}
+            <th>Type</th>
+         {#   <th>Adresse</th>
+            <th>NumTel</th>
+            <th>Crecto</th>
+            <th>Cverso</th>
+            <th>Societe</th>
+            <th>Matricule</th>
+            <th>Cnam</th>
+            <th>Cnss</th>#}
+            <th>Specialite</th>
+            <th>Dispo</th>
+            <th>Attribuer Role</th>
+            <th>Detail</th>
+            <th>Supprimer</th>
+
+
+        </tr></thead>
+        <tbody id="myTable">
+        {% for i in user%}
+            {% if i.type == "medecin" %}
+            <tr>
+                <td>{{ i.id }}</td>
+                <td>{{ i.nom }}</td>
+                <td>{{ i.prenom }}</td>
+               {# <td>{{ i.dnaissance|date }}</td>#}
+                <td>{{ i.email }}</td>
+               {# <td>{{ i.password}}</td>#}
+                <td>{{ i.type }}</td>
+              {#  <td>{{ i.adresse }}</td>
+                <td>{{ i.numtel }}</td>#}
+               {# <td>{{ i.cinrecto }}</td>
+                <td>{{ i.cinverso }}</td>#}
+               {# <td>{{ i.societe }}</td>#}
+               {# <td>{{ i.matricule }}</td>
+               {# <td>{{ i.cnam }}</td>
+                <td>{{ i.cnss }}</td>#}
+                <td>{{ i.specialite }}</td>
+                <td>{{ i.disponabilite|date }}</td>
+                <td><a href="{{ path('modifierutilisateur', {'id': i.id}) }}">Attribuer</a></td>
+                <td><a href="{{ path('Detailm',{'id':i.id}) }}">Detail</a></td>
+                <td><a href="{{ path('Delete',{'id':i.id}) }}">Delete</a></td>
+
+            </tr>
+            {% endif %}
+        {% endfor %}
+        </tbody>
+
+    </table>
+    </div>
+
+    </body>
+    </html>
+{% endblock %}

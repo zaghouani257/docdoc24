@@ -1,0 +1,50 @@
+{% extends 'baseLR.html.twig' %}
+
+{% block asideright %}
+
+    <!doctype html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Esprit{% block title %}{% endblock %}</title>
+    </head>
+    <body>
+    <h1> Liste des reclamations</h1>
+    <div class="card-body">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th style="width: 10px">Id</th>
+                <th style="width: 30px">Motif</th>
+                <th style="width: 30px">Description</th>
+                {#<th style="width: 30px">Modifier</th>#}
+                <th style="width: 30px">Supprimer</th>
+            </tr>
+            </thead>
+
+                <tbody>
+                {% for i in rec %}
+                <tr>
+                    <td>{{ i.id }}</td>
+                    <td>{{ i.motif }}</td>
+                    <td>{{ i.description }}</td>
+                    {#<td><span class="badge bg-primary"><a href="{{ path('Modifier',{'id':i.id}) }}"> Modifier </a></span></td>#}
+                    <td><a class="btn btn-danger btn-sm" href="{{ path('Supprimeru',{'id':i.id}) }}">
+                        <i class="fas fa-trash">
+                        </i>
+                        Supprimer
+                    </a></td>
+                </tr>
+                {% endfor %}
+                </tbody>
+
+        </table>
+    </div>
+
+    </body>
+    </html>
+{% endblock %}
+

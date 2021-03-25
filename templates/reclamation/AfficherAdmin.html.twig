@@ -1,0 +1,82 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block contentHeader %}
+
+    <!doctype html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Esprit{% block title %}{% endblock %}</title>
+        {% block js %}
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script>
+                $(document).ready(function(){
+                    $("#myInput").on("keyup", function() {
+                        var value = $(this).val().toLowerCase();
+                        $("#myTable tr").filter(function() {
+                            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                        });
+                    });
+                });
+            </script>
+        {% endblock  %}
+    </head>
+
+    <body>
+    <h1> Liste des reclamations</h1>
+    <input placeholder="chercher" id="myInput" type="search" id="site-search"
+           aria-label="Search through site content">
+
+
+
+
+    <br><br>
+    <div class="card-body">
+        <table id="demo-foo-addrow" class="table m-t-30 table-hover contact-list" data-page-size="10">
+            <thead>
+            <tr>
+                <th style="width: 10px">Id</th>
+                <th>Motif</th>
+                <th>Description</th>
+                <th style="width: 60px">Supprimer</th>
+            </tr>
+            </thead>
+            <tbody id="myTable">
+            {% for i in reclamation  %}
+                <tr>
+                    <td>{{ i.id }}</td>
+                    <td>{{ i.motif }}</td>
+                    <td>{{ i.description }}</td>
+                    <td><a class="btn btn-block bg-gradient-info btn-sm" href="{{ path('Supprimer',{'id':i.id}) }}">
+                            <i class="fas fa-trash">
+                            </i>
+                            Supprimer
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            <tfoot>
+            <td colspan="7">
+                <div class="text-right">
+                    <ul class="pagination"> </ul>
+                </div>
+            </td>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+
+
+    </body>
+    </html>
+{% endblock %}
+
+
+
+
+
+
