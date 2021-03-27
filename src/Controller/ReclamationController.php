@@ -118,7 +118,7 @@ class ReclamationController extends AbstractController
      * @param $id
      * @param Request $req
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
-     *@Route("reclamation/Modifier/{id}",name="Modifier")
+     *@Route("reclamation/Modifier/{id}",name="ModifierRec")
      */
     function Update(ReclamationRepository $repo,$id,Request $req){
         $reclamation=$repo->find($id);

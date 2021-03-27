@@ -4,8 +4,9 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -124,11 +125,13 @@ class User implements UserInterface
     private $reclamations;
 
     /**
-     *@ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="Merci d'ajouter votre photo de profil")
+     * @ORM\Column(type="string", length=255, nullable=true)
+
      * @Assert\File(mimeTypes={"image/jpeg"})
      */
     private $image;
+
+
 
     public function __construct()
     {
@@ -419,18 +422,14 @@ class User implements UserInterface
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
+
     public function getImage()
     {
         return $this->image;
     }
 
-    /**
-     * @param mixed $image
-     */
-    public function setImage($image): self
+
+    public function setImage($image)
     {
         $this->image = $image;
         return $this;

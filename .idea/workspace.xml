@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b6aa4f9f-21ce-4ce1-9634-6061bbb4702e" name="Default Changelist" comment="" />
+    <list default="true" id="b6aa4f9f-21ce-4ce1-9634-6061bbb4702e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrations/Version20210326182406.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrations/Version20210326222643.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/ImageType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/registration/Image.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ReclamationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ReclamationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/RegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RegistrationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/DelegueType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/DelegueType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/MedecinType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/MedecinType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/PatientType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/PatientType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/PharamacienType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/PharamacienType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/registration/UserInterface.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/UserInterface.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/registration/register.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/register.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/AfficheDelegue.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/AfficheDelegue.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/AfficheMedecin.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/AfficheMedecin.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/AffichePatient.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/AffichePatient.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/AffichePharamacien.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/AffichePharamacien.html.twig" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,6 +35,9 @@
   <component name="ExportToHTMLSettings">
     <option name="printScope" value="4" />
     <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/../docdoc\exportToHTML" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -123,14 +147,20 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1pXMkai2F2H2yo3EZD3rGjrnCnt" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../easyadmin/blog-symfony-master" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
@@ -172,14 +202,23 @@
       <workItem from="1616583093899" duration="8591000" />
       <workItem from="1616609829990" duration="10957000" />
       <workItem from="1616661423988" duration="40000" />
-      <workItem from="1616665895913" duration="14535000" />
+      <workItem from="1616665895913" duration="24180000" />
+      <workItem from="1616773295340" duration="2530000" />
+      <workItem from="1616776455983" duration="17721000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
   <component name="WindowStateProjectService">
+    <state x="395" y="90" key="#Inspections" timestamp="1616722997130">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="395" y="90" key="#Inspections/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1616722997130" />
     <state x="507" y="214" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1616540784239">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -197,15 +236,15 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1615843058536" />
-    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1616455383066">
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1616803663129">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1616455383066" />
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1616803663129" />
     <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1616242306547" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1616616108327">
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1616799035439">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1616616108327" />
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1616799035439" />
     <state x="277" y="57" key="SettingsEditor" timestamp="1616528348158">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

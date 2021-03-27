@@ -8,19 +8,13 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class PatientType extends AbstractType
+class ImageType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-          
-            ->add('numtel')
-            ->add('adresse')
-            ->add('image',FileType::class,
-                ['label' => false,
-                    'multiple' => false,
-                    'mapped' => false,
-                    'required' => false])
+
+            ->add('image',FileType::class,['label'=>"Upload Image"],array('data_class' => null))
         ;
     }
 

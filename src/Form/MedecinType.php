@@ -38,7 +38,13 @@ class MedecinType extends AbstractType
                     'Pédiatre'=>'Pédiatre'
                 ) ))
             ->add('disponabilite')
-            ->add('image',FileType::class)
+            ->add('image',FileType::class,
+                ['label' => false,
+                    'multiple' => false,
+                    'mapped' => false,
+                    'required' => false])
+
+
 
         ;
     }

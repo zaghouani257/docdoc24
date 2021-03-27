@@ -39,20 +39,10 @@
             <th>id</th>
             <th>Nom</th>
             <th>Prenom</th>
-           {# <th>Date de naissance</th>#}
             <th>Email</th>
-            {#<th>Mot de passe</th>#}
-            <th>Type</th>
-         {#   <th>Adresse</th>
-            <th>NumTel</th>
-            <th>Crecto</th>
-            <th>Cverso</th>
-            <th>Societe</th>
-            <th>Matricule</th>
-            <th>Cnam</th>
-            <th>Cnss</th>#}
+            <th>Rôles</th>
             <th>Specialite</th>
-            <th>Dispo</th>
+            <th>Disponabilité</th>
             <th>Attribuer Role</th>
             <th>Detail</th>
             <th>Supprimer</th>
@@ -66,18 +56,8 @@
                 <td>{{ i.id }}</td>
                 <td>{{ i.nom }}</td>
                 <td>{{ i.prenom }}</td>
-               {# <td>{{ i.dnaissance|date }}</td>#}
                 <td>{{ i.email }}</td>
-               {# <td>{{ i.password}}</td>#}
-                <td>{{ i.type }}</td>
-              {#  <td>{{ i.adresse }}</td>
-                <td>{{ i.numtel }}</td>#}
-               {# <td>{{ i.cinrecto }}</td>
-                <td>{{ i.cinverso }}</td>#}
-               {# <td>{{ i.societe }}</td>#}
-               {# <td>{{ i.matricule }}</td>
-               {# <td>{{ i.cnam }}</td>
-                <td>{{ i.cnss }}</td>#}
+                <td>{{ i.roles|json_encode}}</td>
                 <td>{{ i.specialite }}</td>
                 <td>{{ i.disponabilite|date }}</td>
                 <td><a href="{{ path('modifierutilisateur', {'id': i.id}) }}">Attribuer</a></td>

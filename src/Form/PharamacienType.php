@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -19,6 +20,11 @@ class PharamacienType extends AbstractType
             ->add('matricule')
             ->add('cnam')
             ->add('cnss')
+            ->add('image',FileType::class,
+                ['label' => false,
+                    'multiple' => false,
+                    'mapped' => false,
+                    'required' => false])
 
         ;
     }

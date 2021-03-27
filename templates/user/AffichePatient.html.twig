@@ -42,7 +42,7 @@
                 {#<th>Date de naissance</th>#}
                 <th>Email</th>
                {# <th>Mot de passe</th>#}
-                <th>Type</th>
+                <th>Rôles</th>
               {#  <th>Adresse</th>
                 <th>NumTel</th>#}
 
@@ -64,7 +64,7 @@
                      {#   <td>{{ i.dnaissance|date }}</td>#}
                         <td>{{ i.email }}</td>
                        {# <td>{{ i.password}}</td>#}
-                        <td>{{ i.type }}</td>
+                        <td>{{ i.roles|json_encode}}</td>
                        {# <td>{{ i.adresse }}</td>
                         <td>{{ i.numtel }}</td>#}
                         <td><a href="{{ path('modifierutilisateur', {'id': i.id}) }}">Attribuer</a></td>

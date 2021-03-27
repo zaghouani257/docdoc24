@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Roles;
 use App\Entity\User;
 use App\Form\DelegueType;
+use App\Form\ImageType;
 use App\Form\MedecinType;
 use App\Form\PatientType;
 use App\Form\PharamacienType;
@@ -15,6 +16,7 @@ use App\Repository\UserRepository;
 use App\Security\AppUserAuthenticator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -107,16 +109,17 @@ class RegistrationController extends AbstractController
     public function userinetrface(UserRepository $repo)
     {
         $user = $repo->findAll();
-
         return $this->render("registration/UserInterface.html.twig", ['user' => $user]);
     }
+
+
 
     /**
      * @param UserRepository $repo
      * @param $id
      * @param Request $req
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
-     *@Route("/update/{id}",name="Modifier")
+     *@Route("/update/{id}",name="ModifierUser")
      */
     function UpdateUser(UserRepository $repo,$id,Request $req){
         $user=$repo->find($id);
@@ -124,11 +127,8 @@ class RegistrationController extends AbstractController
         $form=$this->createForm(MedecinType::class,$user);
         $form->add('modifier',SubmitType::class);
         $form->handleRequest($req);
-        if($form->isSubmitted() && $form->isValid()){
-            $file = $user->getImage();
-            $filename = md5(uniqid()).'.'.$file->guessExtension();
+        if($form->isSubmitted() ){
             $em=$this->getDoctrine()->getManager();
-            $user->setImage($filename);
             $em->flush();
             return $this->redirectToRoute('userinterface');
         }
@@ -137,7 +137,7 @@ class RegistrationController extends AbstractController
         $form = $this->createForm(PatientType::class, $user);
         /*$form->add('confirmer', SubmitType::class);*/
         $form->handleRequest($req);
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->flush();
 
@@ -151,7 +151,7 @@ class RegistrationController extends AbstractController
             $form = $this->createForm(PharamacienType::class, $user);
          /*   $form->add('confirmer', SubmitType::class);*/
             $form->handleRequest($req);
-            if ($form->isSubmitted() && $form->isValid()) {
+            if ($form->isSubmitted() ) {
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->flush();
                 return $this->redirectToRoute('userinterface');
@@ -162,7 +162,7 @@ class RegistrationController extends AbstractController
             $form=$this->createForm(DelegueType::class,$user);
           /*  $form->add('confirmer',SubmitType::class);*/
             $form->handleRequest($req);
-            if($form->isSubmitted() && $form->isValid()) {
+            if($form->isSubmitted() ) {
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->flush();
                 return $this->redirectToRoute('userinterface');
@@ -172,58 +172,40 @@ class RegistrationController extends AbstractController
 
     }
 
-
-   /* function Update(UserRepository $repo, $id, Request $req)
-    {
-        $user = $repo->findBy($id);
-        if ($user->getType() == "patient") {
-            $form = $this->createForm(PatientType::class, $user);
-            $form->add('confirmer', SubmitType::class);
-            $form->handleRequest($req);
-            if ($form->isSubmitted() && $form->isValid()) {
-                $entityManager = $this->getDoctrine()->getManager();
-                $entityManager->flush();
-
-                return $this->redirectToRoute('userinterface');
-
+    /**
+     * @param Request $req
+     * @param $id
+     * @param UserRepository $repo
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     * @Route("/UpdateImage/{id}", name="updateimage")
+     */
+    function AjoutImage(Request $req,$id,UserRepository $repo){
+        $user=$repo->find($id);
+        $form=$this->createForm(ImageType::class,$user);
+        $form->add('Ajouter une photo',SubmitType::class);
+        $form->handleRequest($req);
+        if($form->isSubmitted() && $form->isValid()){
+            $file = $user->getImage();
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            try {
+                $file->move(
+                    $this->getParameter('images_directory'),
+                    $fileName
+                );
+            } catch (FileException $e){
+                // ...handle exception if something happens during file upload
             }
-            return $this->render("registration/Patient.html.twig", ['form' => $form->createView()]);
+            $em=$this->getDoctrine()->getManager();
+            $user->setImage($fileName);
+            $em->persist($user);
+            $em->flush();
+            return $this->redirectToRoute('userinterface');
         }
-        elseif ($user->getType() == "medecin") {
-            $form = $this->createForm(MedecinType::class, $user);
-            $form->add('confirmer', SubmitType::class);
-            $form->handleRequest($req);
-            if ($form->isSubmitted() && $form->isValid()) {
-                $entityManager = $this->getDoctrine()->getManager();
-                $entityManager->flush();
+        return $this->render("registration/Image.html.twig", ['form' => $form->createView()]);
+    }
 
-                return $this->redirectToRoute('userinterface');
 
-            }
-            return $this->render("registration/medecin.html.twig", ['form' => $form->createView()]);
-        }elseif ($user->getType() == "pharmacien") {
 
-            $form = $this->createForm(PharamacienType::class, $user);
-            $form->add('confirmer', SubmitType::class);
-            $form->handleRequest($req);
-            if ($form->isSubmitted() && $form->isValid()) {
-                $entityManager = $this->getDoctrine()->getManager();
-                $entityManager->flush();
-                return $this->redirectToRoute('userinterface');
-            }
-            return $this->render("registration/pharmacien.html.twig", ['form' => $form->createView()]);
-        }
-        elseif ($user->getType() == "delegue"){
-            $form=$this->createForm(DelegueType::class,$user);
-            $form->add('confirmer',SubmitType::class);
-            $form->handleRequest($req);
-            if($form->isSubmitted() && $form->isValid()) {
-                $entityManager = $this->getDoctrine()->getManager();
-                $entityManager->flush();
-                return $this->redirectToRoute('userinterface');
-            }
-            return $this->render("registration/delegue.html.twig",['form'=>$form->createView()]);
-        }
-    }*/
+
 }
 
