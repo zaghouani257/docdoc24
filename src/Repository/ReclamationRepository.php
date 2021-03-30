@@ -54,7 +54,7 @@ class ReclamationRepository extends ServiceEntityRepository
        }
        function listReclamationByUser($id){
            return $this->createQueryBuilder('r')
-           ->join('r.users','u')
+           ->join('r.user','u')
                ->addSelect('u')
                ->where('u.id=:id')
                ->setParameter('id',$id)

@@ -6,6 +6,8 @@ use App\Entity\Reclamation;
 use App\Form\ReclamationType;
 use App\Repository\ReclamationRepository;
 use App\Repository\UserRepository;
+use Knp\Component\Pager\PaginatorInterface;
+use MercurySeries\FlashyBundle\FlashyNotifier;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,8 +34,13 @@ class ReclamationController extends AbstractController
      *@Route("reclamation/AfficheAdmin",name="AfficheAdmin")
      */
 
-    function affichead(ReclamationRepository $repo){
-        $reclamation=$repo->findAll();
+    function affichead(ReclamationRepository $repo,PaginatorInterface $paginator,Request $request){
+        $donnes=$repo->findAll();
+        $reclamation = $paginator->paginate(
+            $donnes,
+            $request->query->getInt('page',1),4
+        );
+
         return $this->render("reclamation/AfficherAdmin.html.twig",
             ['reclamation'=>$reclamation]);
     }
@@ -49,17 +56,9 @@ class ReclamationController extends AbstractController
             ['reclamation'=>$reclamation]);
     }
 
-    /**
-     * @param ReclamationRepository $repository
-     * @return Response
-     * @Route("reclamation/AfficheUser",name="AfficheU")
-     */
 
-    function affiche(ReclamationRepository $repository){
-        $rec=$repository->findAll();
-        return $this->render("reclamation/AfficherUser.html.twig",
-            ['rec'=>$rec]);
-    }
+
+
 
     /**
      * @param $id
@@ -91,20 +90,22 @@ class ReclamationController extends AbstractController
     /**
      * @IsGranted("ROLE_USER")
      * @param Request $req
+     * @param $id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      * @Route("/user/AjouterReclamation",name="AjouterU")
      */
-    function Ajouter(Request $req){
+    function Ajouter(Request $req, FlashyNotifier $flashy){
         $rec=new Reclamation();
         $form=$this->createForm(ReclamationType::class,$rec);
        // $form->add("Ajouter Reclamation",SubmitType::class);
         $form->handleRequest($req);
         if($form->isSubmitted() && $form->isValid()){
+            $rec->setUser($this->getUser());
             $em=$this->getDoctrine()->getManager();
             $em->persist($rec);
             $em->flush();
-            $this->addFlash('message','Votre réclamation a bien été envoyé');
-            return $this->redirectToRoute('AfficheU');
+            $flashy->success('Réclamation ajouté');
+            /*return $this->redirectToRoute('userr');*/
         }
         return $this->render("reclamation/Ajouter.html.twig",
         ['form'=>$form->createView()]);

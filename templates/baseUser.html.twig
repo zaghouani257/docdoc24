@@ -479,8 +479,8 @@
                             <a href="#"><span>Réclamation</span></a>
                             <div class="ml-submenu">
                                 <ul>
-                                    <li class="ml-submenu__item"><a href="{{ path('AjouterU') }}">Ajouter une réclamation</a></li>
-                                    <li class="ml-submenu__item"><a href="{{ asset('distClient/about.html') }}">Consulter réclamation</a></li>
+                                    <li class="ml-submenu__item"><a href="{{ path('AjouterU',{'id':app.user.id}) }}">Ajouter une réclamation</a></li>
+                                    <li class="ml-submenu__item"><a href="{{ path('usereclamation',{'id':app.user.id}) }}">Consulter réclamation</a></li>
 
                                 </ul>
                             </div>

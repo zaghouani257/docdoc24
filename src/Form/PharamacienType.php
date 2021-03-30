@@ -15,8 +15,7 @@ class PharamacienType extends AbstractType
         $builder
             ->add('numtel')
             ->add('adresse')
-            ->add('cinrecto')
-            ->add('cinverso')
+            ->add('cin')
             ->add('matricule')
             ->add('cnam')
             ->add('cnss')

@@ -14,6 +14,7 @@ use App\Form\RegistrationFormType;
 use App\Form\RoleType;
 use App\Repository\UserRepository;
 use App\Security\AppUserAuthenticator;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;

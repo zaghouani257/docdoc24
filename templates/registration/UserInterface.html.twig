@@ -146,6 +146,7 @@
                 {#<button type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"></button>#}
                <div>
                 <td><a href="{{ path('ModifierUser',{'id':app.user.id}) }}"> Editer votre profil </a></td></div>
+                <div><a href="{{ path('app_logout')}}">Se déconnecter</a></div>
                 <div><a href="{{ path('userr')}}">Page d'accueil</a></div>
                 {#<td><a href="{{ path('ModifierUser',{'id':app.user.id}) }}"> Modifier </a></td>#}
 
@@ -214,18 +215,10 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label>CIN Recto</label>
+                                            <label>CIN </label>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>{{ app.user.cinrecto }}</p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label>CIN Verso</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p>{{ app.user.cinverso }}</p>
+                                            <p>{{ app.user.cin }}</p>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -261,21 +254,14 @@
                                         </div>
                                     </div>
                                 {% endif %}
+
                         {% if(app.user.type == "pharmacien") %}
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label>CIN Recto</label>
+                                    <label>CIN </label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p>{{ app.user.cinrecto }}</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>CIN Verso</label>
-                                </div>
-                                <div class="col-md-6">
-                                    <p>{{ app.user.cinverso }}</p>
+                                    <p>{{ app.user.cin }}</p>
                                 </div>
                             </div>
                             <div class="row">
@@ -306,18 +292,10 @@
                         {% if(app.user.type == "delegue") %}
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label>CIN Recto</label>
+                                    <label>CIN </label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p>{{ app.user.cinrecto }}</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>CIN Verso</label>
-                                </div>
-                                <div class="col-md-6">
-                                    <p>{{ app.user.cinverso }}</p>
+                                    <p>{{ app.user.cin }}</p>
                                 </div>
                             </div>
                             <div class="row">
@@ -331,6 +309,7 @@
 
                         {% endif %}
                     </div>
+
                     <div class="tab-pane fade" id="profile" name="profile" role="tabpanel" aria-labelledby="profile-tab">
                         <div class="row">
                             <div class="col-md-6">

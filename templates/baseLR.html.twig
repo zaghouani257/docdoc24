@@ -13,6 +13,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset("distlogin/vendor/daterangepicker/daterangepicker.css") }}">
     <link rel="stylesheet" type="text/css" href="{{ asset("distlogin/css/util.css") }}">
     <link rel="stylesheet" type="text/css"  href= "{{ asset("distlogin/css/main.css") }}">
+    <link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">
     <title>{% block title %}Welcome!{% endblock %}</title>
 
 </head>
@@ -28,6 +29,9 @@
     </div>
 
 </div>
+<script src="//code.jquery.com/jquery.js"></script>
+<script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
+{{ include('@MercurySeriesFlashy/flashy.html.twig') }}
 <script src="{{ asset("distlogin/vendor/jquery/jquery-3.2.1.min.js") }}"></script>
 <script src="{{ asset("distlogin/vendor/animsition/js/animsition.min.js") }}"></script>
 <script src="{{ asset("distlogin/vendor/bootstrap/js/popper.js") }}"></script>

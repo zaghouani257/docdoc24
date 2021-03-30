@@ -33,9 +33,9 @@
 
     <br><br>
     <div class="card-body">
-    <table border="1">
-        <thead> <tr>
-
+        <table id="demo-foo-addrow" class="table m-t-30 table-hover contact-list" data-page-size="10">
+        <thead>
+        <tr>
             <th>id</th>
             <th>Nom</th>
             <th>Prenom</th>
@@ -46,10 +46,9 @@
             <th>Attribuer Role</th>
             <th>Detail</th>
             <th>Supprimer</th>
-
-
-        </tr></thead>
-        <tbody id="myTable">
+        </tr>
+        </thead>
+        <tbody >
         {% for i in user%}
             {% if i.type == "medecin" %}
             <tr>
@@ -60,7 +59,7 @@
                 <td>{{ i.roles|json_encode}}</td>
                 <td>{{ i.specialite }}</td>
                 <td>{{ i.disponabilite|date }}</td>
-                <td><a href="{{ path('modifierutilisateur', {'id': i.id}) }}">Attribuer</a></td>
+                <td><a href="{{ path('modifierutilisateur', {'id': i.id}) }}">Attribuer </a></td>
                 <td><a href="{{ path('Detailm',{'id':i.id}) }}">Detail</a></td>
                 <td><a href="{{ path('Delete',{'id':i.id}) }}">Delete</a></td>
 
@@ -68,7 +67,6 @@
             {% endif %}
         {% endfor %}
         </tbody>
-
     </table>
     </div>
 

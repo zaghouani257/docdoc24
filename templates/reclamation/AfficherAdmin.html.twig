@@ -41,6 +41,8 @@
                 <th style="width: 10px">Id</th>
                 <th>Motif</th>
                 <th>Description</th>
+                <th>Utilisateur</th>
+                <th>Répondre</th>
                 <th style="width: 60px">Supprimer</th>
             </tr>
             </thead>
@@ -50,6 +52,8 @@
                     <td>{{ i.id }}</td>
                     <td>{{ i.motif }}</td>
                     <td>{{ i.description }}</td>
+                    <td>{{ i.user.email }}</td>
+                    <td>Répondre</td>
                     <td><a class="btn btn-block bg-gradient-info btn-sm" href="{{ path('Supprimer',{'id':i.id}) }}">
                             <i class="fas fa-trash">
                             </i>
@@ -68,6 +72,9 @@
             </tr>
             </tfoot>
         </table>
+    </div>
+    <div class="pagination">
+         {{ knp_pagination_render(reclamation) }}
     </div>
 
 

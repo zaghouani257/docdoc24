@@ -1,27 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b6aa4f9f-21ce-4ce1-9634-6061bbb4702e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/Version20210326182406.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/Version20210326222643.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Form/ImageType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/registration/Image.html.twig" afterDir="false" />
+    <list default="true" id="b6aa4f9f-21ce-4ce1-9634-6061bbb4702e" name="Default Changelist" comment="user done">
+      <change afterPath="$PROJECT_DIR$/config/packages/dev/swiftmailer.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/knp_paginator.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/swiftmailer.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/packages/test/swiftmailer.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrations/Version20210328005838.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrations/Version20210329002649.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrations/Version20210329013759.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrations/Version20210329014724.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/ContactType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/translations/KnpPaginatorBundle.fr.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/docdoc.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/docdoc.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/twig.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/twig.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/ReclamationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ReclamationController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/RegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RegistrationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Reclamation.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Reclamation.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/DelegueType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/DelegueType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/EditUserType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/EditUserType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/MedecinType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/MedecinType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/PatientType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/PatientType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/PharamacienType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/PharamacienType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/ReclamationRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ReclamationRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/baseLR.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/baseLR.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/baseUser.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/baseUser.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/reclamation/AfficherAdmin.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/reclamation/AfficherAdmin.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/reclamation/AfficherUser.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/reclamation/Ajouter.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/reclamation/Ajouter.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/registration/UserInterface.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/UserInterface.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/registration/register.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/register.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/registration/delegue.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/delegue.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/registration/pharmacien.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/pharmacien.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/user/AfficheDelegue.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/AfficheDelegue.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/user/AfficheMedecin.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/AfficheMedecin.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/user/AffichePatient.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/AffichePatient.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/user/AffichePharamacien.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/AffichePharamacien.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/show.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,6 +167,11 @@
       <path value="$PROJECT_DIR$/vendor/symfony/web-server-bundle" />
       <path value="$PROJECT_DIR$/vendor/gregwar/captcha-bundle" />
       <path value="$PROJECT_DIR$/vendor/gregwar/captcha" />
+      <path value="$PROJECT_DIR$/vendor/knplabs/knp-components" />
+      <path value="$PROJECT_DIR$/vendor/knplabs/knp-paginator-bundle" />
+      <path value="$PROJECT_DIR$/vendor/mercuryseries/flashy-bundle" />
+      <path value="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer" />
+      <path value="$PROJECT_DIR$/vendor/symfony/swiftmailer-bundle" />
     </include_path>
   </component>
   <component name="ProjectId" id="1pXMkai2F2H2yo3EZD3rGjrnCnt" />
@@ -160,7 +188,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../easyadmin/blog-symfony-master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../../wamp64/www/SMF/waelzag" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
@@ -204,7 +232,11 @@
       <workItem from="1616661423988" duration="40000" />
       <workItem from="1616665895913" duration="24180000" />
       <workItem from="1616773295340" duration="2530000" />
-      <workItem from="1616776455983" duration="17721000" />
+      <workItem from="1616776455983" duration="22047000" />
+      <workItem from="1616852662740" duration="599000" />
+      <workItem from="1616853916786" duration="17989000" />
+      <workItem from="1616949198779" duration="9795000" />
+      <workItem from="1617026060514" duration="9750000" />
     </task>
     <servers />
   </component>
@@ -213,6 +245,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="user done" />
+    <option name="LAST_COMMIT_MESSAGE" value="user done" />
   </component>
   <component name="WindowStateProjectService">
     <state x="395" y="90" key="#Inspections" timestamp="1616722997130">
@@ -241,10 +275,14 @@
     </state>
     <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1616803663129" />
     <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1616242306547" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1616799035439">
+    <state x="393" y="0" key="CommitChangelistDialog2" timestamp="1617062486361">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1616799035439" />
+    <state x="393" y="0" key="CommitChangelistDialog2/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1617062486361" />
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1616854957376">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1616854957376" />
     <state x="277" y="57" key="SettingsEditor" timestamp="1616528348158">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

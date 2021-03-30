@@ -18,16 +18,21 @@ class EditUserType extends AbstractType
             ->add('roles',ChoiceType::class, [
                 'choices' => [
                     'Utilisateur' => 'ROLE_USER',
-                    'Editeur' => 'ROLE_EDITOR',
+                    /*'Editeur' => 'ROLE_EDITOR',*/
                     'Administrateur' => 'ROLE_ADMIN'
                 ],
                 'expanded' => true,
-                'multiple' => true
+                'multiple' => false
 
             ])
 
         ;
     }
-
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults([
+            'data_class' => User::class,
+        ]);
+    }
 
 }

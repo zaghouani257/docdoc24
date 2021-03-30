@@ -15,8 +15,7 @@ class DelegueType extends AbstractType
         $builder
             ->add('numtel')
             ->add('adresse')
-            ->add('cinrecto')
-            ->add('cinverso')
+            ->add('cin')
             ->add('societe')
             ->add('image',FileType::class,
                 ['label' => false,

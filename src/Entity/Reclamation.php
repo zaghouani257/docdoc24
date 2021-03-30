@@ -21,13 +21,13 @@ class Reclamation
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=30, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      *@Assert\NotBlank(message="ce champ est requis")
      */
     private $motif;
 
     /**
-     * @ORM\Column(type="string", length=30, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      *@Assert\NotBlank(message="ce champ est requis")
      */
     private $description;

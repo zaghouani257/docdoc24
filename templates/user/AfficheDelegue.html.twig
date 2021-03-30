@@ -33,10 +33,10 @@
 
     <br><br>
     <div class="card-body">
-        <table border="1">
+        <table id="demo-foo-addrow" class="table m-t-30 table-hover contact-list" data-page-size="10">
             <thead> <tr>
 
-                <th>id</th>
+                <th style="width: 10px">id</th>
                 <th>Nom</th>
                 <th>Prenom</th>
                 {#<th>Date de naissance</th>#}
@@ -46,7 +46,7 @@
                 {#<th>Adresse</th>
                 <th>NumTel</th>#}
                  <th>Societe</th>
-                <th>Attribuer Role</th>
+                <th style="width: 100px">Attribuer un role</th>
                 <th>Detail</th>
                 <th>Supprimer</th>
 
@@ -72,9 +72,12 @@
                     </tr>
                 {% endif %}
             {% endfor %}
+
             </tbody>
 
         </table>
+
+
     </div>
 
     </body>

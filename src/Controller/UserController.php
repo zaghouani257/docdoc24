@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Users;
+use App\Form\ContactType;
 use App\Form\EditUserType;
 use App\Repository\ReclamationRepository;
 use App\Repository\UserRepository;
@@ -184,11 +185,9 @@ class UserController extends AbstractController
         $form = $this->createForm(EditUserType::class,$user);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() ) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->flush();
-
-            $this->addFlash('message', 'Utilisateur modifié avec succès');
             return $this->redirectToRoute('user');
         }
 
@@ -197,6 +196,35 @@ class UserController extends AbstractController
         ]);
     }
 
+    /**
+     * @param Request $request
+     * @param UserRepository $repository
+     * @param $id
+     * @param \Swift_Mailer $mailer
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     * @Route("/contact",name="contact")
+     */
+        public function contact(Request $request, UserRepository $repository, $id, \Swift_Mailer $mailer){
+            $user=$repository->find($id);
+            $form = $this->createForm(ContactType::class,$user);
+            $form->handleRequest($request);
+            if($form->isSubmitted() && $form->isValid()){
+                $contactFormData = $form->getData();
+                dump($contactFormData);
+                $message = (new \Swift_Message('You Got Mail!'))
+                                   ->setFrom($contactFormData['from'])
+                              ->setTo('docdocpidev@gmail.com')
+                               ->setBody(
+                                      $contactFormData['message'],
+                                       'text/plain'
+                                  )
+                           ;
+
+           $mailer->send($message);
+                return $this->redirectToRoute('contact');
+                      }
+            return $this->render('user/contact.html.twig',['form'=>$form->createView()]);
+        }
 
 
 

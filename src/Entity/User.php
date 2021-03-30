@@ -68,18 +68,18 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=30)
      *@Assert\NotBlank(message="ce champ est requis")
+     *@Assert\Length(min = "8",max = "8",minMessage="Votre Numéro doit contenir 8 chiffres ."))
+     * @Assert\Regex(pattern="/^[0-9]*$/", message="Doit contenir des chiffres")
      */
     private $numtel;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     *@Assert\Length(min = "8",max = "8",minMessage="Votre CIN doit contenir 8 chiffres."))
+     * @Assert\Regex(pattern="/^[0-9]*$/", message="Doit contenir des chiffres")
      */
-    private $cinrecto;
+    private $cin;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $cinverso;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -281,29 +281,20 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getCinrecto(): ?string
+    public function getCin(): ?string
     {
-        return $this->cinrecto;
+        return $this->cin;
     }
 
-    public function setCinrecto(?string $cinrecto): self
+    public function setCin(?string $cin): self
     {
-        $this->cinrecto = $cinrecto;
+        $this->cin = $cin;
 
         return $this;
     }
 
-    public function getCinverso(): ?string
-    {
-        return $this->cinverso;
-    }
 
-    public function setCinverso(?string $cinverso): self
-    {
-        $this->cinverso = $cinverso;
 
-        return $this;
-    }
 
     public function getSociete(): ?string
     {
