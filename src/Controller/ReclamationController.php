@@ -8,13 +8,17 @@ use App\Repository\ReclamationRepository;
 use App\Repository\UserRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use MercurySeries\FlashyBundle\FlashyNotifier;
+use phpDocumentor\Reflection\DocBlock\Serializer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 class ReclamationController extends AbstractController
 {
@@ -31,7 +35,7 @@ class ReclamationController extends AbstractController
     /**
      * @param ReclamationRepository $repo
      * @return Response
-     *@Route("reclamation/AfficheAdmin",name="AfficheAdmin")
+     *@Route("reclamation/AfficheReclamation",name="AfficheReclamation")
      */
 
     function affichead(ReclamationRepository $repo,PaginatorInterface $paginator,Request $request){
@@ -71,7 +75,7 @@ class ReclamationController extends AbstractController
         $em=$this->getDoctrine()->getManager();
         $em->remove($reclamation);//delete
         $em->flush();//mise à jour BD
-        return $this->redirectToRoute('AfficheAdmin');
+        return $this->redirectToRoute('AfficheReclamation');
     }
     /**
      * @param $id
@@ -96,6 +100,7 @@ class ReclamationController extends AbstractController
      */
     function Ajouter(Request $req, FlashyNotifier $flashy){
         $rec=new Reclamation();
+        $rec->setEtat(false);
         $form=$this->createForm(ReclamationType::class,$rec);
        // $form->add("Ajouter Reclamation",SubmitType::class);
         $form->handleRequest($req);
@@ -135,4 +140,24 @@ class ReclamationController extends AbstractController
             ['form'=>$form->createView()]);
 
 
-    }}
+    }
+
+
+   /* public function searchMotif(Request $request,NormalizerInterface $normalizer,ReclamationRepository $repository)
+    {
+
+        $requestString=$request->get('searchValue');
+        $motif = $repository->findReclamationParMotif($requestString);
+        $serializer = new Serializer(array(new DateTimeNormalizer('Y-m-d H:i:s')));
+        $data=array();
+
+        foreach ($motif as $v)
+        {
+            array_push($data,array("id"=>$v->getId(),"motif"=>$v->getMotif(),
+                "publishDate"=>$serializer->normalize($v->getPublishDate()),"votes"=>count($v->getLikes()),"url"=>$v->getUrl(),"domaine"=>$v->getDomaine()));
+        }
+
+
+        return new JsonResponse($data);
+    }*/
+}

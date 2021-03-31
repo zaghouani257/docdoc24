@@ -61,4 +61,11 @@ class ReclamationRepository extends ServiceEntityRepository
                ->getQuery()->getResult();
 
        }
+   /*    public function findReclamationParMotif($reclamation){
+           return $this->createQueryBuilder('reclamation')
+               ->where('reclamation.motif LIKE :motif')
+               ->setParameter('title', '%'.$reclamation.'%')
+               ->getQuery()
+               ->getResult();
+       }*/
 }

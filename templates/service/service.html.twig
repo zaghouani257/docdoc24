@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{%  block body  %}
+    <div class="ml-preventiveSection">
+        <div class="ml-container container">
+            <div class="row">
+                <div class="col-sm-3 col-md-3">
+                    <div class="ml-preventiveImg__wrapper">
+                        <img class="ml-preventiveImg" src="images/preventive.jpg" alt="...">
+                    </div><!--/.ml-preventiveImg__wrapper-->
+                </div><!--/.col-sm-3 col-md-3-->
+                <div class="col-sm-9 col-md-9">
+                    <div class="ml-preventive">
+                        <div class="ml-preventive__wrapper">
+                            <h4 class="ml-preventive__subtitle">{{ service.categorie.libelle }}</h4>
+                            <h3 class="ml-preventive__title">{{ service.libelle }}</h3>
+                            <p class="ml-preventive__text">PRIX :{{service.prix}}</p>
+                            <p class="ml-preventive__text">{{ service.description }}</p>
+                            <a href="#" class="ml-preventive__readMore" style="background-color: #00cfa1 ;border-radius: 2px">COMMANDER<span class="glyphicon glyphicon-arrow-right"></span></a>
+                        </div><!--/.ml-preventive__wrapper-->
+                    </div><!--/.ml-preventive-->
+                </div><!--/.col-sm-9 col-md-9-->
+            </div><!--/.row-->
+        </div><!--/.ml-container-->
+    </div>
+{% endblock %}

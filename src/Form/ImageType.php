@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class ImageType extends AbstractType
 {
@@ -14,7 +15,7 @@ class ImageType extends AbstractType
     {
         $builder
 
-            ->add('image',FileType::class,['label'=>"Upload Image"],array('data_class' => null))
+            ->add('image',FileType::class,['label'=>"Appuyer ici pour importer votre image"],array('data_class' => null))
         ;
     }
 

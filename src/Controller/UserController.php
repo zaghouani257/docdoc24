@@ -8,7 +8,10 @@ use App\Form\EditUserType;
 use App\Repository\ReclamationRepository;
 use App\Repository\UserRepository;
 use phpDocumentor\Reflection\Type;
+use phpDocumentor\Reflection\Types\Null_;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -185,7 +188,7 @@ class UserController extends AbstractController
         $form = $this->createForm(EditUserType::class,$user);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() ) {
+        if ($form->isSubmitted() && $form->isValid() ) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->flush();
             return $this->redirectToRoute('user');
@@ -202,18 +205,19 @@ class UserController extends AbstractController
      * @param $id
      * @param \Swift_Mailer $mailer
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
-     * @Route("/contact",name="contact")
+     * @Route("/contact/{id}",name="contact")
      */
-        public function contact(Request $request, UserRepository $repository, $id, \Swift_Mailer $mailer){
-            $user=$repository->find($id);
-            $form = $this->createForm(ContactType::class,$user);
+        public function contact(Request $request, \Swift_Mailer $mailer,$id,ReclamationRepository $repository){
+            $reclamation=$repository->find($id);
+            $form = $this->createForm(ContactType::class);
+            $form->add("Envoyer votre reponse ",SubmitType::class);
             $form->handleRequest($request);
             if($form->isSubmitted() && $form->isValid()){
                 $contactFormData = $form->getData();
                 dump($contactFormData);
-                $message = (new \Swift_Message('You Got Mail!'))
-                                   ->setFrom($contactFormData['from'])
-                              ->setTo('docdocpidev@gmail.com')
+                $message = (new \Swift_Message('Réclamation!'))
+                                   ->setFrom('docdocpidev@gmail.com')
+                              ->setTo($reclamation->getUser()->getEmail())
                                ->setBody(
                                       $contactFormData['message'],
                                        'text/plain'
@@ -221,9 +225,13 @@ class UserController extends AbstractController
                            ;
 
            $mailer->send($message);
-                return $this->redirectToRoute('contact');
+           $em=$this->getDoctrine()->getManager();
+           $reclamation->setEtat( true);
+           $em->flush();
+           $this->addFlash('success','Votre message a été envoyé');
+
                       }
-            return $this->render('user/contact.html.twig',['form'=>$form->createView()]);
+            return $this->render('user/contact.html.twig',['form'=>$form->createView(),'reclamation'=>$reclamation]);
         }
 
 

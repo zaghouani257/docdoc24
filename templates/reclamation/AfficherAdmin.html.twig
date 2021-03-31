@@ -10,7 +10,7 @@
               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Esprit{% block title %}{% endblock %}</title>
-        {% block js %}
+     {#   {% block js %}
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
             <script>
                 $(document).ready(function(){
@@ -22,13 +22,15 @@
                     });
                 });
             </script>
-        {% endblock  %}
+        {% endblock  %}#}
+
     </head>
 
     <body>
+    <input id="searchN1" type="text" class="form-control" name="query" placeholder="Search now" aria-label="search" aria-describedby="search">
     <h1> Liste des reclamations</h1>
-    <input placeholder="chercher" id="myInput" type="search" id="site-search"
-           aria-label="Search through site content">
+    {#<input placeholder="chercher" id="myInput" type="search" id="site-search"
+           aria-label="Search through site content">#}
 
 
 
@@ -53,7 +55,11 @@
                     <td>{{ i.motif }}</td>
                     <td>{{ i.description }}</td>
                     <td>{{ i.user.email }}</td>
-                    <td>Répondre</td>
+                    <td><a  href="{{ path('contact',{'id':i.id}) }}">
+
+                            Répondre
+
+                        </a>
                     <td><a class="btn btn-block bg-gradient-info btn-sm" href="{{ path('Supprimer',{'id':i.id}) }}">
                             <i class="fas fa-trash">
                             </i>

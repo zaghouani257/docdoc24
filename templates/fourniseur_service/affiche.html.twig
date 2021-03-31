@@ -1,0 +1,72 @@
+{% extends 'baseBack.html.twig' %}
+{% block title %}Gestion Fournisseur {% endblock %}
+{% block contentHeader %} Fournisseur de Service {% endblock %}
+{% block contentMain %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <a class="btn bg-gradient-info float-left " href="{{ path('Ajouterfourniseur') }}">
+                        <i class="far fa-plus-square "> ajouter
+                        </i>
+
+                    </a>
+
+                    <div class="card-tools">
+                        <div class="input-group input-group-sm" style="width: 150px;">
+                            <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body table-responsive p-0" style="height: 300px;">
+                    <table class="table table-head-fixed text-nowrap">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>FOURNISSEUR</th>
+                            <th>EMAIL</th>
+                            <th>NUMERO</th>
+                            <th>GOUVERNORATE</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr {% for fr in fourniseur%}>
+                            <td>{{  fr.id}}</td>
+                            <td>{{ fr.fourniseur }}</td>
+                            <td>{{ fr.contact }}</td>
+                            <td>{{ fr.numero }}</td>
+                            <td>{{ fr.gouvernorat }}</td>
+                            <td>{{ fr.service.libelle }}</td>
+                            <td class="project-actions text-right">
+                                <a class="btn btn-primary btn-sm" href="{{ path('detailsfourniseur',{'id':fr.id}) }}">
+                                    <i class="fas fa-folder">
+                                    </i>
+                                    Détails
+                                </a>
+                                <a class="btn btn-info btn-sm" href="{{ path('updatefourniseur',{'id':fr.id}) }}">
+                                    <i class="fas fa-pencil-alt">
+                                    </i>
+                                    modifer
+                                </a>
+                                <a class="btn btn-danger btn-sm" href="{{ path('deletefourniseur',{'id':fr.id}) }}">
+                                    <i class="fas fa-trash">
+                                    </i>
+                                    supprimer
+                                </a>
+                            </td>
+                        </tr {% endfor %}>
+
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>
+    </div>
+{% endblock %}

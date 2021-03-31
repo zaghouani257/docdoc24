@@ -37,6 +37,11 @@ class Reclamation
      */
     private $user;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $etat;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
@@ -79,6 +84,18 @@ class Reclamation
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getEtat(): ?bool
+    {
+        return $this->etat;
+    }
+
+    public function setEtat(bool $etat): self
+    {
+        $this->etat = $etat;
 
         return $this;
     }

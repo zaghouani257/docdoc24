@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<div class="ml-contactSection">
+    <div class="ml-container container">
+        <div class="row">
+            <div class="col-sm-8 col-md-8">
+                <div class="ml-appointment__box ml-appointment__box--style2">
+                    <div class="col-sm-12 col-md-12">
+                        <h2 class="ml-appointment__title ml-appointment__title--style2 ml-appointment__title--pb-30">Veuillez entrer vos informations:</h2>
+                        <p class="ml-appointment__text"></p>
+                        {{ form(f) }}
+                        <br>
+                        <a href="{{ path('afficherPaiement')}}" class="btn btn-success float-right">
+                            <i class="fas fa-shopping-cart mr-1"></i>
+                            Afficher tous les paiements.
+                        </a>
+                    </div><!--/.col-sm-12 col-md-12-->
+
+                </div><!--/.ml-appointment__box-->
+            </div><!--/.col-sm-8 col-md-8-->
+            <div class="col-sm-4 col-md-4">
+                <div class="ml-sidebar ml-sidebar--right ml-sidebar--w310">
+                    <div class="ml-openingHours">
+                        <h4 class="ml-openingHours__title ml-openingHours__title--style2">Commande</h4>
+                        <ul class="ml-programList ml-programList--style1">
+                            <li class="ml-programList__item">
+                            </li>
+                            <li class="ml-programList__item">
+                            </li>
+                            <li class="ml-programList__item">
+                            </li>
+                        </ul><!--/.ml-programList-->
+                    </div><!--/.ml-openingHours-->
+                </div><!--/.ml-sidebar-->
+            </div><!--/.col-sm-4 col-md-4-->
+        </div><!--/.row-->
+    </div><!--/.ml-container container-->
+</div><!--/.ml-contactSection-->
+{% endblock body %}
