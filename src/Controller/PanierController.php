@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\ProduitRepository;
+use App\Repository\ServiceRepository;
 use http\Env\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -39,6 +40,37 @@ class PanierController extends AbstractController
         }
         $session->set('total', $total);
         return $this->render('panier/index.html.twig', [
+            'items' => $panierwithData,
+            'total' => $total
+        ]);
+    }
+
+    /**
+     * @Route("/panier", name="panier")
+     * @param SessionInterface $session
+     * @param ProduitRepository $produitRepository
+     * @return
+     */
+    public function IndexService(SessionInterface $session, ServiceRepository $repository)
+    {
+        $i = 0;
+        $panier = $session->get('panier', []);
+        $panierwithData = [];
+        foreach ($panier as $id => $quantity){
+            $panierwithData [] = [
+                'produit' => $repository->find($id),
+                'quantity' => $quantity
+            ];
+            $i++;
+        }
+        $session->set('number', $i);
+        $total = 0;
+        foreach ($panierwithData as $item){
+            $totalitem = $item['produit']->getPrix() * $item['quantity'];
+            $total +=$totalitem;
+        }
+        $session->set('total', $total);
+        return $this->render('panier/index2.html.twig', [
             'items' => $panierwithData,
             'total' => $total
         ]);

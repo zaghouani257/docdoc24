@@ -7,8 +7,10 @@ use App\Form\ContactType;
 use App\Form\EditUserType;
 use App\Repository\ReclamationRepository;
 use App\Repository\UserRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use phpDocumentor\Reflection\Type;
 use phpDocumentor\Reflection\Types\Null_;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -42,13 +44,15 @@ class UserController extends AbstractController
      * @return Response
      * @Route("/admin/AffichMedecin",name="AfficheMedecin")
      */
-    function affichemed(UserRepository $repo){
+    function affichemedForAdmin(UserRepository $repo){
 
         $user=$repo->findAll();
 
         return $this->render("user/AfficheMedecin.html.twig",
         ['user'=>$user]);
     }
+
+
 
     /**
      * @param UserRepository $repo
@@ -234,8 +238,75 @@ class UserController extends AbstractController
             return $this->render('user/contact.html.twig',['form'=>$form->createView(),'reclamation'=>$reclamation]);
         }
 
+    /**
+     * @param UserRepository $repo
+     * @return Response
+     * @Route("/user/AfficheMedecin",name="UserAfficheMedecin")
+     */
+        function affichemedForUser(UserRepository $repo,PaginatorInterface $paginator,Request $request){
 
+        $donnes=$repo->findAll();
+        $user = $paginator->paginate(
+            $donnes,
+            $request->query->getInt('page',1),4
+        );
 
+        return $this->render("user/AfficheMedecinForUser.html.twig",
+            ['user'=>$user]);
+    }
+    /**
+     * @param UserRepository $repo
+     * @return Response
+     * @Route("AfficheMedecinFront",name="UserAfficheMedecinFront")
+     */
+    function affichemedForUserFront(UserRepository $repo,PaginatorInterface $paginator,Request $request){
+
+        $donnes=$repo->findAll();
+        $user = $paginator->paginate(
+            $donnes,
+            $request->query->getInt('page',1),4
+        );
+
+        return $this->render("user/AfficheMedecinForUser.html.twig",
+            ['user'=>$user]);
+    }
+
+    /**
+     * @param UserRepository $repo
+     * @param PaginatorInterface $paginator
+     * @param Request $request
+     * @return Response
+     * @Route("/user/AffichePharmacien",name="UserAffichePharamacien")
+     */
+    function affichephaForUser(UserRepository $repo,PaginatorInterface $paginator,Request $request){
+
+        $donnes=$repo->findAll();
+        $user = $paginator->paginate(
+            $donnes,
+            $request->query->getInt('page',1),4
+        );
+
+        return $this->render("user/AffichePharamcienForUser.html.twig",
+            ['user'=>$user]);
+    }
+    /**
+     * @param UserRepository $repo
+     * @param PaginatorInterface $paginator
+     * @param Request $request
+     * @return Response
+     * @Route("AffichePharmacienFront",name="UserAffichePharamacienFront")
+     */
+    function affichephaForUserFront(UserRepository $repo,PaginatorInterface $paginator,Request $request){
+
+        $donnes=$repo->findAll();
+        $user = $paginator->paginate(
+            $donnes,
+            $request->query->getInt('page',1),4
+        );
+
+        return $this->render("user/AffichePharamcienForUser.html.twig",
+            ['user'=>$user]);
+    }
 
 
 

@@ -8,6 +8,7 @@ use App\Entity\Produit;
 use App\Form\ProduitType;
 use App\Repository\ImageRepository;
 use App\Repository\ProduitRepository;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -74,26 +75,7 @@ class ProduitController extends AbstractController
      */
     function AjoutP(Request $request,\Swift_Mailer $mailer){
 
-        //PARTIE MAILING debut
-        $message = (new \Swift_Message('NOUVEAU PRODUIT'))
-            ->setFrom('docdocpidev@gmail.com')
-            ->setTo('anas.mokhtari@esprit.tn')
-            ->setBody(
-                $this->renderView(
-                // templates/emails/registration.html.twig
-                    'emails/nouvprod.html.twig'), 'text/html')
 
-            // you can remove the following code if you don't define a text version for your emails
-            ->addPart(
-                $this->renderView(
-                // templates/emails/registration.txt.twig
-                    'emails/nouvprod.txt.twig'
-                ),
-                'text/plain'
-            )
-        ;
-
-        $mailer->send($message);
 
         //return $this->render(...);
         //PARTIE MAILING fin
@@ -125,6 +107,26 @@ class ProduitController extends AbstractController
                 $img->setNom($fichier);
                 $produit->addImage($img);
             }
+            //PARTIE MAILING debut
+            $message = (new \Swift_Message('NOUVEAU PRODUIT'))
+                ->setFrom('docdocpidev@gmail.com')
+                ->setTo('anas.mokhtari@esprit.tn')
+                ->setBody(
+                    $this->renderView(
+                    // templates/emails/registration.html.twig
+                        'emails/nouvprod.html.twig'), 'text/html')
+
+                // you can remove the following code if you don't define a text version for your emails
+                ->addPart(
+                    $this->renderView(
+                    // templates/emails/registration.txt.twig
+                        'emails/nouvprod.txt.twig'
+                    ),
+                    'text/plain'
+                )
+            ;
+
+            $mailer->send($message);
             //PARTIE IMAGE fin
             $em=$this->getDoctrine()->getManager();
             $em->persist($produit);

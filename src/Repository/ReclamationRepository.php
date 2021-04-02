@@ -47,6 +47,14 @@ class ReclamationRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function findReclamationBymotif($rec){
+        return $this->createQueryBuilder('reclamation')
+            ->where('reclamation.motif LIKE :motif')
+            ->setParameter('motif', '%'.$rec.'%')
+            ->getQuery()
+            ->getResult();
+    }
+
        public function OrderByMotif(){
            $em=$this->getEntityManager();
            $query=$em->createQuery('select r from App\Entity\Reclamation r order by r.motif ASC');

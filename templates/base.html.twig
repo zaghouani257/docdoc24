@@ -57,25 +57,48 @@
         </li>
         <li><a class="active" href="index.html"><span>Accueil</span></a></li>
         <li ><a href="../dist/services.html"><span>Services</span></a></li>
-        <li><a class="active" href="#"><span>Medecins</span></a></li>
-        <li><a class="active" href="#"><span>Pharmaciens</span></a></li>
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <li><a class="active" href="{{ path('UserAfficheMedecin')}}"><span>Médecins</span></a></li>
+        <li><a class="active" href="{{ path('UserAffichePharamacien')}}"><span>Pharmacies</span></a></li>
+        {% else %}
+            <li><a class="active" href="{{ path('UserAfficheMedecinFront')}}"><span>Médecins</span></a></li>
+            <li><a class="active" href="{{ path('UserAffichePharamacienFront')}}"><span>Pharmacies</span></a></li>
+        {% endif %}
         <li><a href="../dist/blog.html"><span>Blog</span></a></li>
         <li><a href="../dist/blog.html"><span>Forum</span></a></li>
 
         <li class="ml-res-submenu">
             <span class="ml-res-submenu-trigger glyphicon glyphicon-chevron-right"></span>
             <a href="skin.html"><span>Reclamation</span></a>
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
             <ul class="ml-subMenu">
                 <li class="ml-resMenu-back">
                     <span class="ml-resMenu-backIcon glyphicon glyphicon-chevron-left"></span><a href="#" class="ml-resMenu-backLink">Back</a>
                 </li>
+
                 <li>
                     <a href="{{ path('AjouterU',{'id':app.user.id}) }}"><span>Ajouter Reclamation</span></a> </li>
                 <li>
                     <a href="{{ path('usereclamation',{'id':app.user.id}) }}"><span>Consulter Reclamations</span></a> </li>
 
             </ul>
+                {% else %}
+                    <ul class="ml-subMenu">
+                        <li class="ml-resMenu-back">
+                            <span class="ml-resMenu-backIcon glyphicon glyphicon-chevron-left"></span><a href="#" class="ml-resMenu-backLink">Back</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ path('app_login') }}"><span>Ajouter Reclamation</span></a> </li>
+                        <li>
+                            <a href="{{ path('app_login') }}"><span>Consulter Reclamations</span></a> </li>
+
+                    </ul>
+
+            {% endif %}
+
         </li>
+
         <li><a  href="../dist/about.html"><span>A propos</span></a></li>
 
     </ul><!--/.ml-resMenu-->
@@ -158,7 +181,7 @@
                     </div><!--/.ml-mainMenu-trigger-->
                     <ul class="ml-mainMenu">
                         <li class="ml-mainMenu__item active"><a href="../dist/index.html"><span>Acceuil</span></a></li>
-                        <li class="ml-mainMenu__item has-submenu">
+                        {#<li class="ml-mainMenu__item has-submenu">
                             <a  href="{{ path('services') }}"><span>Services A domicile</span></a>
                             <div class="ml-megamenu ml-megamenu--left135" data-col-nr="5">
                                 <div class="ml-megamenu__container ml-megamenu__container--style2">
@@ -192,16 +215,29 @@
                                     {% endfor %}
                                 </div><!--/.ml-megamenu__container-->
                             </div><!--/.ml-megamenu-->
-                        </li>
+                        </li>#}
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <li class="ml-mainMenu__item"><a href="{{ path('UserAfficheMedecin')}}"><span>Médecins</span></a></li>
+                        <li class="ml-mainMenu__item"><a href="{{ path('UserAffichePharamacien')}}"><span>Pharmacies</span></a></li>
 
+                        {% else %}
+                            <li class="ml-mainMenu__item"><a href="{{ path('UserAfficheMedecinFront')}}"><span>Médecins</span></a></li>
+                            <li class="ml-mainMenu__item"><a href="{{ path('UserAffichePharamacienFront')}}"><span>Pharmacies</span></a></li>
+                        {% endif %}
 
-                        <li class="ml-mainMenu__item"><a href="../dist/clinics.html"><span>Pharmaciens</span></a></li>
-                        <li class="ml-mainMenu__item"><a href="../dist/schedule.html"><span>Medecins</span></a></li>
-                        <li class="ml-mainMenu__item"><a href="../dist/shop.html"><span>Medicaments</span></a></li>
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        {% if app.user.type == 'delegue' or app.user.type == 'medecin' or app.user.type == 'pharmacien'%}
+                            <li class="ml-mainMenu__item"><a href="{{ path('afficheProduit')}}"><span>Medicaments</span></a></li>
+                        {% endif %}
+                            {% else %}
+                                <li class="ml-mainMenu__item"><a href="{{ path('app_login')}}"><span>Medicaments</span></a></li>
+                        {% endif %}
                         <li class="ml-mainMenu__item"><a href="../dist/blog.html"><span>Blog</span></a></li>
                         <li class="ml-mainMenu__item"><a href="../dist/blog.html"><span>Forum</span></a></li>
+
                         <li class="ml-mainMenu__item has-submenu">
                             <a href="#"><span>Réclamation</span></a>
+                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                             <div class="ml-submenu">
                                 <ul>
                                     <li class="ml-submenu__item"><a href="{{ path('AjouterU',{'id':app.user.id}) }}">Ajouter une réclamation</a></li>
@@ -209,7 +245,18 @@
 
                                 </ul>
                             </div>
+                                {% else %}
+                                    <div class="ml-submenu">
+                                        <ul>
+                                            <li class="ml-submenu__item"><a href="{{ path('app_login') }}">Ajouter une réclamation</a></li>
+                                            <li class="ml-submenu__item"><a href=""{{ path('app_login') }}>Consulter réclamation</a></li>
+
+                                        </ul>
+                                    </div>
+                            {% endif %}
                         </li>
+
+
                         <li class="ml-mainMenu__item"><a href="{{ path('about')}}"><span>à propos</span></a></li>
 
                     </ul>
@@ -227,7 +274,8 @@
                                 </form>
                             </div><!--/.ml-search-->
                         </div><!--/.ml-search-->
-
+                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    {% if app.user.type == 'medecin' or app.user.type == 'pharmacien' %}
                         <div class="ml-cart info-box">
                         <a href="#" class="ml-cart__link">
                             <span class="info-box-icon">{{ app.session.get('number') }}</span>
@@ -241,6 +289,10 @@
                             </div><!--/.ml-infoCart-buttons-->
                         </div><!--/.ml-infoCart-->
                     </div><!--/.ml-cart-->
+                    {% endif %}
+
+                 {% endif %}
+
 
                     </div><!--/.ml-searchBar-->
                 </div><!--/.ml-menubar-->
@@ -255,7 +307,7 @@
 
     {% endblock %}
 
-
+<br>
     <footer class="ml-footer" style="padding-top: 20px; padding-bottom: 20px; background: #263138;">
         <div class="ml-container container">
             <div class="row">

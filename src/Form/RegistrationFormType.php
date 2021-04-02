@@ -8,6 +8,7 @@ use Gregwar\CaptchaBundle\Type\CaptchaType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -23,8 +24,35 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('nom')
             ->add('prenom')
-            ->add('dnaissance')
-            ->add('adresse')
+            ->add('dnaissance', DateType::class, [
+                'widget' => 'single_text',
+                'format' => 'yyyy-MM-dd'])
+            ->add('adresse',ChoiceType::class,
+                array('choices'=>array(
+                    'Tunis'=>'Tunis',
+                    'Ariana'=>'Ariana',
+                    'Ben arous'=>'Ben arous',
+                    'Sousse'=>'Sousse',
+                    'Sfax'=>'Sfax',
+                    'Monastir'=>'Monastir',
+                    'Nabeul'=>'Nabeul',
+                    'Mahdia'=>'Mahdia',
+                    'Kairaoun'=>'Kairouan',
+                    'Bizerte'=>'Bizerte',
+                    'Mednine'=>'Mednine',
+                    'Manouba'=>'Manouba',
+                    'Gabes'=>'Gabes',
+                    'Gafsa'=>'Gafsa',
+                    'Jendouba'=>'Jendouba',
+                    'Le kef'=>'Le kef',
+                    'Sidi bouzid'=>'Sidi bouzid',
+                    'Kasserine'=>'Kasserine',
+                    'Seliana'=>'Seliana',
+                    'Kebili'=>'Kebili',
+                    'Tataouine'=>'Tataouine',
+                    'Djerbe'=>'Djerba',
+                    'Tozeur'=>'Tozeur'
+                ) ))
             ->add('numtel')
             ->add('email')
             ->add('agreeTerms', CheckboxType::class, [

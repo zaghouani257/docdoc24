@@ -11,9 +11,9 @@
                     <div class="ml-comments__item">
                         {% for i in rec %}
                         <div class="ml-comments__container ml-imageBox ml-imageBox--detailsHover ml-imageBox--hasShadow ml-imageBox--mb-40">
-                            <span class="ml-comments__author">{{ i.motif }}</span>
+                            <span class="ml-comments__author">Motif : {{ i.motif }}</span>
                             <div class="ml-comments__text">
-                                <p>{{ i.description }}</p>
+                                <p>Déscription : {{ i.description }}</p>
                                 <div class="ml-comments__replyWrapp">
 
                                     {% if i.etat %}

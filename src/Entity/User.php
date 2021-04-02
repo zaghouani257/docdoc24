@@ -112,6 +112,11 @@ class User implements UserInterface
      */
     private $disponabilite;
 
+    /**
+     * @ORM\Column(type="string", nullable=true , length=30)
+     */
+    private $pharmacie;
+
 
 
     /**
@@ -425,6 +430,22 @@ class User implements UserInterface
     {
         $this->image = $image;
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPharmacie()
+    {
+        return $this->pharmacie;
+    }
+
+    /**
+     * @param mixed $pharmacie
+     */
+    public function setPharmacie($pharmacie): void
+    {
+        $this->pharmacie = $pharmacie;
     }
 
 

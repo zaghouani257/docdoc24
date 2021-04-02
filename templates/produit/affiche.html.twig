@@ -79,7 +79,12 @@
                                 {% for c in repo %}
                                 <li class="ml-services__item active"><span>{{ c.titre }}</span></li>
                                 {% endfor %}
+                            </ul>
+                            {% if app.user.type == 'delegue' %}
+                            <ul class="ml-services ml-services--style3 ml-services--pl-30 ml-services--hoverline">
+                                <a class="ml-product__price" href="{{ path('AjouterProduit')}}"><span>AJOUTER UN PRODUIT</span></a></li>
                             </ul><!--/.ml-services-->
+                            {% endif %}
                             <div class="ml-separator--style2"></div>
 
                         </div><!--/.ml-sidebar__container-->
@@ -98,8 +103,8 @@
                                                 <div class="ml-imageBox-wrapper">
                                                     <div class="ml-imageBox-imgWrapper">
                                                         {% for image in p.images|slice(0,1) %}
-                                                            <img  src="{{ asset ('/uploads/' ~ image.nom ) }}"
-                                                                  class="ml-product__img" style=" height:300px "
+                                                            <img  src="{{ asset ('/uploads/images/' ~ image.nom ) }}"
+                                                                  class="ml-product__img"
                                                                   alt="image" >
                                                         {% endfor %}
                                                     </div>
@@ -107,12 +112,22 @@
                                                 <div class="ml-imageBox-details ml-text--center">
                                                     <h4 class="ml-imageBox-title">{{ p.nom }}</h4>
                                                     <h6 class="ml-imageBox-title">{{ p.prix }} DT</h6>
+                                                    {% if app.user.type == 'delegue'%}
+                                                        <div align="center">
+                                                            <a class="ml-product__price" href="{{ path('updateProduit',{'id':p.id}) }}">Modifier</a>
+                                                            <a class="ml-product__price" href="{{ path('deleteProduit',{'id':p.id}) }}">Supprimer</a>
+                                                        </div>
+                                                    {% elseif app.user.type == 'medecin' or app.user.type == 'pharmacien' %}
+                                                        <div align="center">
+                                                            <a href="{{ path('panier_add',{'id':p.id} )}}" class="btn ml-product__addToCart ml-product__addToCart--style2"><span class="ml-icon-shopping-cart2"></span><span class="hg__addToCartText">AJOUTER AU PANIER</span></a>
+                                                            <br>
+                                                        </div>
+                                                        <br>
+                                                    {% endif %}
                                                 </div>
                                             </a>
-                                            <div align="center">
-                                                <a class="ml-product__price" href="{{ path('updateProduit',{'id':p.id}) }}">Modifier</a>
-                                                <a class="ml-product__price" href="{{ path('deleteProduit',{'id':p.id}) }}">Supprimer</a>
-                                            </div>
+
+
                                         </div>
                                     </div>
                                     {% endfor %}

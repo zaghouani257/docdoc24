@@ -1,0 +1,156 @@
+{%  extends 'base.html.twig' %}
+
+    {% block body %}
+
+
+<!-- Subheader start -->
+<div class="ml-subheader ml-blogSubheader ml-subheader--h590">
+    <img src="distClient/images/subheader4.jpg" alt="" class="ml-subheader__img">
+    <div class="ml-bg-overlay ml-bg-overlay--style2"></div>
+    <div class="ml-subheader__content ml-subheader__content--center">
+        <div class="container ml-container ml-text--center">
+            <h1 class="ml-subheader__title">MEDLIFE BLOG</h1>
+            <p class="ml-subheader__subtitle">Let’s see if you can read</p>
+        </div><!--/.ml-container-->
+    </div>
+</div><!--/.ml-subheader-->
+<!-- Subheader end -->
+
+
+<!--  Blog section start -->
+<div class="ml-blogSection">
+    <div class="ml-container container">
+        <div class="row">
+            <div class="col-md-8 col-sm-8">
+
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="ml-singleBlog">
+                            <h1 class="ml-singleBlog__title"> {{ article.titre }}</h1>
+                            <p class="ml-singleBlog__details ml-text--center">Mars 12, 2020 </p>
+
+
+                            <tr>
+                                <td><img src="{{ vich_uploader_asset(article, 'imageFile') }}" /></td>
+                            </tr>
+                            <p class="ml-singleBlog__desc">
+
+                                {{ article.contenu |raw }}
+
+
+
+                            <div class="ml-separator--style2"></div>
+                            <div class="container">
+
+                                <a href="{{ path('jaime',{'id':article.id} )}}"> <i class="fa fa-thumbs-up"></i> &nbsp;{{ article.nblike }}   &nbsp; j'aime</a>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+
+                                <a href="{{ path('jaimepas',{'id':article.id} )}}"> <i class="fa fa-thumbs-down"></i> &nbsp; {{ article.nbdislike }}  &nbsp; j'aime pas</a>
+                                {#<div class="row">
+                                        <div class="col-3 mb-3">
+                                            <div class="border border-dark rounded p-2">
+
+                                                #}{#<a href="#" class="btn btn-primary">Lire la suite</a>
+                                                <a href="#" class="btn btn-like">#}{#
+                                                    <i class="fa fa-thumbs-up"></i>
+                                                    <span class="js-likes"></span>
+                                                    <span class="js-label">J'aime</span>
+                                                    <i class="fa fa-thumbs-down"></i>
+                                                    <span class="js-dilikes"></span>
+                                                    <span class="js-label">J'aime pas</span>
+
+                                                </a>
+
+                                            </div>
+                                        </div>
+                                </div>#}
+                            </div>
+                            <div class="ml-separator--style2"></div>
+                            <div class="ml-blogComments">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4 class="ml-blogComments__title">COMMENTS</h4>
+
+
+                                        {#<div class="ml-comments__message ml-comments__message--pt-40">
+                                            <div class="ml-comments__avatarWrapp">
+                                                <img src="distClient/images/avatar4.jpg" class="ml-comments__avatar" alt="">
+                                            </div>
+                                            <div class="ml-comments__formWrapp">
+                                                <form action="#" method="post" class="ml-comments__form">
+                                                    <div class="row">
+                                                        <div class="form-group col-sm-12">
+                                                            <textarea class="ml-comments__textarea" name="reply" cols="30" rows="10" placeholder="Leave a comment..."></textarea>
+                                                        </div><!--/.form-group-->
+                                                    </div><!--/.row-->
+                                                    <input name="submit" type="submit" id="submit" class="ml-btn ml-comments__submit" value="Post Comment">
+                                                </form><!--/.ml-comment-form-->
+                                            </div><!--/.ml-comment-formWrapp-->
+                                        </div><!--/.ml-comments__message-->#}
+                                    </div><!--/.col-md-12-->
+                                </div><!--/.row-->
+                            </div><!--/.ml-blogComments-->
+
+                        </div><!--/.ml-singleBlog-->
+
+                    </div><!--/.col-md-12 col-sm-12-->
+                </div><!--/.row-->
+
+            </div><!--/.col-md-8 col-sm-8-->
+            <div class="col-md-4 col-sm-4">
+                <div class="ml-sidebar ml-sidebar--right ml-sidebar--mt-20">
+                    <div class="ml-categoriesList-wrapper ml-text--center">
+
+                        <h4 class="ml-categoriesList__title">CATEGORIES</h4>
+                        {%for categorie in categories%}
+
+                        <ul class="ml-categoriesList">
+                            <li class="ml-categoriesList__item"><a href="#"><span>{{categorie.nom}}</span></a></li>
+
+                            {% endfor %}
+                        </ul>
+                                    <p>
+
+
+                                        <button onclick="myFunction()">dark mode</button>
+
+                                        <script>
+                                            function myFunction() {
+                                                var element = document.body;
+                                                element.classList.toggle("dark-mode");
+                                            }
+                                        </script>
+
+                                    </p>
+                                </a>
+                            </li>
+                        </ul><!--/.ml-services-->
+                    </div><!--/.ml-servicesWrapper-->
+
+                    <div class="ml-banner__wrapper">
+                        <div class="ml-banner">
+                            <img src="../../../../../Downloads/Medlife%20template%20files/dist/images/medlifeadd.jpg" alt="">
+                        </div><!--/.ml-banner-->
+                    </div><!--/.ml-banner__wrapper-->
+
+                    <div class="ml-sidebar__iconbox">
+                        <p class="ml-sidebar__title ml-text--center ml-sidebar__title--pb-20">SUIVEZ-NOUS</p>
+                        <div class="ml-socialIcons ml-socialIcons--centerFlex ml-socialIcons--style2">
+                            <span class="ml-socialIcons__item ml-icon-facebook"></span>
+                            <span class="ml-socialIcons__item ml-icon-twitter"></span>
+                            <span class="ml-socialIcons__item ml-icon-instagram2"></span>
+                        </div><!--/.ml-socialIcons-->
+                    </div><!--/.ml-sidebar__iconbox-->
+
+
+
+                </div><!--/.ml-featuredBox__item-->
+            </div><!--/.ml-featuredBox-->
+
+        </div><!--/.ml-sidebar-->
+    </div><!--/.col-md-4 col-sm-4-->
+</div><!--/.row-->
+</div><!--/.ml-container-->
+</div><!--/.ml-blogSection-->
+<!--  Blog section end -->
+{% endblock body %}

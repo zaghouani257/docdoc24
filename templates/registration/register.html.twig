@@ -1,6 +1,6 @@
+
 {% extends 'baseLR.html.twig' %}
 
-{% block title %}Register{% endblock %}
 
 {% block asideright %}
 
@@ -45,11 +45,8 @@
             {{ form_widget(registrationForm.dnaissance)}}
     </div>
     <div class="form-group">
-        <h7>Votre adresse <span class="text-danger">*</span></h7>
-        <div class="input-group">
-
-            {{ form_widget(registrationForm.adresse, { 'attr': {'class': 'form-control', 'placeholder':''} }) }}
-        </div>
+        <h7>Adresse <span class="text-danger">*</span></h7>
+        {{ form_widget(registrationForm.adresse) }}
     </div>
 
     <div class="form-group">
@@ -81,3 +78,4 @@
     <button type="reset" class="btn btn-block btn-info"><h> Annuler</h></button>
     {{ form_end(registrationForm) }}
 {% endblock %}
+

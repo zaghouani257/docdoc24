@@ -23,7 +23,7 @@
                 <td>{{ p.description }}</td>
                 <td>{% for image in p.images %}
 
-                        <img src="{{ asset ('/uploads/' ~ image.nom ) }}"
+                        <img src="{{ asset ('/uploads/images/' ~ image.nom ) }}"
                              alt="image" width="150">
                     {% endfor %}
                 </td>

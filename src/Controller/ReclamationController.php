@@ -17,6 +17,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Exception\ExceptionInterface;
 use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
@@ -160,4 +161,22 @@ class ReclamationController extends AbstractController
 
         return new JsonResponse($data);
     }*/
+
+    /**
+     * @Route("/reclamation/searchStudentx ", name="searchStudentxx")
+     * @param Request $request
+     * @param NormalizerInterface $Normalizer
+     * @return Response
+     * @throws ExceptionInterface
+     */
+    public function searchReclamation(Request $request,NormalizerInterface $Normalizer)
+    {
+        $repository = $this->getDoctrine()->getRepository(Reclamation::class);
+        $requestString=$request->get('searchValue');
+        $reclamation = $repository->findReclamationBymotif($requestString);
+        $jsonContent = $Normalizer->normalize($reclamation, 'json',['groups'=>'reclamation']);
+        $retour = json_encode($jsonContent);
+        return new JsonResponse($jsonContent);
+
+    }
 }

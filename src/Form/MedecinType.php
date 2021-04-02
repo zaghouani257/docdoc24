@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -16,7 +17,32 @@ class MedecinType extends AbstractType
         $builder
 
             ->add('numtel')
-            ->add('adresse')
+            ->add('adresse',ChoiceType::class,
+                array('choices'=>array(
+                    'Tunis'=>'Tunis',
+                    'Ariana'=>'Ariana',
+                    'Ben arous'=>'Ben arous',
+                    'Sousse'=>'Sousse',
+                    'Sfax'=>'Sfax',
+                    'Monastir'=>'Monastir',
+                    'Nabeul'=>'Nabeul',
+                    'Mahdia'=>'Mahdia',
+                    'Kairaoun'=>'Kairouan',
+                    'Bizerte'=>'Bizerte',
+                    'Mednine'=>'Mednine',
+                    'Manouba'=>'Manouba',
+                    'Gabes'=>'Gabes',
+                    'Gafsa'=>'Gafsa',
+                    'Jendouba'=>'Jendouba',
+                    'Le kef'=>'Le kef',
+                    'Sidi bouzid'=>'Sidi bouzid',
+                    'Kasserine'=>'Kasserine',
+                    'Seliana'=>'Seliana',
+                    'Kebili'=>'Kebili',
+                    'Tataouine'=>'Tataouine',
+                    'Djerbe'=>'Djerba',
+                    'Tozeur'=>'Tozeur'
+            ) ))
             ->add('cin')
             ->add('matricule')
             ->add('cnam')
@@ -36,7 +62,9 @@ class MedecinType extends AbstractType
                     'Psychothérapeute'=>'Psychothérapeute',
                     'Pédiatre'=>'Pédiatre'
                 ) ))
-            ->add('disponabilite')
+            ->add('disponabilite', DateType::class, [
+                'widget' => 'single_text',
+                'format' => 'yyyy-MM-dd'])
             ->add('image',FileType::class,
                 ['label' => false,
                     'multiple' => false,

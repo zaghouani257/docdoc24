@@ -1,4 +1,5 @@
-    <!doctype html>
+
+<!doctype html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -132,7 +133,7 @@
                            Binevenu {{ app.user.prenom }} {{ app.user.nom }}
                         </h5>
                         <h6  style="color:#B0E0E6">
-                            {{ app.user.type |upper }}
+                            {{ app.user.type |upper }} {{ app.user.specialite }}
                         </h6>
                         <p style="color:#B0E0E6" >Profil de l'utilsateur</p>
                     </div>
@@ -143,7 +144,7 @@
                    <div>
                     <td><a href="{{ path('ModifierUser',{'id':app.user.id}) }}"> Editer votre profil </a></td></div>
                     <div><a href="{{ path('app_logout')}}">Se déconnecter</a></div>
-                    <div><a href="{{ path('userr')}}">Page d'accueil</a></div>
+                    <div><a href="{{ path('accueil')}}">Page d'accueil</a></div>
                     {#<td><a href="{{ path('ModifierUser',{'id':app.user.id}) }}"> Modifier </a></td>#}
 
                 </div>
@@ -252,6 +253,14 @@
                                     {% endif %}
 
                             {% if(app.user.type == "pharmacien") %}
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Pharmacie</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>{{ app.user.pharmacie }}</p>
+                                    </div>
+                                </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label>CIN </label>

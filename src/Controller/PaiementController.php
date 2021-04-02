@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Commande;
 use App\Entity\Paiement;
 use App\Form\PaiementType;
 use App\Repository\PaiementRepository;
@@ -33,14 +34,6 @@ class PaiementController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/paiement/affiche",name="afficherPaiement")
-     */
-    public function affiche()
-    {
-        $repo=$this->getDoctrine()->getRepository(Paiement::class)->findAll();
-        return $this->render('paiement/affiche.html.twig',['repo'=>$repo]);
-    }
 
     /**
      * @Route("/paiement/affiche1",name="afficher1")
@@ -54,7 +47,7 @@ class PaiementController extends AbstractController
             $prenom = $request->get('prenom');
             $repo = $this->getDoctrine()->getRepository(Paiement::class)->findBy(array('prenom'=>$prenom));
         }
-        return $this->render('baseBack.html.twig',[
+        return $this->render('paiement/affichePaiementB.html.twig',[
             'repo'=>$repo]);
     }
 

@@ -53,7 +53,7 @@ class RegistrationController extends AbstractController
             if ($user->getType() == "patient") {
                 return $this->redirectToRoute("app_login");
             } elseif ($user->getType() == "medecin") {
-                return $this->redirectToRoute("app_login");
+                return $this->redirectToRoute("accueil");
                 /*$form=$this->createForm(MedecinType::class,$user);
                 $form->add('confirmer',SubmitType::class);
                 $form->handleRequest($request);
@@ -64,7 +64,7 @@ class RegistrationController extends AbstractController
                 }
                 return $this->render("registration/medecin.html.twig",['form'=>$form->createView()]);*/
             } elseif ($user->getType() == "pharmacien") {
-                return $this->redirectToRoute("app_login");
+                return $this->redirectToRoute("accueil");
                 /*$form=$this->createForm(PharamacienType::class,$user);
                 $form->add('confirmer',SubmitType::class);
                 $form->handleRequest($request);
@@ -75,7 +75,7 @@ class RegistrationController extends AbstractController
                 }
                 return $this->render("registration/pharmacien.html.twig",['form'=>$form->createView()]);*/
             } else {
-                return $this->redirectToRoute("app_login");
+                return $this->redirectToRoute("accueil");
                 /*$form=$this->createForm(DelegueType::class,$user);
                 $form->add('confirmer',SubmitType::class);
                 $form->handleRequest($request);
