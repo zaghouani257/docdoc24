@@ -1,0 +1,186 @@
+{% extends 'base.html.twig' %}
+
+
+{% block css %}
+    <style>
+
+        .color-palette span {
+            display: none;
+            font-size: 12px;
+        }
+
+        .color-palette:hover span {
+            display: block;
+        }
+
+        .color-palette.disabled span {
+            display: block;
+            text-align: left;
+            padding-left: .75rem;
+        }
+
+        .color-palette-box h4 {
+            position: absolute;
+            left: 1.25rem;
+            margin-top: .75rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 12px;
+            display: block;
+            z-index: 7;
+        }
+
+        .comment-wrapper .panel-body {
+            max-height:650px;
+            overflow:auto;
+        }
+
+        .comment-wrapper .media-list .media img {
+            width:64px;
+            height:64px;
+            border:2px solid #e5e7e8;
+        }
+
+        .comment-wrapper .media-list .media {
+            border-bottom:1px dashed #efefef;
+            margin-bottom:25px;
+        }
+    </style>
+{% endblock %}
+
+{% block head %}
+
+    <link rel="stylesheet" href={{ asset("distClient/css/font-awesome.css")}}>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap 4 -->
+
+    <!-- Font Awesome -->
+
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href={{ asset("distAdmin/plugins/fontawesome-free/css/all.min.css")}}>
+    <!-- Theme style -->
+    <link rel="stylesheet" href={{ asset("distAdmin/css/adminlte.min.css")}}>
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+{% endblock %}
+
+{% block content %}
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+
+    <!-- Main content -->
+    <div class="sizeQ">
+    {% for c in q %}
+    <section class="content">
+        <div class="container-fluid">
+            <div class="card-body">
+                <div class="callout callout-info">
+                    <h2 style="margin-left: 2em">{{ c.titre }}</h2>
+
+                    <p style="margin-left: 6em" >
+                    {{ c.categorieMedicale.nom }}<br>
+
+                    {{ c.symptomes }}
+                        <br>
+
+<small>
+                        {% if c.isTreated==0%}
+                               Pas de traitement en cours,
+                            {% else %}
+                                traitement en cours,
+                            {% endif %}
+
+
+
+                          {% if c.isAntMed==0%}
+                                Pas d'antécédent médicaux,
+                            {% else %}
+                                il y a des antécédents médicaux,
+                            {% endif %}
+
+
+                        {% if c.taille==null%}
+
+                    {% else %}
+                              Taille: {{ c.taille }},
+                            {% endif %}
+
+                        {% if c.poids==null%}
+
+                        {% else %}
+                           Poids:  {{ c.poids }},
+                            {% endif %}
+
+
+                    {% if c.isAnswered==0%}
+                        répondue
+                    {% else %}
+                        pas de réponse
+                    {% endif %}
+</small>
+                    </p>
+                    <div style="margin-left: 80%">
+                        <a href="{{ path('AfficherQ',{'id':c.id}) }}"><i class="fas fa-reply fa-lg"></i></a>
+                    <a href="{{ path('modifierQ',{'id':c.id}) }}"><i class="fas fa-edit fa-lg"></i></a>
+
+                    <a href="{{ path('suppQ',{'id':c.id}) }}"><i class="fas fa-trash-alt fa-lg"></i></a>
+                    </div>
+                    <style>
+                        .fa-trash-alt
+                        {
+                            color:#5bb7ed;
+                            padding-right: 10px;
+
+                        }
+                        .fa-reply
+                        {
+                            color:#5bb7ed;
+                            padding-right: 13px;
+                        }
+                        .fa-edit
+                        {
+                            color:#5bb7ed;
+                            padding-right: 10px;
+                        }
+                        .sizeQ
+                        {
+                            height: auto;
+                            width:800px;
+                            margin-left: auto;
+                            margin-right: auto;
+                        }
+                    </style>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+    {% endfor %}
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+{% endblock %}
+
+
+
+
+

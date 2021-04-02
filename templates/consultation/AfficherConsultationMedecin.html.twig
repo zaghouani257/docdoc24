@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <th>
+            id Consultation
+        </th>
+        <th>
+            Date Consultation
+        </th>
+        <th>
+            état
+        </th>
+        <th>
+            Accepter
+        </th>
+
+
+    </tr>
+    {% for c in consultation %}
+        <tr>
+            <td>  {{ c.id }}  </td>
+            <td>  {{ c.datehr|date("d-m-Y H:i") }} </td>
+            <td>{% if c.isAccepted==true %}
+                Accepté!
+                 {% endif %}
+                {% if c.isAccepted==false %}
+                    En Attente!
+                {% endif %}
+
+
+
+            </td>
+            {% if c.isAccepted==true %}
+                <td><a href="#">Accepter</a></td>
+            {% else %}
+            <td><a href="{{ path('AccepterConsultation',{'id':c.id}) }}">Accepter</a></td>
+            {% endif %}
+
+        </tr>
+    {%  endfor %}
+</table>
+
+</body>
+</html>

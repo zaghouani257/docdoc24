@@ -20,4 +20,6 @@ return [
     FOS\CKEditorBundle\FOSCKEditorBundle::class => ['all' => true],
     FM\ElfinderBundle\FMElfinderBundle::class => ['all' => true],
     Vich\UploaderBundle\VichUploaderBundle::class => ['all' => true],
+    EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle::class => ['all' => true],
+    Knp\Bundle\TimeBundle\KnpTimeBundle::class => ['all' => true],
 ];

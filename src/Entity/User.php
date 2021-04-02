@@ -136,12 +136,40 @@ class User implements UserInterface
      * @Assert\File(mimeTypes={"image/jpeg"})
      */
     private $image;
+    /**
+     * @ORM\OneToMany(targetEntity=Question::class, mappedBy="user" , cascade={"all"}, orphanRemoval=true )
+     */
+    private $questions;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Reponse::class, mappedBy="user" , cascade={"all"}, orphanRemoval=true )
+     */
+    private $reponses;
+
+
+    /**
+     * @ORM\OneToMany(targetEntity=Consultation::class, mappedBy="user" , cascade={"all"}, orphanRemoval=true )
+     */
+    private $consultations;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Consultation::class, mappedBy="userM" , cascade={"all"}, orphanRemoval=true)
+     */
+    private $consultationsM;
+     /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $isBlocked;
 
 
 
     public function __construct()
     {
         $this->reclamations = new ArrayCollection();
+        $this->questions = new ArrayCollection();
+        $this->reponses = new ArrayCollection();
+        $this->consultations = new ArrayCollection();
+        $this->consultationsM = new ArrayCollection();
     }
 
 
@@ -418,7 +446,127 @@ class User implements UserInterface
 
         return $this;
     }
+    /**
+     * @return Collection|Question[]
+     */
+    public function getQuestions(): Collection
+    {
+        return $this->questions;
+    }
 
+    public function addQuestion(Question $question): self
+    {
+        if (!$this->questions->contains($question)) {
+            $this->questions[] = $question;
+            $question->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeQuestion(Question $question): self
+    {
+        if ($this->questions->removeElement($question)) {
+            // set the owning side to null (unless already changed)
+            if ($question->getUser() === $this) {
+                $question->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Reponse[]
+     */
+    public function getReponses(): Collection
+    {
+        return $this->reponses;
+    }
+
+    public function addReponse(Reponse $reponse): self
+    {
+        if (!$this->reponses->contains($reponse)) {
+            $this->reponses[] = $reponse;
+            $reponse->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReponse(Reponse $reponse): self
+    {
+        if ($this->reponses->removeElement($reponse)) {
+            // set the owning side to null (unless already changed)
+            if ($reponse->getUser() === $this) {
+                $reponse->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Consultation[]
+     */
+    public function getConsultation(): Collection
+    {
+        return $this->consultation;
+    }
+
+    public function addConsultation(Consultation $consultation): self
+    {
+        if (!$this->consultation->contains($consultation)) {
+            $this->consultation[] = $consultation;
+        }
+
+        return $this;
+    }
+
+    public function removeConsultation(Consultation $consultation): self
+    {
+        $this->consultation->removeElement($consultation);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Consultation[]
+     */
+    public function getConsultations(): Collection
+    {
+        return $this->consultations;
+    }
+
+    /**
+     * @return Collection|Consultation[]
+     */
+    public function getConsultationsM(): Collection
+    {
+        return $this->consultationsM;
+    }
+
+    public function addConsultationsM(Consultation $consultationsM): self
+    {
+        if (!$this->consultationsM->contains($consultationsM)) {
+            $this->consultationsM[] = $consultationsM;
+            $consultationsM->setUserM($this);
+        }
+
+        return $this;
+    }
+
+    public function removeConsultationsM(Consultation $consultationsM): self
+    {
+        if ($this->consultationsM->removeElement($consultationsM)) {
+            // set the owning side to null (unless already changed)
+            if ($consultationsM->getUserM() === $this) {
+                $consultationsM->setUserM(null);
+            }
+        }
+
+        return $this;
+    }
 
     public function getImage()
     {
@@ -446,6 +594,17 @@ class User implements UserInterface
     public function setPharmacie($pharmacie): void
     {
         $this->pharmacie = $pharmacie;
+    }
+    public function getIsBlocked(): ?bool
+    {
+        return $this->isBlocked;
+    }
+
+    public function setIsBlocked(?bool $isBlocked): self
+    {
+        $this->isBlocked = $isBlocked;
+
+        return $this;
     }
 
 
