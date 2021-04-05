@@ -1,4 +1,26 @@
 {% extends 'base.html.twig' %}
+{% block js %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="{{ asset('bundles/bootstrap-rating/js/rating.js') }}"></script>
+    <script>forceStarVal(
+                {% if retrievedRatingResult %}
+                {{ retrievedRatingResult.rating  }}
+                {% endif %}
+        );</script>
+
+
+    <script>
+
+        function updateGPlusBtn(){
+            $('#___plusone_0').css('verticalAlign','middle') ;
+            console.log("Gplus btn updated!");
+        }
+        setTimeout(updateGPlusBtn, 2000);
+
+    </script>
+{% endblock %}
+
 {%  block body  %}
     <div class="ml-preventiveSection">
         <div class="ml-container container">
@@ -18,6 +40,9 @@
                             <a href="{{ path('panier_add',{'id':service.id} )}}" class="btn ml-product__addToCart ml-product__addToCart--style2"><span class="ml-icon-shopping-cart2"></span><span class="hg__addToCartText">Commander</span></a>
                         </div><!--/.ml-preventive__wrapper-->
                     </div><!--/.ml-preventive-->
+                    <div style="text-align: left; margin-top : 15px;">
+                       {# {{form(ratingform)}}#}
+                    </div>
                 </div><!--/.col-sm-9 col-md-9-->
             </div><!--/.row-->
         </div><!--/.ml-container-->

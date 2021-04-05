@@ -1,6 +1,65 @@
 {% extends 'baseBack.html.twig' %}
 {% block title %}Gestion Fournisseur {% endblock %}
 {% block contentHeader %} Fournisseur de Service {% endblock %}
+{% block js %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $( document ).ready(function() {
+            var currentRequest = null;
+            $("#search").keyup(function(e){
+
+                var value = $(this).val();
+                if(currentRequest != null) {
+                    currentRequest.abort();
+                }
+
+                currentRequest = $.ajax({
+
+                    url : "{{ path('searchFourniseur') }}",
+                    type : 'GET',
+                    data: {
+                        'searchValue' : value
+                    },
+
+                    success : function(retour)
+                    {
+                        $('#all').html(retour);
+
+                    },
+                });
+                return false;
+            });
+        });
+        $( document ).ready(function() {
+            var currentRequest = null;
+            $("#service").change(function(){
+                var value = null;
+                $( "select option:selected" ).each(function() {
+                    value = $( this ).val() ;
+                });
+                if(currentRequest != null) {
+                    currentRequest.abort();
+                }
+
+                currentRequest = $.ajax({
+
+                    url : "{{ path('searchFourniseurserv') }}",
+                    type : 'GET',
+                    data: {
+                        'searchValue' : value
+                    },
+
+                    success : function(retour)
+                    {
+                        $('#all').html(retour);
+
+                    },
+                });
+                return false;
+            });
+        });
+    </script>
+{% endblock  %}
 {% block contentMain %}
     <div class="row">
         <div class="col-12">
@@ -9,64 +68,64 @@
                     <a class="btn bg-gradient-info float-left " href="{{ path('Ajouterfourniseur') }}">
                         <i class="far fa-plus-square "> ajouter
                         </i>
-
                     </a>
+                    <div class="card-tools row">
+                        <div class="input-group input-group-sm col-md-6">
+                            <select class="form-control form-control-sm" id="service" >
+                                <option selected>filtre par service</option>
+                                {% for service in services %}
+                                    <option value="{{ service.id }}">{{ service.libelle }}</option>
+                                {% endfor %}
 
-                    <div class="card-tools">
-                        <div class="input-group input-group-sm" style="width: 150px;">
-                            <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                            </select>
+                        </div>
+
+
+                        <div class="input-group input-group-sm col-md-6" style="width: 150px;">
+                            <input  type="search" id="search" class="form-control " placeholder="Search">
 
                             <div class="input-group-append">
-                                <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                                <a path="{{ path('searchFourniseur') }}" class="btn btn-default"><i class="fas fa-search"></i></a>
                             </div>
                         </div>
+
                     </div>
                 </div>
-                <!-- /.card-header -->
-                <div class="card-body table-responsive p-0" style="height: 300px;">
-                    <table class="table table-head-fixed text-nowrap">
-                        <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>FOURNISSEUR</th>
-                            <th>EMAIL</th>
-                            <th>NUMERO</th>
-                            <th>GOUVERNORATE</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr {% for fr in fourniseur%}>
-                            <td>{{  fr.id}}</td>
-                            <td>{{ fr.fourniseur }}</td>
-                            <td>{{ fr.contact }}</td>
-                            <td>{{ fr.numero }}</td>
-                            <td>{{ fr.gouvernorat }}</td>
-                            <td>{{ fr.service.libelle }}</td>
-                            <td class="project-actions text-right">
-                                <a class="btn btn-primary btn-sm" href="{{ path('detailsfourniseur',{'id':fr.id}) }}">
-                                    <i class="fas fa-folder">
-                                    </i>
-                                    Détails
-                                </a>
-                                <a class="btn btn-info btn-sm" href="{{ path('updatefourniseur',{'id':fr.id}) }}">
-                                    <i class="fas fa-pencil-alt">
-                                    </i>
-                                    modifer
-                                </a>
-                                <a class="btn btn-danger btn-sm" href="{{ path('deletefourniseur',{'id':fr.id}) }}">
-                                    <i class="fas fa-trash">
-                                    </i>
-                                    supprimer
-                                </a>
-                            </td>
-                        </tr {% endfor %}>
+                <div class="card-body">
 
-                        </tbody>
-                    </table>
+                    <section class="content">
+
+                        <!-- Default box -->
+                        <div class="card card-solid">
+                            <div class="card-body pb-0">
+                                <div class="row d-flex align-items-stretch " id="all">
+                                   {% include 'fourniseur_service/search.html.twig' %}
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
+                            <div class="card-footer">
+
+                            </div>
+                            <!-- /.card-footer -->
+                        </div>
+                        <!-- /.card -->
+
+                    </section>
+
                 </div>
+                <!-- /.card-header -->
+
+                <!-- /.new section -->
+
+
+                <!-- /.new section -->
                 <!-- /.card-body -->
             </div>
             <!-- /.card -->
         </div>
     </div>
+
+
+
+
 {% endblock %}

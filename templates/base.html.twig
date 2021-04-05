@@ -20,6 +20,7 @@
     <link href="{{ asset('https://fonts.googleapis.com/css?family=Muli:400,700%7COpen+Sans:400,700')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('distClient/addons/datepicker/css/datepicker.css')}}">
     <link rel="stylesheet" href="{{ asset('distClient/addons/datepicker/css/main.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/bootstrap-rating/css/rating.css') }}" />
         <link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">
         <script src="{{ asset('distClient/js/maps.js')}}"></script>
     {% endblock %}
@@ -55,8 +56,9 @@
         <li class="ml-resMenu-back">
             <span class="ml-resMenu-backIcon glyphicon glyphicon-chevron-left"></span><a href="#" class="ml-resMenu-backLink">Back</a>
         </li>
-        <li><a class="active" href="{{ path('accueil')}}"><span>Accueil</span></a></li>
-        <li ><a href="../dist/services.html"><span>Services</span></a></li>
+
+        <li><a class="active" href="{{ path('accueil') }}"><span>Accueil</span></a></li>
+        <li ><a href="{{ path('services') }}"><span>Services</span></a></li>
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
         <li><a class="active" href="{{ path('UserAfficheMedecin')}}"><span>Médecins</span></a></li>
         <li><a class="active" href="{{ path('UserAffichePharamacien')}}"><span>Pharmacies</span></a></li>
@@ -238,12 +240,13 @@
                         </a>
                     </div><!--/.ml-mainMenu-trigger-->
                     <ul class="ml-mainMenu">
-                        <li class="ml-mainMenu__item active"><a href="{{ path('accueil')}}"><span>Acceuil</span></a></li>
-                        {#<li class="ml-mainMenu__item has-submenu">
+
+                        <li class="ml-mainMenu__item active"><a href="../dist/index.html"><span>Acceuil</span></a></li>
+                        <li class="ml-mainMenu__item has-submenu">
                             <a  href="{{ path('services') }}"><span>Services A domicile</span></a>
                             <div class="ml-megamenu ml-megamenu--left135" data-col-nr="5">
                                 <div class="ml-megamenu__container ml-megamenu__container--style2">
-                                    {% for i in 0..( app.session.get('categories')|length/2)-1 %}
+                                    {% for i in 0..(app.session.get('categories')|length/2)-1 %}
                                     <div class="ml-megamenu__component" >
                                         <div class="ml-iconbox ml-iconbox--center ml-text--center ml-iconbox--style1 ">
                                             <a href="{{ path('afficheservicesparcategorie',{'categorie':app.session.get('categories')[i].id}) }}" class="ml-iconbox__anchor">
@@ -258,7 +261,8 @@
                                             </a><!--/.ml-iconbox__anchor-->
                                         </div><!--/.ml-iconbox-->
                                         <div class="ml-iconbox ml-iconbox--center ml-text--center ml-iconbox--style1">
-                                            <a  href="{{ path('afficheservicesparcategorie',{'categorie':app.session.get('categories')[i+1].id}) }}" class="ml-iconbox__anchor" >
+                                            <a  href="{{ path('afficheservicesparcategorie',{'categorie':app.session.get('categories')[i+1].id}) }}"
+                                                class="ml-iconbox__anchor" >
                                                 <div class="ml-iconbox__iconWrapper">
                                                     <span class="ml-iconbox__icon  ml-icon-shield " ></span>
                                                 </div><!--/.ml-iconbox__iconWrapper-->
@@ -273,7 +277,7 @@
                                     {% endfor %}
                                 </div><!--/.ml-megamenu__container-->
                             </div><!--/.ml-megamenu-->
-                        </li>#}
+                        </li>
                         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                         <li class="ml-mainMenu__item"><a href="{{ path('UserAfficheMedecin')}}"><span>Médecins</span></a></li>
                         <li class="ml-mainMenu__item"><a href="{{ path('UserAffichePharamacien')}}"><span>Pharmacies</span></a></li>
