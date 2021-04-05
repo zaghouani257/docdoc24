@@ -1,53 +1,67 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-<table border="1">
-    <tr>
-        <th>
-            id Consultation
-        </th>
-        <th>
-            Date Consultation
-        </th>
-        <th>
-            état
-        </th>
-        <th>
-            Accepter
-        </th>
 
 
-    </tr>
-    {% for c in consultation %}
-        <tr>
-            <td>  {{ c.id }}  </td>
-            <td>  {{ c.datehr|date("d-m-Y H:i") }} </td>
-            <td>{% if c.isAccepted==true %}
-                Accepté!
-                 {% endif %}
-                {% if c.isAccepted==false %}
-                    En Attente!
-                {% endif %}
+{% extends 'base.html.twig' %}
+
+    {% block body %}
+        <table border="1">
+
+            <div class="ml-blogComments">
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <h4 class="ml-blogComments__title">Vos Consultations</h4>
+                        <div class="ml-comments">
+                            <div class="ml-comments__item">
+                                {% for c in consultation %}
+
+                                    <div class=" ml-imageBox ml-imageBox--detailsHover ml-imageBox--hasShadow ml-imageBox--mb-40" style="padding: 5px">
+                                        <span class="ml-comments__author">Cher Docteur {{ c.userM.nom }} {{ c.userM.prenom }}</span>
+                                        <div class="ml-comments__text">
+                                            <p>Monsieur/Madame {{ c.user.nom}} {{ c.user.prenom }} vous demande une consultation pour le {{ c.datehr|date("d-m-Y H:i") }}</p>
+                                            <div class="ml-comments__replyWrapp">
 
 
 
-            </td>
-            {% if c.isAccepted==true %}
-                <td><a href="#">Accepter</a></td>
-            {% else %}
-            <td><a href="{{ path('AccepterConsultation',{'id':c.id}) }}">Accepter</a></td>
-            {% endif %}
+                                                         {{ c.id }}
+                                                        {{ c.datehr|date("d-m-Y H:i") }}
+                                                        {% if c.isAccepted==true %}
+                                                                Accepté!
+                                                            {% endif %}
+                                                            {% if c.isAccepted==false %}
+                                                                En Attente!
+                                                            {% endif %}
 
-        </tr>
-    {%  endfor %}
-</table>
 
-</body>
-</html>
+
+
+                                                        {% if c.isAccepted==true %}
+
+                                                        {% else %}
+                                                           <a href="{{ path('AccepterConsultation',{'id':c.id}) }}">Accepter</a>
+                                                        {% endif %}
+
+
+
+                                            </div><!--/.ml-comments__replyWrapp-->
+                                        </div>
+
+                                    </div><!--/.ml-comments__container-->
+                                {% endfor %}
+                                <!--/.ml-comments__children-->
+                            </div><!--/.ml-comments__item-->
+                            <!--/.ml-comments__item-->
+                        </div><!--/.ml-comments-->
+
+                        <!--/.ml-comments__message-->
+                    </div>
+                    <div class="col-md-3"></div>
+                </div><!--/.row-->
+            </div>
+        </table>
+
+
+    {% endblock %}
+
+
+
+

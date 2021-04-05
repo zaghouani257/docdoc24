@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\CategorieMedicale;
 use App\Entity\Question;
 use App\Entity\User;
+use phpDocumentor\Reflection\Types\Integer;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -40,17 +41,13 @@ class QuestionType extends AbstractType
             ])
             ->add('taille')
             ->add('poids')
-            ->add('isTreated',CheckboxType::class,['label' => 'Traitement en cours'])
-            ->add('isAntMed',CheckboxType::class,['label' => 'Antécédents Médicaux'])
-            ->add('isNameShown', CheckboxType::class,['label' => 'afficher votre nom'])
+            ->add('isTreated',CheckboxType::class,['label' => 'Traitement en cours', 'required'=> false])
+            ->add('isAntMed',CheckboxType::class,['label' => 'Antécédents Médicaux', 'required'=> false])
+            ->add('isNameShown', CheckboxType::class,['label' => 'afficher votre nom' , 'required'=> false])
             ->add('categorieMedicale', EntityType::class, [
                 'class'=>CategorieMedicale::class,
                 'choice_label'=>'nom'])
-            ->add('user',EntityType::class, [
-                'class'=>User::class,
-                'choice_label'=>'id'
 
-            ])
         ;
     }
 
