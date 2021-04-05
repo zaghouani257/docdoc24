@@ -78,5 +78,48 @@ class ServiceRepository extends ServiceEntityRepository
             ->getResult()
             ;
     }
+    public function searchServicecat($value){
+        return $this->createQueryBuilder('s')
+            ->leftJoin('s.categorie','c')
+            ->addSelect('c')
+            ->where('c.id like :val')
+            ->setParameter('val',$value)
+            ->getQuery()
+            ->getResult();
+    }
+    public function searchService($var)
+    {
+        return $this->createQueryBuilder('s')
+            ->where('s.libelle Like :var')
+            ->orWhere('s.description Like :var')
+            ->setParameter('var', '%'.$var.'%')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+    public function orderbyrate()
+    {
+        return $this->createQueryBuilder('s')
+           ->orderBy('s.avgrating','ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+    public function orderbylibelle()
+    {
+        return $this->createQueryBuilder('s')
+            ->orderBy('s.libelle','DESC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+    public function orderbyprix()
+    {
+        return $this->createQueryBuilder('s')
+            ->orderBy('s.prix','ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 
 }

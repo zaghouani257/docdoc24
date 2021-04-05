@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="b6aa4f9f-21ce-4ce1-9634-6061bbb4702e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
@@ -17,6 +35,42 @@
       <change beforePath="$PROJECT_DIR$/templates/panier/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/panier/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/panier/index2.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/panier/index2.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/service/service.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/service/service.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrations/Version20210404231722.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Rate.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/RateType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/RateRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/categorie_service/categories.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/fourniseur_service/search.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/service/filter.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/service/searchA.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/docdoc.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/docdoc.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/CategorieServiceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CategorieServiceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/FourniseurServiceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/FourniseurServiceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ServiceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ServiceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Service.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Service.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/CategorieServiceRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/CategorieServiceRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/FourniseurServiceRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/FourniseurServiceRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/ServiceRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ServiceRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/baseBack.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/baseBack.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/categorie_service/affiche.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/categorie_service/affiche.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fourniseur_service/affiche.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fourniseur_service/affiche.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fourniseur_service/details.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fourniseur_service/details.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fourniseur_service/update.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fourniseur_service/update.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/service/affiche.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/service/affiche.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/service/details.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/service/details.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/service/service.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/service/service.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/service/services.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/service/services.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +87,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/composer.json" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -160,6 +217,8 @@
       <path value="$PROJECT_DIR$/vendor/symfony/filesystem" />
       <path value="$PROJECT_DIR$/vendor/psr/container" />
       <path value="$PROJECT_DIR$/vendor/symfony/var-exporter" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/bootstrap-star-rating" />
+      <path value="$PROJECT_DIR$/vendor/blackknight467/star-rating-bundle" />
     </include_path>
   </component>
   <component name="ProjectId" id="1pXMkai2F2H2yo3EZD3rGjrnCnt" />
@@ -177,17 +236,19 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/bundles" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\zagho\OneDrive\Bureau\team 24\docdoc\templates\panier" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\zagho\OneDrive\Bureau\team 24\docdoc\templates\registration" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\TEAM 24\docdoc\public\bundles" />
+      <recent name="C:\Users\zagho\OneDrive\Bureau\team 24\docdoc\templates\panier" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -239,6 +300,8 @@
       <workItem from="1617561349783" duration="725000" />
       <workItem from="1617573608188" duration="597000" />
       <workItem from="1617613135367" duration="1879000" />
+      <workItem from="1617458260804" duration="35097000" />
+      <workItem from="1617576377508" duration="13080000" />
     </task>
     <task id="LOCAL-00001" summary="Almost done">
       <created>1617064948629</created>
@@ -252,6 +315,18 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
@@ -282,9 +357,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1615843058536" />
-    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1617297364383">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="444" y="156" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1617491510603">
+      <screen x="0" y="0" width="1366" height="768" />
     </state>
+    <state x="444" y="156" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.768@0.0.1366.768" timestamp="1617491510603" />
     <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1617243943038" />
     <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1617297364383" />
     <state x="393" y="0" key="CommitChangelistDialog2" timestamp="1617064947846">
@@ -296,9 +372,10 @@
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1616854957376" />
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1617274190348" />
-    <state x="539" y="114" key="RollbackChangesDialog" timestamp="1617206033611">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="479" y="106" key="RollbackChangesDialog" timestamp="1617493037098">
+      <screen x="0" y="0" width="1366" height="768" />
     </state>
+    <state x="479" y="106" key="RollbackChangesDialog/0.0.1366.768@0.0.1366.768" timestamp="1617493037098" />
     <state x="539" y="114" key="RollbackChangesDialog/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1617206033611" />
     <state x="277" y="57" key="SettingsEditor" timestamp="1616528348158">
       <screen x="0" y="0" width="1536" height="824" />
@@ -308,18 +385,20 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1616528864626" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1617203375447">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="321" y="135" key="Vcs.Push.Dialog.v2" timestamp="1617493065642">
+      <screen x="0" y="0" width="1366" height="768" />
     </state>
+    <state x="321" y="135" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1617493065642" />
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1617203375447" />
     <state x="425" y="187" key="run.anything.popup" timestamp="1617366309710">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="187" key="run.anything.popup/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1617243876789" />
     <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1617366309710" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1617290285259">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="383" y="135" width="672" height="632" key="search.everywhere.popup" timestamp="1617488682216">
+      <screen x="0" y="0" width="1366" height="768" />
     </state>
+    <state x="383" y="135" width="672" height="632" key="search.everywhere.popup/0.0.1366.768@0.0.1366.768" timestamp="1617488682216" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1617290285259" />
   </component>
 </project>
