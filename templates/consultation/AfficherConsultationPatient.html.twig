@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-    {% block content %}
+    {% block body %}
     <table border="1">
 
         <div class="ml-blogComments">
@@ -12,7 +12,7 @@
                         <div class="ml-comments__item">
                             {% for c in consultation %}
 
-                                <div class="ml-comments__container ml-imageBox ml-imageBox--detailsHover ml-imageBox--hasShadow ml-imageBox--mb-40">
+                                <div class=" ml-imageBox ml-imageBox--detailsHover ml-imageBox--hasShadow ml-imageBox--mb-40" style="padding: 5px">
                                     <span class="ml-comments__author">Cher patient(e){{ c.user.nom }} {{ c.user.prenom }}</span>
                                     <div class="ml-comments__text">
                                         <p>vous avez demandé une consultation le {{ c.datehr|date("d-m-Y H:i") }} avec docteur {{ c.userM.nom }} {{ c.userM.prenom }}</p>
@@ -21,10 +21,14 @@
                                                {% if c.isAccepted==true %}
                                                 <span class="ml-comments__icon "><i class="fas fa-check-circle" style="color: #00ff80;font-size: x-large"></i></span>
                                                 <span class="ml-comments__reply">Accepté!</span>
+
                                             {% else %}
                                                 <span class="ml-comments__icon "><i class="fas fa-spinner" style="color: #00ff80;font-size: x-large"></i></span>
                                                 <span class="ml-comments__reply">En Attente</span>
+                                                <span><a href="{{ path('UpdateConsultation',{'id':c.id , 'idUser':app.user.id}) }}"><i class="fas fa-edit"></i></a></span>
+                                                <span><a href="{{ path('suppConsultation',{'id':c.id, 'idUser':app.user.id}) }}"><i class="fas fa-trash"></i></a></span>
                                             {% endif%}
+
                                         </div><!--/.ml-comments__replyWrapp-->
                                     </div>
 

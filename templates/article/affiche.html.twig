@@ -29,16 +29,29 @@
                         <tr>
                             <th>id</th>
                             <th>titre</th>
+                            <th>Commentaires</th>
 
                         </tr>
                         </thead>
-                        <tbody>
-                        <tr {% for cat in article %}>
-                            <td>{{ cat.id}}</td>
+                        <tr>
+                         {% for cat in article %}
+
+                        <td>{{ cat.id}}</td>
                             <td>{{ cat.titre }}</td>
+                            {% for c in cat.commentaires %}
+
+                                <td> {{ c.contenu }} </td>
+                             <td >
+                             <a class="btn btn-danger btn-sm" href="{{ path('deletecoarticle',{'comment_id':c.id}) }}">
+                                 <i class="fas fa-trash">
+                                 </i>
+                                 supprimer
+                             </a>
+                             </td>
+                         {% endfor %}
 
                             <td class="project-actions text-right">
-                                <a class="btn btn-success btn-sm" href="{{ path('catarticle',{'id':cat.id}) }}">
+                                <a class="btn btn-success btn-sm" href="{{ path('catarticle',{'id':cat.id , 'user_id':app.user.id} ) }}">
                                     <i class="fas fa-user">
                                     </i>
                                     index
@@ -59,8 +72,8 @@
                                     supprimer
                                 </a>
                             </td>
-
-                        </tr {% endfor %}>
+                        </tr>
+                        {% endfor %}
 
                         </tbody>
                     </table>

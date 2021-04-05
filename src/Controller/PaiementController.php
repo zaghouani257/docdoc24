@@ -9,6 +9,7 @@ use App\Repository\PaiementRepository;
 use App\Repository\ProduitRepository;
 use Dompdf\Dompdf;
 use Dompdf\Options;
+use http\Client\Curl\User;
 use MercurySeries\FlashyBundle\FlashyNotifier;
 use phpDocumentor\Reflection\Utils;
 use Stripe\Stripe;
@@ -52,6 +53,17 @@ class PaiementController extends AbstractController
     }
 
     /**
+     * @Route("/paiement/affichefront/{userid}",name="afficherPaiement")
+     * @return Response
+     */
+    public function affiche($userid)
+    {
+        $repo=$this->getDoctrine()->getRepository(Paiement::class)->findBy(array('userid' => $userid));
+        return $this->render('paiement/affiche.html.twig',[
+            'repo'=>$repo]);
+    }
+
+    /**
      * @Route("/paiement/ajouter",name="AjouterPaiement")
      * @param Request $request
      * @param \Swift_Mailer $mailer
@@ -66,6 +78,8 @@ class PaiementController extends AbstractController
         $form->handleRequest($request);
         if($form->isSubmitted()&&$form->isValid()){
             $paiement->setStatus('Not paid');
+            $paiement->setPrix($session->get('prix'));
+            $paiement->setUserid($session->get('id_user'));
             $em=$this->getDoctrine()->getManager();
             $em->persist($paiement);
             $em->flush();
@@ -100,7 +114,7 @@ Merci pour votre confiance.');
         $paiement = $repo->find($id);
         $em->remove($paiement);
         $em->flush();
-        return $this->redirectToRoute('afficher');
+        return $this->redirectToRoute('afficherPaiement');
     }
 
     /**

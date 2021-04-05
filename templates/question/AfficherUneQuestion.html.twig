@@ -47,6 +47,7 @@
 {% endblock %}
 
 {% block head %}
+    {{ parent() }}
 
    <link rel="stylesheet" href={{ asset("distClient/css/font-awesome.css")}}>
    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -65,7 +66,7 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 {% endblock %}
 
-{% block content %}
+{% block body %}
 
    <div class="container">
       <div class="row bootstrap snippets bootdeys">
@@ -117,29 +118,42 @@
 
                      Réponses ({{ q.reponses|length  }})
                   </div>
-                  <div class="panel-body">
-                      {{ form_start(form)}}
-                            {% if isBad==true %}
-                                <div class="card-body">
-                                    <div class="alert alert-danger alert-dismissible">
-                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                        <h5><i class="icon fas fa-ban"></i> Alerte!</h5>
-                                        {% if nbIsBad<3 %}
-                                        <p>c'est votre alerte numéro ({{ nbIsBad }})</p>
-                                        Attention! Il ne faut pas écrire des mots inappropriés!<br>
-                                        Votre commentaire ne sera pas affiché dans la liste des commentaires!<br>
-                                        Si vous essayez d'ecrire des mots inappropriés dans 3 commentaires, <br> Une réclamation sera envoyé à l'administrateur
-                                        {% else %}
-                                        <p>Vous avez dépassé toutes vos chances.</p>
-                                        Vous avez écrit des mots innapropriés  {{ nbIsBad }} fois!<br>
-                                        Une réclamation automatique est envoyé à l'administrateur.<br>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                            {% endif %}
+                   <div class="panel-body">
+                       {{ form_start(form)}}
+                       {% if isBad==true and nbIsBad+1<=3 %}
+                           <div class="card-body">
+                               <div class="alert alert-danger alert-dismissible">
+                                   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                   <h5><i class="fas fa-ban"></i> Alerte!</h5>
 
-                      {{ form_end(form)}}
+                                   <p>c'est votre alerte numéro ({{ nbIsBad+1 }})</p>
+                                   Attention! Il ne faut pas écrire des mots inappropriés!<br>
+                                   Votre commentaire ne sera pas affiché dans la liste des commentaires!<br>
+                                   Si vous essayez d'ecrire des mots inappropriés dans 3 commentaires, <br> Vous ne serez plus capable de repondre à n'importe quel question!
 
+                               </div>
+                           </div>
+                       {% endif %}
+                       {% if nbIsBad >= 3 %}
+                           <div class="card-body">
+                               <div class="alert alert-danger alert-dismissible">
+                                   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                   <h5><i class="fas fa-ban"></i> Alerte!</h5>
+                                   Vous avez épuisé toutes vos chances!
+                                   <p>Vous ne pouvez plus ajouter des réponses</p>
+
+
+
+                               </div>
+                           </div>
+
+                       {% endif %}
+                       {{ form_end(form)}}
+
+                       {% if nbIsBad >= 3 %}
+                           <a href="#" class="btn btn-info pull-right disabled">Commenter</a>
+
+                       {% endif %}
 
 
 
@@ -158,12 +172,15 @@
                                                     <span class="text-muted pull-right">
                                                         <small class="text-muted">30 min ago</small>
                                                     </span>
-                                                  <strong class="text-success">{{ c.user.id }}</strong>
+                                                  <strong class="text-success">{{ c.user.nom }} {{ c.user.prenom }}</strong>
                                                   <p>
                                                      {{ c.description }}
                                                      <br>
-                                                     <a href="{{ path('updateReponse',{'id':c.id}) }}">Modifier</a>
-                                                     <a href="{{ path('suppReponse',{'id':c.id}) }}">Supprimer</a>
+                                             {% if app.user.id==c.user.id %}
+
+                                                 <a style="margin-left: 550px" class="fas fa-edit" href="{{ path('updateReponse',{'id':c.id, 'idUser': app.user.id}) }}"></a>
+                                                     <a class="fas fa-trash "href="{{ path('suppReponse',{'id':c.id , 'idUser': app.user.id}) }}"></a>
+                                             {% endif %}
                                                   </p>
                                                </div>
                                         </li>

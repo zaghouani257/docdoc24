@@ -29,11 +29,6 @@ class ReponseType extends AbstractType
             ])
 
 
-            ->add('user',EntityType::class, [
-                'class'=>User::class,
-                'choice_label'=>'id'
-
-            ])
 
         ;
     }

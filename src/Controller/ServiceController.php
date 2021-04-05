@@ -2,9 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\CategorieService;
+use App\Entity\Rate;
 use App\Entity\Service;
+use App\Form\RateType;
 use App\Form\ServiceType;
 use App\Repository\CategorieServiceRepository;
+use App\Repository\RateRepository;
 use App\Repository\ServiceRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -28,13 +32,78 @@ class ServiceController extends AbstractController
      * @Route("admin/service/affiche", name="afficherservice")
      */
     public function affiche(ServiceRepository $repo){
-        return $this->render('service/affiche.html.twig',['services'=>$repo->findAll()]);
+        $categories=$this->getDoctrine()->getRepository(CategorieService::class)->findAll();
+        return $this->render('service/affiche.html.twig',['services'=>$repo->findAll(),"categories"=>$categories]);
     }
     /**
-     * @Route("/service", name="services")
+     * @param Request $request
+     * @return Response
+     * @Route ("/searchService",name="searchService")
      */
-    public function services(ServiceRepository $repo){
-        return $this->render('service/services.html.twig',['services'=>$repo->findAll()]);
+    public function searchService(Request $request)
+    {
+        $repository = $this->getDoctrine()->getRepository(Service::class);
+        $categories=$this->getDoctrine()->getRepository(CategorieService::class)->findAll();
+
+        $searchfield=$request->get('searchValue');
+        $services = $repository->searchService($searchfield);
+        return $this->render('service/searchA.html.twig' ,[
+            'services'=>$services
+        ]);
+    }
+    /**
+     * @param Request $request
+     * @return Response
+     * @Route ("/searchservicecat",name="searchServicecat")
+     */
+    public function searchServicecat(Request $request)
+    {
+        $repository = $this->getDoctrine()->getRepository(Service::class);
+        $searchfield=$request->get('searchValue');
+        $services = $repository->searchServicecat($searchfield);
+        return $this->render('service/searchA.html.twig' ,[
+            'services'=>$services
+        ]);
+    }
+    /**
+     * @Route("/services", name="services")
+     */
+    public function services(ServiceRepository $repo, Request $request)
+    {
+        $services = $repo->findAll();
+        return $this->render('service/services.html.twig',['services'=>$services]);
+
+    }
+    /**
+     * @param Request $request
+     * @return Response
+     * @Route ("/searchServices",name="searchServices")
+     */
+    public function searchServices(Request $request)
+    {
+        $repository = $this->getDoctrine()->getRepository(Service::class);
+        $searchfield=$request->get('searchValue');
+        $services = $repository->searchService($searchfield);
+        return $this->render('service/filter.html.twig' ,[
+            'services'=>$services
+        ]);
+    }
+    /**
+     * @Route("/triservice", name="triservice")
+     */
+    public function triservices(ServiceRepository $repo, Request $request){
+        $trifield=$request->get('triValue');
+
+        if($trifield=2){
+            $services=$repo->orderbyprix();
+        }
+        elseif ($trifield=1){
+            $services=$repo->orderbylibelle();
+        }
+        else{
+            $services=$repo->findAll();
+        }
+        return $this->render('service/filter.html.twig',['services'=>$services]);
     }
     /**
      * @Route("admin/service/delete/{id}",name="deleteservice")
@@ -90,9 +159,40 @@ class ServiceController extends AbstractController
     /**
      * @Route("service/details/{id}",name="service")
      */
-    public function service($id){
-        $repo=$this->getDoctrine()->getRepository(Service::class)->find($id);
-        return $this->render('service/service.html.twig',['service'=>$repo]);
+    public function service($id,Request $request ,RateRepository $repo){
+        $service=$this->getDoctrine()->getRepository(Service::class)->find($id);
+        $user=$this->getUser();
+        $newRate= new Rate();
+        $newRate->setUser($user);
+        $newRate->setService($service);
+        $manager=$this->getDoctrine()->getManager();
+
+
+        $retrievedRatingResult=$repo->findOneBy(array('service'=>$service,'user'=>$user));
+          if($retrievedRatingResult!=null){
+              $rateForm=$this->createForm(RateType::class,$retrievedRatingResult);
+              $rateForm->handleRequest($request);
+              if($rateForm->isSubmitted()){
+                  $retrievedRatingResult->setStar($rateForm->get('rate')->getData());
+
+                  $manager->persist($retrievedRatingResult);
+                  $manager->flush();
+              }
+          }
+          else{
+              $rateForm=$this->createForm(RateType::class,$newRate);
+              $rateForm->handleRequest($request);
+              if($rateForm->isSubmitted()){
+                  $newRate->setStar($rateForm->get('rate')->getData());
+                  $manager->persist($newRate);
+                  $manager->flush();
+              }
+          }
+          $service->setAvgrating(2);
+        return $this->render('service/service.html.twig',['service'=>$service,
+            'retrievedRatingResult'=>$retrievedRatingResult,
+            'ratingform' => $rateForm->createView()
+        ]);
     }
 }
 

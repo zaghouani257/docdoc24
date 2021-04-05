@@ -32,11 +32,6 @@
                 <td>{{ item.produit.description }}</td>
                 <td>{{ item.quantity }}</td>
                 <td>{{ item.produit.prix * item.quantity }}</td>
-                <td align="center">
-                    <a href="{{ path('cart_remove', {'id': item.produit.id}) }}" class="btn btn-danger glyphicon glyphicon-trash btn-sm">
-                        <i class="fas remove"></i>
-                    </a>
-                </td>
             </tr>
             {% endfor %}
             </tbody>
@@ -51,7 +46,7 @@
         <br>
         <br>
         <div align="center">
-            <a href="{{ path('Ajout_commande', {'Prix_Total':total}) }}" class="ml-btnSlider hasAnchor">PROCEDER AU PAIEMENT</a>
+            <a href="{{ path('Ajout_commande', {'Prix_Total':total,'userid':app.user.id } ) }}" class="ml-btnSlider hasAnchor">PROCEDER AU PAIEMENT</a>
             <br>
             <br>
             <a href="{{ path('services') }}" class="ml-btnSlider--pr-10 hasAnchor">RETOUR</a>

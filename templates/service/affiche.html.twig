@@ -1,6 +1,65 @@
 {% extends 'baseBack.html.twig' %}
 
 {% block contentHeader %} Services {% endblock %}
+{% block js %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $( document ).ready(function() {
+            var currentRequest = null;
+            $("#search").keyup(function(e){
+
+                var value = $(this).val();
+                if(currentRequest != null) {
+                    currentRequest.abort();
+                }
+
+                currentRequest = $.ajax({
+
+                    url : "{{ path('searchService') }}",
+                    type : 'GET',
+                    data: {
+                        'searchValue' : value
+                    },
+
+                    success : function(retour)
+                    {
+                        $('#all').html(retour);
+
+                    },
+                });
+                return false;
+            });
+        });
+        $( document ).ready(function() {
+            var currentRequest = null;
+            $("#categorie").change(function(){
+                var value = null;
+                $( "select option:selected" ).each(function() {
+                    value = $( this ).val() ;
+                });
+                if(currentRequest != null) {
+                    currentRequest.abort();
+                }
+
+                currentRequest = $.ajax({
+
+                    url : "{{ path('searchServicecat') }}",
+                    type : 'GET',
+                    data: {
+                        'searchValue' : value
+                    },
+
+                    success : function(retour)
+                    {
+                        $('#all').html(retour);
+
+                    },
+                });
+                return false;
+            });
+        });
+    </script>
+{% endblock  %}
 {%  block contentMain  %}
     <section class="content">
         <!-- Default box -->
@@ -12,57 +71,34 @@
 
                 </a>
 
-                <div class="card-tools">
-                    <div class="input-group input-group-sm" style="width: 150px;">
-                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                <div class="card-tools row">
+                    <div class="input-group input-group-sm col-md-6">
+                        <select class="form-control form-control-sm" id="categorie" >
+                            <option selected>filtre par Catégorie</option>
+                            {% for categorie in categories %}
+                                <option value="{{ categorie.id }}">{{ categorie.libelle }}</option>
+                            {% endfor %}
+
+                        </select>
+                    </div>
+
+
+                    <div class="input-group input-group-sm col-md-6" style="width: 150px;">
+                        <input  type="search" id="search" class="form-control " placeholder="Search">
 
                         <div class="input-group-append">
-                            <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                            <a path="{{ path('searchService') }}" class="btn btn-default"><i class="fas fa-search"></i></a>
                         </div>
                     </div>
+
                 </div>
             </div>
             <div class="card-body pb-0">
-                <p {% if services|length==0 %}>nothing up to data </p>
-                <div  class="row d-flex align-items-stretch" >
-                    {% else %}
-                    <div  class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
-                        {% for s in services %}
-                        <div class="card bg-light col-12 col-sm-6 col-md-4 d-flex align-items-stretch "  >
-                            <div class="card-header text-muted border-bottom-0">
-                                Categorie : {{ s.categorie.libelle }}
-                            </div>
-                            <div class="card-body pt-0">
-                                <div class="row">
-                                    <div class="col-7">
-                                        <h2 class="lead"><b>libelle : {{ s.libelle }}</b></h2>
-                                        <a href="" class="text-muted text-sm"><b>fournisseurs </b> </a>
-                                        <ul class="ml-4 mb-0 fa-ul text-muted">
-
-                                            <li {% for f in s.fournisseurs %} class="small"><span  class="fa-li"><i class="fas fa-user "></i>
-                                                    {{ f.fourniseur }}
-                                                </span>
-                                            </li {% endfor %}>
-                                        </ul>
-                                    </div>
-                                    <div class="col-5 text-center">
-                                        <img src={{ asset("distAdmin/img/docdoc.png") }} alt="" class="img-circle img-fluid">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="text-right">
-                                    <a href="{{ path('detailservice',{'id':s.id}) }}" class="btn btn-sm btn-primary">
-                                        <i class="fas fa-asterisk"></i>details
-                                    </a>
-                                </div>
-                            </div>
-                        </div>z
-                        {% endfor %}
-                    </div >
-
-                </div >
-                {% endif %}
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 " id="all">
+                      {% include 'service/searchA.html.twig' %}
+                     </div>
+                </div>
             </div>
             <!-- /.card-body -->
             <div class="card-footer">
