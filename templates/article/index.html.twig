@@ -1,5 +1,7 @@
 {%  extends 'base.html.twig' %}
-
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"/>
+{% endblock %}
     {% block body %}
 
 
@@ -27,7 +29,7 @@
                     <div class="col-md-12 col-sm-12">
                         <div class="ml-singleBlog">
                             <h1 class="ml-singleBlog__title"> {{ article.titre }}</h1>
-                            <p class="ml-singleBlog__details ml-text--center">Mars 12, 2020 </p>
+                            <p class="ml-singleBlog__details ml-text--center">{{ article.createdat|date('Y-m-d H:i:s') }} </p>
 
 
                             <tr>
@@ -42,35 +44,54 @@
                             <div class="ml-separator--style2"></div>
                             <div class="container">
 
-                                <a href="{{ path('jaime',{'id':article.id} )}}"> <i class="fa fa-thumbs-up"></i> &nbsp;{{ article.nblike }}   &nbsp; j'aime</a>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+                                <a href="{{ path('jaime',{'id':article.id , 'user_id':app.user.id} )}}">
+                                    <i class="fa fa-thumbs-up"></i> &nbsp;{{ article.nblike }}   &nbsp; j'aime</a>
+{#                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;{% if app.user.id and app.user.id%}#}
+{#                                <i class="fas fa-thumbs-up"></i>#}
+{#                                &nbsp;{% else%}#}
+{#                                <i class="far fa-thumbs-up"></i>#}
 
-                                <a href="{{ path('jaimepas',{'id':article.id} )}}"> <i class="fa fa-thumbs-down"></i> &nbsp; {{ article.nbdislike }}  &nbsp; j'aime pas</a>
-                                {#<div class="row">
-                                        <div class="col-3 mb-3">
-                                            <div class="border border-dark rounded p-2">
+{#                                &nbsp;{% endif%}#}
 
-                                                #}{#<a href="#" class="btn btn-primary">Lire la suite</a>
-                                                <a href="#" class="btn btn-like">#}{#
-                                                    <i class="fa fa-thumbs-up"></i>
-                                                    <span class="js-likes"></span>
-                                                    <span class="js-label">J'aime</span>
-                                                    <i class="fa fa-thumbs-down"></i>
-                                                    <span class="js-dilikes"></span>
-                                                    <span class="js-label">J'aime pas</span>
+                                <a href="{{ path('jaimepas',{'id':article.id, 'user_id':app.user.id} )}}"> <i class="fa fa-thumbs-down"></i> &nbsp; {{ article.nbdislike }}  &nbsp; j'aime pas</a>
 
-                                                </a>
-
-                                            </div>
-                                        </div>
-                                </div>#}
                             </div>
+                            <br>
+
                             <div class="ml-separator--style2"></div>
                             <div class="ml-blogComments">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <h4 class="ml-blogComments__title">COMMENTS</h4>
+                                        <div class="grix xs2 sm3 gutter-0 card">
+                                            <div class="col-xs2 col-sm3">
+                                                <h3>Liste des commentaires</h3>
 
+                                                {% for comment in article.commentaires %}
+
+                                                    {% if comment.parent == null %}
+
+                                                        <p>                                            <br>
+                                                            Publié par {{comment.user.prenom }} le {{comment.createdAt|date("d/m/Y H:i") }}                                            <br>
+                                                        </p>
+                                                        <div>{{comment.contenu |raw}}</div>
+{#                                                        <p><a href="#ajout-commentaire" data-reply data-id="{{comment.id}}" class="btn primary press">Répondre</a></p>#}
+
+{#                                                        #}{# On affiche les réponses #}
+{#                                                        {% for reply in comment.replies %}#}
+{#                                                            <p>Réponse publiée le {{reply.createdAt|date("d/m/Y H:i") }}</p>#}
+{#                                                            <div>{{reply.contenu |raw}}</div>#}
+{#                                                        {% endfor %}#}
+
+                                                    {% endif %}
+                                       {% endfor %}
+                                            </div>
+                                            <br>
+
+                                            <div class="col-xs2 col-sm3" id="ajout-commentaire">
+                                                <h4>Ajouter un commentaire <br>
+                                                </h4>
+                                                {{ form(commentForm) }}
+                                            </div>
 
                                         {#<div class="ml-comments__message ml-comments__message--pt-40">
                                             <div class="ml-comments__avatarWrapp">
@@ -95,7 +116,7 @@
 
                     </div><!--/.col-md-12 col-sm-12-->
                 </div><!--/.row-->
-
+                </div>
             </div><!--/.col-md-8 col-sm-8-->
             <div class="col-md-4 col-sm-4">
                 <div class="ml-sidebar ml-sidebar--right ml-sidebar--mt-20">
@@ -109,20 +130,8 @@
 
                             {% endfor %}
                         </ul>
-                                    <p>
 
 
-                                        <button onclick="myFunction()">dark mode</button>
-
-                                        <script>
-                                            function myFunction() {
-                                                var element = document.body;
-                                                element.classList.toggle("dark-mode");
-                                            }
-                                        </script>
-
-                                    </p>
-                                </a>
                             </li>
                         </ul><!--/.ml-services-->
                     </div><!--/.ml-servicesWrapper-->
@@ -153,4 +162,20 @@
 </div><!--/.ml-container-->
 </div><!--/.ml-blogSection-->
 <!--  Blog section end -->
-{% endblock body %}
+{#{% block javascripts %}#}
+{#        <script>#}
+{#            window.onload = () => {#}
+{#                document.querySelector("#article_titre").value = "{{ article.titre |raw }}";#}
+{#                // On met un écouteur d'évènements sur tous les boutons répondre#}
+{#                document.querySelectorAll("[data-reply]").forEach(element => {#}
+{#                    element.addEventListener("click", function(){#}
+{#                        document.querySelector("#comments_parentId").value = this.dataset.id;#}
+{#                    });#}
+{#                });#}
+{#            }#}
+{#            let caroulix = new Caroulix('#carousel');#}
+{#            let modal = new Modal('#modale-contact');#}
+{#        </script>#}
+{#{% endblock %}#}
+
+    {% endblock body %}

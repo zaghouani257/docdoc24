@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Entity;
-
+use App\Entity\User;
 use App\Repository\ArticleRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -81,11 +81,17 @@ class Article
      */
     private $nbvue=0;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Commentaires::class, mappedBy="article",orphanRemoval=true)
+     */
+    private $commentaires;
+
 
 
     public function __construct()
     {
         $this->article = new ArrayCollection();
+        $this->commentaires = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -227,8 +233,52 @@ class Article
         return $this;
     }
 
+    /**
+     * @return Collection|Commentaires[]
+     */
+    public function getCommentaires(): Collection
+    {
+        return $this->commentaires;
+    }
+
+    public function addCommentaire(Commentaires $commentaire): self
+    {
+        if (!$this->commentaires->contains($commentaire)) {
+            $this->commentaires[] = $commentaire;
+            $commentaire->setArticle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommentaire(Commentaires $commentaire): self
+    {
+        if ($this->commentaires->removeElement($commentaire)) {
+            // set the owning side to null (unless already changed)
+            if ($commentaire->getArticle() === $this) {
+                $commentaire->setArticle(null);
+            }
+        }
+
+        return $this;
+    }
 
 
 
+//    /**
+//     * @param User $user
+//     * @return boolean
+//     */
+//    /**
+//     * @return ArrayCollection
+//     */
+//    public function isLikeByUser(User $user): bool
+//    {
+//        foreach ($this->nblike as $nblikes) {
+//            if ($nblike->getUser()=== $user)
+//                return true;
+//        }
+//        return false;
+//    }
 
 }

@@ -33,6 +33,7 @@
 {#                            </div><!--row-->#}
 {#                        </div><!--/.ml-gridGallery-->#}
         <div class="ml-blogSection">
+
             <div class="ml-container">
                 <div class="row">
                     <div class="col-md-8 col-sm-8">
@@ -42,7 +43,7 @@
                                     <div class="ml-gridItem ml-text--center">
                                         <h1 class="ml-gridItem__title">{{top[0].titre}}</h1>
                                         <p class="ml-gridItem__details">{{top[0].createdat|date('Y-m-d H:i:s') }} </p>
-                                        <a href="{{ path('catarticle',{'id':top[0].id} )}}" class="ml-gridItem-link ml-gridItem--h0 ml-zoom--on">
+                                        <a href="{{ path('catarticle',{'id':top[0].id ,  'user_id':app.user.id} )}}" class="ml-gridItem-link ml-gridItem--h0 ml-zoom--on">
                                             <div class="ml-gridImg-wrapper ml-gridImg-wrapper">
                                                 <img class="ml-gridImg" src="{{ vich_uploader_asset(top[0], 'imageFile') }}" alt="">
                                             </div>
@@ -56,7 +57,25 @@
 
                         <div class="ml-separator--style1"></div>
                         </div>
+{#                        <div class="ml-shopbar__item">#}
+{#                            <div class="ml-shopbar__filter">#}
+{#                                <form action="" method="get">#}
+{#                                    <label class="ml-shopbar__filterLabel" for="ml-shopbar__select1"></label>#}
+{#                                    <form method="post" action="{{ path('triArticle') }}" align="center">#}
+{#                                        <label>#}
+{#                                            <select name="tri">#}
+{#                                                <option value="">veuillez Choisir</option>#}
+{#                                                <option value="A-Z">Titres A-Z</option>#}
+{#                                                <option value="Z-A">Tires Z-At</option>#}
 
+{#                                            </select>#}
+{#                                        </label>#}
+{#                                        <input type="submit" class="btn btn-primary btn-bottom" value="Trier" />#}
+
+{#                                    </form>#}
+{#                                </form>#}
+{#                            </div><!--/.ml-shopbar__filter-->#}
+{#                        </div>#}
                         <div class="ml-gridGallery" style="position: relative">
                              <div class="row">
                                 {%for article in articles %}
@@ -66,7 +85,7 @@
                                             <h2 class="ml-gridItem__title ml-gridItem__title--style2 ml-gridItem__title--plr-50">{{article.titre}}</h2>
                                             <h6 >nombre de vues : {{article.nbvue}}</h6>
                                             <p class="ml-gridItem__details ml-gridItem__details--pt-20">{{ article.createdat|date('Y-m-d H:i:s') }} </p>
-                                            <a href="{{ path('catarticle',{'id':article.id} )}}" class="ml-gridItem-link ml-gridItem--h4 ml-zoom--on">
+                                            <a href="{{ path('catarticle',{'id':article.id  , 'user_id':app.user.id} )}}" class="ml-gridItem-link ml-gridItem--h4 ml-zoom--on">
                                                 <div class="ml-gridImg-wrapper">
 
                                                     <tr>
