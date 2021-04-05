@@ -47,7 +47,7 @@
 {% endblock %}
 
 {% block head %}
-
+    {{ parent() }}
     <link rel="stylesheet" href={{ asset("distClient/css/font-awesome.css")}}>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
@@ -65,7 +65,7 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 {% endblock %}
 
-{% block content %}
+{% block body %}
 
 <div class="container">
     <div class="row bootstrap snippets bootdeys">
