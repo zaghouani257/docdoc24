@@ -2,13 +2,14 @@
 {% form_theme form 'bootstrap_4_layout.html.twig' %}
 
 {% block head %}
+    {{ parent() }}
 
     <link rel="stylesheet" href={{ asset("distClient/css/font-awesome.css")}}>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> {% endblock %}
 
-{% block content %}
+{% block body %}
 
     <div class="container">
         <div class="row bootstrap snippets bootdeys">
@@ -16,8 +17,6 @@
                 <div class="comment-wrapper">
 
                     <h3>Titre de la question: {{ q.titre }}</h3>
-                    <a href="#" class="fa fa-heart-o " ></a>
-
                     <br>
                     <h5>la catégorie médicale de cette question est: {{  q.categorieMedicale.nom}}</h5>
                     <h5>Symptomes:{{ q.symptomes }}</h5>
@@ -80,8 +79,8 @@
                                             <p>
                                                 {{ c.description }}
                                                 <br>
-                                                <a href="{{ path('updateReponse',{'id':c.id}) }}">Modifier</a>
-                                                <a href="{{ path('suppReponse',{'id':c.id}) }}">Supprimer</a>
+                                                <a href=" href="{{ path('updateReponse',{'id':c.id, 'idUser': app.user.id}) }}">Modifier</a>
+                                                <a href="{{ path('suppReponse',{'id':c.id , 'idUser': app.user.id}) }}">Supprimer</a>
                                             </p>
                                         </div>
                                     </li>

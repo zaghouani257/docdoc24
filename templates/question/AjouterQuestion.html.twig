@@ -46,35 +46,23 @@
     </style>
 {% endblock %}
 
-{% block head %}
 
-    <link rel="stylesheet" href={{ asset("distClient/css/font-awesome.css")}}>
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap 4 -->
+{% block body %}
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
-    <!-- Google Font: Source Sans Pro -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-{% endblock %}
-
-{% block content %}
 
     <div class="container">
         <div class="row bootstrap snippets bootdeys">
             <div class="col-md-8 col-sm-12">
-                <div class="comment-wrapper">
+                                <h4 class="ml-blogComments__title">Poser Une Question</h4>
 
-                    <h3 style="color: #5bb7ed">Poser une question</h3>
 
-                    {{ form(form) }}
+
+                    {{ form_start(form) }}
+
+                    {{ form_end(form) }}
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

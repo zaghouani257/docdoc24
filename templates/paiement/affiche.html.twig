@@ -1,123 +1,43 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-<div class="ml-shopSection">
-    <div class="container ml-container-full">
-        <div class="row">
-            <div class="col-sm-3 col-md-3">
-                <div class="ml-sidebar">
-                    <div class="ml-sidebar__container">
-                        <p class="ml-sidebar__title ml-sidebar__title--style2">FILTER BY PRICE</p>
-                        <!-- Range slider start -->
-                        <div class="ml-range-container">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <div id="range-filter" class="range-filter--style2"></div>
-                                </div>
-                            </div><!--/.row-->
-                            <div class="row slider-labels">
-												<span class="ml-range__values">Range:
-													<span id="range-filter-value1"></span> -
-													<span id="range-filter-value2"></span>
-												</span>
-                                <form class="ml-range__form">
-                                    <input type="hidden" name="min-value" value="">
-                                    <input type="hidden" name="max-value" value="">
-                                    <button class="ml-btn ml-btn--inlineb ml-btn--style2 ml-btn--mdBlue ml-btn--rounded" type="submit">FILTER</button>
-                                </form>
-                            </div><!--/.slider-labels-->
-                            <div class="ml-separator--style2"></div>
-                        </div><!--/.ml-range-container-->
-                        <!-- Range slider end -->
-                        <p class="ml-services__title ml-services__title--pt-40">Products CATEGORIES</p>
-                        <ul class="ml-services ml-services--style3 ml-services--pl-30 ml-services--hoverline">
-                            <li class="ml-services__item active"><a href="#"><span>Baby, Kids &amp; Toys</span></a></li>
-                            <li class="ml-services__item"><a href="#"><span>Beauty</span></a></li>
-                            <li class="ml-services__item"><a href="#"><span>Contact Lenses</span></a></li>
-                            <li class="ml-services__item"><a href="#"><span>Diet & Fitness</span></a></li>
-                            <li class="ml-services__item"><a href="#"><span>Grocery</span></a></li>
-                            <li class="ml-services__item"><a href="#"><span>Home Health Care Solutions</span></a></li>
-                            <li class="ml-services__item"><a href="#"><span>Household</span></a></li>
-                            <li class="ml-services__item"><a href="#"><span>Medicines &amp; Treatments</span></a></li>
-                            <li class="ml-services__item"><a href="#"><span>Natural &amp; Organic</span></a></li>
-                            <li class="ml-services__item"><a href="#"><span>Personal Care</span></a></li>
-                            <li class="ml-services__item"><a href="#"><span>Seasonal</span></a></li>
-                            <li class="ml-services__item"><a href="#"><span>Sexual Wellness</span></a></li>
-                            <li class="ml-services__item"><a href="#"><span>Vitamins &amp; Supplements</span></a></li>
-                        </ul><!--/.ml-services-->
-                        <div class="ml-separator--style2"></div>
-                        <p class="ml-sidebar__title ml-sidebar__title--style2">RECENTLY VIEWED PRODUCTS</p>
-                        <div class="ml-recentlyProducts">
 
-                            <a href="#" class="ml-recentlyProducts__item">
-                                <div class="ml-iconbox ml-iconbox--style6">
-                                    <div class="ml-iconbox__iconWrapper">
-                                        <img class="ml-iconbox__icon ml-iconbox__icon--right ml-iconbox__icon--img ml-iconbox__icon--mt-5" src="images/shop/newproduct.jpg" alt="">
-                                    </div><!--/.ml-iconbox__iconWrapper-->
-                                    <div class="ml-iconbox__contentWrapper">
-                                        <div class="ml-iconbox__descWrapper">
-                                            <p class="ml-iconbox__desc">Bayer Back & Body Extra Strength Coated Caplets</p>
-                                        </div><!--/.ml-iconbox__descWrapper-->
-                                    </div><!--/.ml-iconbox__contentWrapper-->
-                                    <p class="ml-iconbox__price"><span class="ml-strike">&#36;19.50</span> &#36;14.99</p>
-                                </div>
-                            </a>
+    <br>
+    <br>
+    <div align="center" class=" table table-responsive">
+        <table >
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Adresse</th>
+                <th>Numero</th>
+                <th>Type</th>
+                <th>Prix</th>
+                <th>Status</th>
+                <th>Supprimer</th>
+            </tr>
+            </thead>
+            <tbody >
+            <tr {% for p in repo %}>
+                <td>{{ p.nom }}</td>
+                <td>{{ p.prenom }}</td>
+                <td>{{ p.adresse }}</td>
+                <td>{{ p.numero }}</td>
+                <td>{{ p.type }}</td>
+                <td>{{ p.prix }}</td>
+                <td>{{ p.status }}</td>
+                <td align="center">
+                    <a href="{{ path('remove', {'id': p.id}) }}" class="btn btn-danger glyphicon glyphicon-trash btn-sm">
+                        <i class="fas remove"></i>
+                    </a>
+                </td>
+            </tr {% endfor %}>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <a href="{{ path('panier') }}" class="ml-btnSlider hasAnchor">RETOUR</a>
+    </div>
 
-                        </div><!--/.ml-recentlyProducts-->
-                        <div class="ml-separator--style2"></div>
-                        <p class="ml-sidebar__title ml-sidebar__title--style2">Payment methods</p>
-                        <div class="ml-payment">
-                            <img src= {{ asset('images/shop/payment1.jpg')}} alt="" class="ml-payment__img">
-                            <img src={{ asset('images/shop/payment2.jpg')}} alt="" class="ml-payment__img">
-                            <img src={{ asset('images/shop/payment3.jpg')}} alt="" class="ml-payment__img">
-                            <img src={{ asset('mages/shop/payment4.jpg')}} alt="" class="ml-payment__img">
-                            <img src={{ asset('images/shop/payment5.jpg')}} alt="" class="ml-payment__img">
-                            <img src={{ asset('images/shop/payment6.jpg')}} alt="" class="ml-payment__img">
-                            <img src={{ asset('images/shop/payment7.jpg')}} alt="" class="ml-payment__img">
-                            <img src={{ asset('images/shop/payment8.jpg')}} alt="" class="ml-payment__img">
-                            <img src={{ asset('images/shop/payment9.jpg')}} alt="" class="ml-payment__img">
-                            <img src={{ asset('images/shop/payment10.jpg')}} alt="" class="ml-payment__img">
-                            <img src={{ asset('images/shop/payment11.jpg')}} alt="" class="ml-payment__img">
-                            <img src={{ asset('images/shop/payment12.jpg')}} alt="" class="ml-payment__img">
-                            <img src={{ asset('images/shop/payment13.jpg')}} alt="" class="ml-payment__img">
-                            <img src={{ asset('images/shop/payment14.jpg')}} alt="" class="ml-payment__img">
-                            <img src={{ asset('images/shop/payment15.jpg')}} alt="" class="ml-payment__img">
-                        </div><!--/.ml-payment-->
-                        <div class="ml-separator--style2"></div>
-                    </div><!--/.ml-sidebar__container-->
-                </div><!--/.ml-sidebar-->
-            </div><!--/.col-sm-3 col-md-3-->
-            <div class="col-sm-9 col-md-9">
-                <div class="ml-shopArchive ml-tabs" data-col="3">
-                    <div class="ml-tabs__panels">
 
-                    </div><!--/.ml-tabs__panels-->
-
-                </div><!--/.ml-shopArchive-->
-
-            </div><!--/.col-sm-9 col-md-9-->
-            <br>
-            <br>
-            <table align="center">
-                <tr>
-                    <th>Nom</th>
-                    <th>Prenom</th>
-                    <th>Adresse</th>
-                    <th>Numero</th>
-                    <th>Type</th>
-                </tr>
-
-                <tr {% for p in repo %}>
-                    <td>{{ p.nom }}</td>
-                    <td>{{ p.prenom }}</td>
-                    <td>{{ p.adresse }}</td>
-                    <td>{{ p.numero }}</td>
-                    <td>{{ p.type }}</td>
-                    <td><a href="{{ path('remove',{'id':p.id }) }}">Annuler</a></td>
-                </tr {% endfor %}>
-
-            </table>
-        </div><!--/.row-->
-
-    </div><!--/.container-->
-</div><!--/.ml-shopSection-->
 {% endblock %}

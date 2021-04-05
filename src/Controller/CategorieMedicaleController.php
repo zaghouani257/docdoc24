@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\CategorieMedicale;
 use App\Form\CategorieMedicaleType;
 use App\Repository\CategorieMedicaleRepository;
+
+use Knp\Component\Pager\Pagination\PaginationInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -18,8 +20,9 @@ class CategorieMedicaleController extends AbstractController
      * @param CategorieMedicaleRepository $repo
      * @return Response
      * @Route ("/admin/liste-des-categories-medicales",name="afficherCategorieMedicale")
+
      */
-    public function Affiche(CategorieMedicaleRepository $repo){
+    public function Affichem(CategorieMedicaleRepository $repo){
         // $repo=$this->getDoctrine()->getRepository(CategorieMedicale::class);
         $categorieMedicale1=$repo->findAll();
         return $this->render('categorie_medicale/categorieMedicale.html.twig',['categorieMedicale' => $categorieMedicale1]);
@@ -83,6 +86,24 @@ class CategorieMedicaleController extends AbstractController
 
         return $this->render('categorie_medicale/AddCategorieMedicale.html.twig', ['form'=>$form->createView(), 'categorieMedicale' => $categorieMedicale1]);
     }
+
+    /**
+     * @param Request $request
+     * @param PaginationInterface $paginator
+     * @return Response
+
+     */
+  /*  public function Affiche(Request $request , PaginationInterface $paginator){
+       $donnee=$this->getDoctrine()->getRepository(CategorieMedicale::class)->findBy([],['nom'=> 'desc']);
+       $categorieMedicale=$paginator->paginate(
+           $donnee,
+           $request->query->getInt('page',1),
+           5
+       );
+        return $this->render('categorie_medicale/categorieMedicale.html.twig',['categorieMedicale' => $categorieMedicale1]);
+
+    }*/
+
 
 
 

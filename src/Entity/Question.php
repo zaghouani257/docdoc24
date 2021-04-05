@@ -27,24 +27,30 @@ class Question
 
     /**
      * @ORM\Column(type="string", length=60)
-     * @Assert\ NotBlank ()
-
+     * @Assert\NotBlank
+     *  @Assert\Length(min=3)
      */
     private $titre;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\ NotBlank ()
+     * @Assert\NotBlank
+     * @Assert\Length(min=10)
      */
+
     private $symptomes;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Assert\Positive
+     * @Assert\Length(max=8)
      */
     private $taille;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Assert\Positive
+     * @Assert\Length(max=8)
      */
     private $poids;
 

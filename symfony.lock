@@ -1,4 +1,7 @@
 {
+    "blackknight467/star-rating-bundle": {
+        "version": "v2.0.1"
+    },
     "composer/package-versions-deprecated": {
         "version": "1.11.99.1"
     },
@@ -25,6 +28,9 @@
     },
     "doctrine/dbal": {
         "version": "2.10.4"
+    },
+    "doctrine/deprecations": {
+        "version": "v0.5.3"
     },
     "doctrine/doctrine-bundle": {
         "version": "2.0",
@@ -129,6 +135,9 @@
     },
     "jms/metadata": {
         "version": "2.5.0"
+    },
+    "kartik-v/bootstrap-star-rating": {
+        "version": "v4.0.6"
     },
     "knplabs/knp-components": {
         "version": "v2.5.1"
@@ -561,6 +570,9 @@
     "symfony/uid": {
         "version": "v5.2.6"
     },
+    "symfony/ux-chartjs": {
+        "version": "v1.2.0"
+    },
     "symfony/validator": {
         "version": "4.3",
         "recipe": {
@@ -605,6 +617,28 @@
             "version": "3.3",
             "ref": "dae9b39fd6717970be7601101ce5aa960bf53d9a"
         }
+    },
+    "symfony/webpack-encore-bundle": {
+        "version": "1.9",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "1.9",
+            "ref": "9399a0bfc6ee7a0c019f952bca46d6a6045dd451"
+        },
+        "files": [
+            "./assets/app.js",
+            "./assets/bootstrap.js",
+            "./assets/controllers.json",
+            "./assets/controllers/hello_controller.js",
+            "./assets/styles/app.css",
+            "./config/packages/assets.yaml",
+            "./config/packages/prod/webpack_encore.yaml",
+            "./config/packages/test/webpack_encore.yaml",
+            "./config/packages/webpack_encore.yaml",
+            "./package.json",
+            "./webpack.config.js"
+        ]
     },
     "symfony/yaml": {
         "version": "v4.4.20"

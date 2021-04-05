@@ -54,4 +54,23 @@ class FourniseurServiceRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+    public function searchFournniseur($var)
+    {
+        return $this->createQueryBuilder('f')
+            ->where('f.fourniseur Like :var')
+            ->setParameter('var', '%'.$var.'%')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+    public function fournisseurParServiceLibelle($value){
+        return $this->createQueryBuilder('f')
+            ->leftJoin('f.service','s')
+            ->addSelect('s')
+            ->where('s.id like :val')
+            ->setParameter('val',$value)
+            ->getQuery()
+            ->getResult();
+    }
+
 }

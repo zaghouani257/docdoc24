@@ -21,6 +21,8 @@
             <th>Adresse</th>
             <th>Numero</th>
             <th>Type</th>
+            <th>Prix</th>
+            <th>Status</th>
         </tr>
         </thead>
         <tbody id="myTable">
@@ -30,7 +32,8 @@
             <td>{{ p.adresse }}</td>
             <td>{{ p.numero }}</td>
             <td>{{ p.type }}</td>
-            <td><a href="{{ path('remove',{'id':p.id }) }}">Annuler</a></td>
+            <td>{{ p.prix }}</td>
+            <td>{{ p.status }}</td>
         </tr {% endfor %}>
         </tbody>
     </table>

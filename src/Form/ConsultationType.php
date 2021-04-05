@@ -20,14 +20,10 @@ class ConsultationType extends AbstractType
         $builder
 
             ->add('datehr')
-            ->add('user',EntityType::class, [
-                'class'=>User::class,
-                'choice_label'=>'id'
 
-            ])
-            ->add('userM', EntityType::class, array(
+         /*   ->add('userM', EntityType::class, array(
                 'choice_label' => function ($userM) {
-                    return $userM->getNom() . ' ' . $userM->getPrenom().' '.$userM.getId();
+                    return $userM->getNom() . ' ' . $userM->getPrenom();
                 },
                 'class'=>User::class,
                     'query_builder' => function (EntityRepository $er) {
@@ -35,7 +31,7 @@ class ConsultationType extends AbstractType
                             ->setParameter('medecin', "medecin")
                             ->orderBy('u.id', 'DESC');
                 },
-            ))
+            ))*/
 
         ;
     }

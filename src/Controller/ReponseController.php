@@ -28,20 +28,20 @@ class ReponseController extends AbstractController
     }
 
     /**
-     * @Route ("/suppReponse/{id}",name="suppReponse")
+     * @Route ("/suppReponse/{id}/{idUser}",name="suppReponse")
      * @param $id
      * @param ReponseRepository $repo
      * @return RedirectResponse
      */
 
-    public function supprimer($id,ReponseRepository $repo)
+    public function supprimer($id,ReponseRepository $repo, $idUser)
     {
         $reponse=$repo->find($id);
         $idQ=$reponse->getQuestion()->getId();
         $em=$this->getDoctrine()->getManager();
         $em->remove($reponse);
         $em->flush();
-        return $this->redirect('/afficher-une-question/'.$idQ);
+        return $this->redirect('/afficher-une-question/'.$idQ.'/'.$idUser);
     }
 
 
@@ -74,10 +74,10 @@ class ReponseController extends AbstractController
      * @param $id
      * @param Request $request
      * @return RedirectResponse|Response
-     * @Route ("/modifier-reponse/{id}",name="updateReponse")
+     * @Route ("/modifier-reponse/{id}/{idUser}",name="updateReponse")
      *
      */
-    public function  modifier(ReponseRepository $repo,$id,Request $request)
+    public function  modifier(ReponseRepository $repo,$id,Request $request,$idUser)
     {
         $reponse = $repo->find($id);
         $question=$reponse->getQuestion();
@@ -87,7 +87,7 @@ class ReponseController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->flush();
-            return $this->redirect('/afficher-une-question/'.$question->getId());
+            return $this->redirect('/afficher-une-question/'.$question->getId().'/'.$idUser);
 
         }
 

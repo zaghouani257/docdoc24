@@ -23,18 +23,32 @@ class CategorieServiceController extends Controller
         ]);
     }
     /**
+     * @param Request $request
+     * @return Response
+     * @Route ("/searchCategorie",name="searchCategorie")
+     */
+    public function searchCategorie(Request $request)
+    {
+        $repository = $this->getDoctrine()->getRepository(CategorieService::class);
+        $searchfield=$request->get('searchValue');
+        $categories = $repository->searchCategorie($searchfield);
+        return $this->render('categorie_service/categories.html.twig' ,[
+            "categories"=>$categories
+        ]);
+    }
+    /**
      * @Route("categorie/service/affiche",name="affichercatservice")
      */
     public function affiche(Request $request){
         $categories=$this->getDoctrine()->getRepository(CategorieService::class)->findAll();
 
-        $paginator=$this->get('knp_paginator');
+     /*  /* $paginator=$this->get('knp_paginator');
         $cats =$paginator->paginate(
             $categories,
             $request->query->getInt('page',1),
-            $request->query->getInt('limit',3)
-        );
-        return $this->render('categorie_service/affiche.html.twig',['categories'=>$cats]);
+            $request->query->getInt('limit',3)*/
+
+        return $this->render('categorie_service/affiche.html.twig',['categories'=>$categories]);
     }
     /**
      * @Route("/service/categorie/details/{id}",name="detailscatservice")

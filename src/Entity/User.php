@@ -162,9 +162,14 @@ class User implements UserInterface
     private $isBlocked;
 
     /**
+
      * @ORM\OneToMany(targetEntity=Commentaires::class, mappedBy="User")
      */
     private $commentaires;
+     /**
+     * @ORM\OneToMany(targetEntity=Rate::class, mappedBy="user")
+     */
+    private $rates;
 
 
 
@@ -176,6 +181,7 @@ class User implements UserInterface
         $this->consultations = new ArrayCollection();
         $this->consultationsM = new ArrayCollection();
         $this->commentaires = new ArrayCollection();
+        $this->rates = new ArrayCollection();
     }
 
 
@@ -626,6 +632,24 @@ class User implements UserInterface
         if (!$this->commentaires->contains($commentaire)) {
             $this->commentaires[] = $commentaire;
             $commentaire->setUser($this);
+            }
+
+        return $this;
+    }
+          
+     /**    
+     * @return Collection|Rate[]
+     */
+    public function getRates(): Collection
+    {
+        return $this->rates;
+    }
+
+    public function addRate(Rate $rate): self
+    {
+        if (!$this->rates->contains($rate)) {
+            $this->rates[] = $rate;
+            $rate->setUser($this);
         }
 
         return $this;
@@ -637,6 +661,18 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($commentaire->getUser() === $this) {
                 $commentaire->setUser(null);
+                     }
+        }
+
+        return $this;
+    }
+
+    public function removeRate(Rate $rate): self
+    {
+        if ($this->rates->removeElement($rate)) {
+            // set the owning side to null (unless already changed)
+            if ($rate->getUser() === $this) {
+                $rate->setUser(null);
             }
         }
 

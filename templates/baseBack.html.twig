@@ -296,7 +296,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">{% block contentHeader%} Hello {% endblock %}</h1>
+                        <h1 class="m-0 text-dark">{% block contentHeader%} {% endblock %}</h1>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
@@ -305,7 +305,9 @@
 
         <!-- Main content -->
         <div class="content">
-             {% block contentMain%} {% endblock %}
+             {% block contentMain%}
+
+             {% endblock %}
         </div>
         <!-- /.content -->
     </div>
@@ -327,3 +329,4 @@
 {% block js %}{% endblock %}
 </body>
 </html>
+Z
