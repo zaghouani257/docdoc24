@@ -82,8 +82,11 @@
                             </ul>
                             {% if app.user.type == 'delegue' %}
                             <ul class="ml-services ml-services--style3 ml-services--pl-30 ml-services--hoverline">
+
                                 <a class="ml-product__price" href="{{ path('AjouterProduit',{'userid':app.user.id})}}"><span>AJOUTER UN PRODUIT</span></a></li>
+                                <br>
                                 <a class="ml-product__price" href="{{ path('afficheProduitD',{'userid':app.user.id})}}"><span>AFFICHER MES PRODUITS</span></a></li>
+
                             </ul><!--/.ml-services-->
                             {% endif %}
                             <div class="ml-separator--style2"></div>

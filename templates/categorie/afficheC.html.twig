@@ -1,31 +1,104 @@
 {% extends 'baseBack.html.twig' %}
-{% block contentMain%}
-    <!doctype html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport"
-              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Document</title>
-    </head>
-    <body>
-    <table class="table table-bordered">
-        <tr>
-            <th style="width: 10px">Identifiant</th>
-            <th>Nom</th>
-            <th>Type</th>
-        </tr>
+{% block contentMain %}
 
-        <tr {% for c in repo %}>
-            <td>{{ c.id }}</td>
-            <td>{{ c.titre }}</td>
-            <td>{{ c.description }}</td>
-            <td><a href="{{ path('deleteC',{'id':c.id}) }}">Supprimer</a></td>
-            <td><a href="{{ path('updateC',{'id':c.id}) }}">Modifier</a></td>
-        </tr {% endfor %}>
+    <a href="{{ path('AjouterC') }}">Ajouter une categorie</a>
 
-    </table>
-    </body>
-    </html>
+
+
+    /* Cette partie correspond à l’affichage de la liste des étudiants en
+    listant leurs informations dans un tableau */
+    <img width="200px;" src="assets/img/esprit.png" alt="Mon logo">
+    <h1 id="dd1"> Liste des catégories</h1>
+    </br>
+    <div style="margin-right:50px;" class="btn btn-primary" ><a href="{{
+        path('AjouterC') }}"> Ajouter categorie</a></div>
+    </div>
+    <input type="text" id="search" class="form-control"
+       placeholder="Search">
+    <div>
+        <table border ="1" id="t" class="table table-hover table-dark">
+            <thead class="thead-dark">
+            <tr>
+                <td>Id</td>
+                <td>Titre</td>
+                <td>Description</td>
+            </tr>
+            </thead>
+            <tbody id="all">
+            {% for c in repo %}
+                <tr>
+                    <td>
+                        {{ c.id }}
+                    </td>
+                    <td>
+                        {{ c.titre }}
+                    </td>
+                    <td>
+                        {{ c.description }}
+                    </td>
+
+                    <td>
+                        <a href="{{ path('updateC', {'id': c.id}) }}"> modifier</a>
+                        <a href="{{ path('deleteC', {'id': c.id}) }}"> supprimer</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            <tbody id="search">
+            </tbody>
+        </table>
+    </div>
+
+<script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+</script>
+<script>
+    $( document ).ready(function() {
+        $("#search").keyup(function(e){
+            /* La variable value va prendre la valeur insérer dans le champ de texte
+            afin d’effectuer la recherche */
+            var value = $(this).val();
+            /* Ajax est lancé lors du remplissage du champ texte dont l’id est
+            « search » pour faire la recherche */
+
+            6
+
+            $.ajax({
+                /* l’url est une chaine de caractères contenant l’adresse où la requête est
+                envoyée */
+                url : "{{ path('searchCategoriex') }}",
+                /* La méthode utilisée pour transférer les données est GET */
+                type : 'GET',
+                /*Ici search value va prendre la chaine entrée par un utilisateur dans la
+                zone de recherche et sera placée après l’url */
+                data: {
+                    'searchValue' : value
+                },
+                /*Cette fonction permet de vider le contenu du tableau pour recevoir le
+                nouveau contenu*/
+                success : function(retour){
+                    if(retour){
+                        $('#t tbody#search').empty();
+                        $.each(JSON.parse(retour), function(i, obj) {
+                            $('#t tbody#all').hide();
+                            $('#t tbody#search').append('<tr><td> '+obj.id+'
+                                </td><td> '+obj.titre+' </td><td>'+obj.description+' </td><td><a
+                            href="updateC/'+obj.id+'">modifier</a> </br><a
+                            href="deleteC/'+obj.id+'">supprimer</a></td></tr>');
+                        });
+                    }
+                    else
+                    {
+                        $('#t tbody#all').show();
+                        $('#t tbody#search').empty();
+                        $('#t tbody#search').fadeIn('fast');
+                    }
+                },
+            });
+            return false;
+        });
+    });
+
+</script>
 {% endblock %}
+

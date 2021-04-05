@@ -70,7 +70,6 @@
       <change beforePath="$PROJECT_DIR$/templates/service/affiche.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/service/affiche.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/service/details.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/service/details.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/service/service.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/service/service.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/service/services.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/service/services.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -246,6 +245,7 @@
       <recent name="C:\Users\zagho\OneDrive\Bureau\team 24\docdoc\templates\registration" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\anasm\docdoc\docdoc\templates\produit" />
       <recent name="D:\TEAM 24\docdoc\public\bundles" />
       <recent name="C:\Users\zagho\OneDrive\Bureau\team 24\docdoc\templates\panier" />
     </key>
@@ -294,6 +294,7 @@
       <workItem from="1617271406381" duration="23365000" />
       <workItem from="1617310942430" duration="11078000" />
       <workItem from="1617344785492" duration="23423000" />
+      <workItem from="1617613734678" duration="7437000" />
       <workItem from="1617470236820" duration="1551000" />
       <workItem from="1617530063157" duration="11923000" />
       <workItem from="1617561349783" duration="725000" />
@@ -393,9 +394,10 @@
     </state>
     <state x="321" y="135" key="Vcs.Push.Dialog.v2/0.0.1366.768@0.0.1366.768" timestamp="1617493065642" />
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1617203375447" />
-    <state x="425" y="187" key="run.anything.popup" timestamp="1617366309710">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="378" y="165" key="run.anything.popup" timestamp="1617620669924">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state x="378" y="165" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1617620669924" />
     <state x="425" y="187" key="run.anything.popup/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1617243876789" />
     <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1617366309710" />
     <state x="383" y="135" width="672" height="632" key="search.everywhere.popup" timestamp="1617488682216">

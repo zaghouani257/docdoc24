@@ -51,6 +51,21 @@ class ProduitController extends AbstractController
         return $this->render('produit/affiche.html.twig',[ 'repo'=>$repo, 'produits'=>$produits]);
     }
 
+    /**
+     * @Route("/afficherPM/{userid}",name="afficheProduitD")
+     */
+    public function afficheM(Request $request,PaginatorInterface $paginator, $userid){
+        $repo=$this->getDoctrine()->getRepository(Categorie::class)->findAll();
+        $produit=$this->getDoctrine()->getRepository(Produit::class)->findBy(array('userid' => $userid));
+        $produits=$paginator->paginate(
+            $produit,
+            $request->query->getInt('page',1),
+            4
+        );
+
+        return $this->render('produit/affichemes.html.twig',[ 'repo'=>$repo, 'produits'=>$produits]);
+    }
+
 
     /**
      * @Route("/delete/{id}",name="deleteProduit")
@@ -71,17 +86,13 @@ class ProduitController extends AbstractController
 
 
     /**
-     * @Route("/ajouterP",name="AjouterProduit")
+     * @Route("/ajouterP/{userid}",name="AjouterProduit")
      */
-    function AjoutP(Request $request,\Swift_Mailer $mailer){
-
-
-
+    function AjoutP(Request $request,\Swift_Mailer $mailer, $userid){
         //return $this->render(...);
         //PARTIE MAILING fin
-
-
         $produit=new Produit();
+        $produit->setUserid($userid);
         //je fais appel a un formulaire déja crée methode 1
         $form=$this->createForm(ProduitType::class,$produit);
         $form->add("Ajouter",SubmitType::class);
@@ -131,7 +142,7 @@ class ProduitController extends AbstractController
             $em=$this->getDoctrine()->getManager();
             $em->persist($produit);
             $em->flush();
-            return $this->redirectToRoute("afficheProduit");
+            return $this->redirectToRoute("afficheProduitD" ,array('userid'=>$userid));
         }
         return $this->render("produit/ajoutP.html.twig",['form'=>$form->createView()]);
     }
