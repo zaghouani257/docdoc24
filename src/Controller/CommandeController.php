@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class CommandeController extends AbstractController
@@ -25,14 +26,15 @@ class CommandeController extends AbstractController
     }
 
     /**
-     * @Route("/commande/ajouter/{Prix_Total}",name="Ajout_commande")
+     * @Route("/commande/ajouter/{Prix_Total}/{userid}",name="Ajout_commande")
      * @param $Prix_Total
      * @return RedirectResponse|Response
      */
-    function Ajout($Prix_Total)
+    function Ajout($Prix_Total, SessionInterface $session, $userid)
     {
         $commande=new Commande();
-
+        $session->set('prix', $Prix_Total);
+        $session->set('id_user', $userid );
         $em=$this->getDoctrine()->getManager();
         $commande->setPrixTotal($Prix_Total);
         $em->persist($commande);
