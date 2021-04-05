@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Consultation;
 use App\Form\ConsultationType;
 use App\Repository\ConsultationRepository;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -44,12 +45,14 @@ class ConsultationController extends AbstractController
     /**
      * @param Request $request
      * @return Response
-     * @Route ("/ajouter-une-Consultation",name="AddConsultation")
+     * @Route ("/ajouter-une-Consultation/{userid}",name="AddConsultation")
      */
 
-    public function Ajouter(Request $request)
+    public function Ajouter(Request $request, $userid , UserRepository $repo)
     {
         $consultation = new Consultation();
+        $user=$repo->find($userid);
+        $consultation->setUser($user);
         $form = $this->createForm(ConsultationType::class, $consultation);
         $form->add('Ajouter', SubmitType::class);
         $form->handleRequest($request); //parcourir la requete et extraire les champs du form et l'entité
@@ -58,7 +61,11 @@ class ConsultationController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($consultation);
             $em->flush();
-            return $this->redirectToRoute('consultation');
+            if ($user->getType()=="medecin")
+            {return $this->redirect('/Liste-des-consultations-patient/'.$userid);}
+
+            else
+            {return $this->redirect('/Liste-des-consultations-medecin/'.$userid);}
         }
         //la vue qui va gérer la vue de l'ajout
         // du formulaire pas dans la condition si vous avez remarqué
@@ -71,9 +78,9 @@ class ConsultationController extends AbstractController
      * @param $id
      * @param Request $request
      * @return RedirectResponse|Response
-     * @Route ("/modifier-une-consultation/{id}",name="UpdateConsultation")
+     * @Route ("/modifier-une-consultation/{id}/{idUser}",name="UpdateConsultation")
      */
-    public function modifier(ConsultationRepository $repo, $id, Request $request)
+    public function modifier(ConsultationRepository $repo, $id, Request $request , $idUser)
     {
         $consultation = $repo->find($id);
         $form = $this->createForm(ConsultationType::class, $consultation);
@@ -82,21 +89,22 @@ class ConsultationController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->flush();
-            return $this->redirectToRoute('consultation');
+
+            return $this->redirect('/Liste-des-consultations-patient/'.$idUser);
         }
-        return $this->render('consultation/UpdateQuestion.html.twig', ['form' => $form->createView()]);
+        return $this->render('consultation/UpdateConsultation.html.twig', ['form' => $form->createView()]);
     }
 
     /**
      * @param ConsultationRepository $repo
      * @return Response
-     * @Route ("/Liste-des-consultations-medecin", name="consultationMedecin")
+     * @Route ("/Liste-des-consultations-medecin/{id}", name="consultationMedecin")
      */
-    public function afficherConsultationMedecin(ConsultationRepository $repo)
+    public function afficherConsultationMedecin(ConsultationRepository $repo, $id )
     {
         $consultation = $this->getDoctrine()
             ->getRepository(Consultation::class)
-            ->findForDoctor(1);
+            ->findForDoctor($id);
 
         return $this->render('consultation/AfficherConsultationMedecin.html.twig', ['consultation' => $consultation]);
 
@@ -105,13 +113,13 @@ class ConsultationController extends AbstractController
     /**
      * @param ConsultationRepository $repo
      * @return Response
-     * @Route ("/Liste-des-consultations-patient", name="consultationPatient")
+     * @Route ("/Liste-des-consultations-patient/{id}", name="consultationPatient")
      */
-    public function afficherConsultationPatient(ConsultationRepository $repo)
+    public function afficherConsultationPatient(ConsultationRepository $repo, $id)
     {
         $consultation = $this->getDoctrine()
             ->getRepository(Consultation::class)
-            ->findForPatient(1);
+            ->findForPatient($id);
 
         return $this->render('consultation/AfficherConsultationPatient.html.twig', ['consultation' => $consultation]);
 
@@ -130,7 +138,8 @@ class ConsultationController extends AbstractController
         $consultation->setIsAccepted(true);
             $em = $this->getDoctrine()->getManager();
             $em->flush();
-            return $this->redirectToRoute('consultationMedecin');
+
+        return $this->redirect('/Liste-des-consultations-medecin/'.$id);
 
     }
 
