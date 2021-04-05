@@ -20,6 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6aa4f9f-21ce-4ce1-9634-6061bbb4702e" name="Default Changelist" comment="">
+
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/migrations/Version20210404231722.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/Entity/Rate.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/Form/RateType.php" afterDir="false" />
