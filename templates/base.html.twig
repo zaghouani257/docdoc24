@@ -148,6 +148,7 @@
                                     </div><!--/.ml-iconbox__contentWrapper-->
                                 </div><!--/.ml-iconbox-->
                             </div><!--/.col-xs-6"-->
+                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                             <div class="col-sm-6 col-xs-12">
                                 <div class="ml-iconbox ml-iconbox--l20">
                                     <div class="ml-iconbox__iconWrapper ml-iconbox__icon--left">
@@ -155,15 +156,35 @@
                                     </div><!--/.ml-iconbox__iconWrapper-->
                                     <div class="ml-iconbox__contentWrapper">
                                         <div class="ml-iconbox__titleWrapper">
-                                            <h3 class="ml-iconbox__title">Disponibilité </h3>
+                                            <h3 class="ml-iconbox__title"> {{app.user.prenom}}  {{app.user.nom}} </h3>
                                         </div><!--/.ml-iconbox__titleWrapper-->
                                         <div class="ml-iconbox__descWrapper">
-                                            <p class="ml-iconbox__desc">24H/24H <br>7J/7J </p>
+                                            <p class="ml-iconbox__desc"><a href="{{ path('userinterface') }}">  Voir profile </a> <br>
+                                                <a href="{{ path('app_logout')}}"> Déconnexion </a></p>
                                         </div><!--/.ml-iconbox__descWrapper-->
                                     </div><!--/.ml-iconbox__contentWrapper-->
 
                                 </div><!--/.ml-iconbox-->
                             </div><!--/.col-xs-6"-->
+                            {% else %}
+                            <div class="col-sm-6 col-xs-12">
+                                <div class="ml-iconbox ml-iconbox--l20">
+                                    <div class="ml-iconbox__iconWrapper ml-iconbox__icon--left">
+                                        <span class="ml-iconbox__icon ml-icon-clock"></span>
+                                    </div><!--/.ml-iconbox__iconWrapper-->
+                                    <div class="ml-iconbox__contentWrapper">
+                                        <div class="ml-iconbox__titleWrapper">
+                                            <h3 class="ml-iconbox__title">Profile</h3>
+                                        </div><!--/.ml-iconbox__titleWrapper-->
+                                        <div class="ml-iconbox__descWrapper">
+                                            <p class="ml-iconbox__desc"><a href="{{ path('app_register')}}"> Créer un compte </a> <br>
+                                                <a href="{{ path('app_login')}}"> Connexion </a> </p>
+                                        </div><!--/.ml-iconbox__descWrapper-->
+                                    </div><!--/.ml-iconbox__contentWrapper-->
+
+                                </div><!--/.ml-iconbox-->
+                            </div><!--/.col-xs-6"-->
+                            {% endif %}
                         </div><!--/.row-->
                     </div><!--/.ml-headerInfo-->
                 </div><!--/.ml-logobar-->
