@@ -20,56 +20,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6aa4f9f-21ce-4ce1-9634-6061bbb4702e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/CommandeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CommandeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/PaiementController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PaiementController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/PanierController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PanierController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Paiement.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Paiement.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/baseBack.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/baseBack.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/paiement/affiche.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/paiement/affiche.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/paiement/affichePaiementB.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/paiement/affichePaiementB.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/paiement/ajout.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/paiement/ajout.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/panier/affiche.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/panier/affiche.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/panier/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/panier/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/panier/index2.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/panier/index2.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/service/service.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/service/service.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/Version20210404231722.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Rate.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Form/RateType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/RateRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/categorie_service/categories.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/fourniseur_service/search.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/service/filter.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/service/searchA.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/docdoc.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/docdoc.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/app.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/bootstrap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/controllers.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/controllers/hello_controller.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/app.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/CategorieServiceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CategorieServiceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/FourniseurServiceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/FourniseurServiceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ServiceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ServiceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Service.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Service.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/CategorieServiceRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/CategorieServiceRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/FourniseurServiceRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/FourniseurServiceRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/ServiceRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ServiceRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/prod/webpack_encore.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/test/webpack_encore.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/webpack_encore.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/PaiementController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PaiementController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/PanierController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PanierController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/baseBack.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/baseBack.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/categorie_service/affiche.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/categorie_service/affiche.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fourniseur_service/affiche.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fourniseur_service/affiche.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fourniseur_service/details.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fourniseur_service/details.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fourniseur_service/update.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fourniseur_service/update.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/service/affiche.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/service/affiche.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/service/details.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/service/details.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/service/service.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/service/service.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,8 +147,6 @@
       <path value="$PROJECT_DIR$/vendor/symfony/dom-crawler" />
       <path value="$PROJECT_DIR$/vendor/symfony/maker-bundle" />
       <path value="$PROJECT_DIR$/vendor/symfony/web-server-bundle" />
-      <path value="$PROJECT_DIR$/vendor/gregwar/captcha-bundle" />
-      <path value="$PROJECT_DIR$/vendor/gregwar/captcha" />
       <path value="$PROJECT_DIR$/vendor/knplabs/knp-components" />
       <path value="$PROJECT_DIR$/vendor/knplabs/knp-paginator-bundle" />
       <path value="$PROJECT_DIR$/vendor/mercuryseries/flashy-bundle" />
@@ -192,7 +159,6 @@
       <path value="$PROJECT_DIR$/vendor/stripe/stripe-php" />
       <path value="$PROJECT_DIR$/vendor/friendsofsymfony/ckeditor-bundle" />
       <path value="$PROJECT_DIR$/vendor/helios-ag/fm-elfinder-bundle" />
-      <path value="$PROJECT_DIR$/vendor/studio-42/elfinder" />
       <path value="$PROJECT_DIR$/vendor/jms/metadata" />
       <path value="$PROJECT_DIR$/vendor/vich/uploader-bundle" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-grapheme" />
@@ -217,6 +183,12 @@
       <path value="$PROJECT_DIR$/vendor/symfony/var-exporter" />
       <path value="$PROJECT_DIR$/vendor/kartik-v/bootstrap-star-rating" />
       <path value="$PROJECT_DIR$/vendor/blackknight467/star-rating-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/inflector" />
+      <path value="$PROJECT_DIR$/vendor/symfony/ux-chartjs" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/deprecations" />
+      <path value="$PROJECT_DIR$/vendor/gregwar/captcha" />
+      <path value="$PROJECT_DIR$/vendor/gregwar/captcha-bundle" />
+      <path value="$PROJECT_DIR$/vendor/studio-42/elfinder" />
     </include_path>
   </component>
   <component name="ProjectId" id="1pXMkai2F2H2yo3EZD3rGjrnCnt" />
@@ -233,8 +205,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/bundles" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../.." />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
@@ -302,6 +273,7 @@
       <workItem from="1617613135367" duration="1879000" />
       <workItem from="1617458260804" duration="35097000" />
       <workItem from="1617576377508" duration="13080000" />
+      <workItem from="1617623733436" duration="3984000" />
     </task>
     <task id="LOCAL-00001" summary="Almost done">
       <created>1617064948629</created>
@@ -371,11 +343,11 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="393" y="0" key="CommitChangelistDialog2/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1617064947846" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1617274190348">
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1617625854312">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1616854957376" />
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1617274190348" />
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1617625854312" />
     <state x="479" y="106" key="RollbackChangesDialog" timestamp="1617493037098">
       <screen x="0" y="0" width="1366" height="768" />
     </state>

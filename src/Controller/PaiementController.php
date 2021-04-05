@@ -171,6 +171,7 @@ Merci pour votre confiance.');
         $session->set('total', 0);
         $session->set('panier', []);
         $session->set('number', 0);
+        $session->set('panier2', []);
     }
 
     /**
