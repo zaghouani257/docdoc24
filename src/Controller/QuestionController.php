@@ -80,12 +80,14 @@ class QuestionController extends AbstractController
     /**
      * @param Request $request
      * @return RedirectResponse|Response
-     * @Route ("/poser-une-Question",name="ajouterQuestion")
+     * @Route ("/poser-une-Question/{userid}",name="ajouterQuestion")
      */
-    function ajouter(Request $request)
+    function ajouter(Request $request, $userid , UserRepository $repoUser1)
     {
         $question = new Question();
         $question->setIsAnswered(0);
+        $user1=$repoUser1->find($userid);
+        $question->setUser($user1);
         $form = $this->createForm(QuestionType::class, $question);
         $form->add('Ajouter', SubmitType::class);
         $form->handleRequest($request);
@@ -126,9 +128,9 @@ class QuestionController extends AbstractController
      * @param $id
      * @param Request $request
      * @return Response
-     * @Route("/afficher-une-question/{id}",name="AfficherQ")
+     * @Route("/afficher-une-question/{id}/{userid}",name="AfficherQ")
      */
-    function AfficherUneQuestion(QuestionRepository $repo,UserRepository $repoU, $id, Request $request)
+    function AfficherUneQuestion(QuestionRepository $repo,UserRepository $repoU,$userid, $id, Request $request , UserRepository $urepo)
     {
 
         $dictionnaire=['stop','why','what','way'];
@@ -136,39 +138,39 @@ class QuestionController extends AbstractController
         $reponse= new Reponse();
         $reponse->setQuestion($question);
         $form=$this->createForm(ReponseType::class,$reponse);
+        $userR=$repoU->find($userid);
+        $reponse->setUser($userR);
 
         $description="";
         $reponse->setIsBad(false);
         $nbIsBad=null;
+        $test=false;
+
+        /* debut is blocked*/
         /*tester si l'user possede des antecedents dans les mots inappropriés*/
 
         $query = $this->getDoctrine()
             ->getRepository(Reponse::class)
-            ->CountIsBad(1);
+            ->CountIsBad($userid);
 
         $nbIsBad=sizeof($query);
         /*fin test*/
-        /* ajouter une reclamation*/
-        $test=false;
 
-        if($nbIsBad>3)
+        if($nbIsBad>=3)
         {
-            $user=$repoU->find(1);
+            $user=$repoU->find($userid);
             $user->setIsBlocked(true);
             $em=$this->getDoctrine()->getManager();
             $em->flush();
             $test=true;
 
-        }
-        if($test==false)
-        {$form->add('Commenter',SubmitType::class, ['attr'=>['class'=>'btn btn-info pull-right']]);
-        $form->handleRequest($request);}
-        else
-        {
-            $form->add('Commenter',SubmitType::class, ['attr'=>['class'=>'btn btn-info pull-right','disabled']]);
-            
 
-        }
+        } else
+
+            {$form->add('Commenter',SubmitType::class, ['attr'=>['class'=>'btn btn-info pull-right']]);
+                $form->handleRequest($request);
+            }
+
         /*fin isBlocked*/
 
 
