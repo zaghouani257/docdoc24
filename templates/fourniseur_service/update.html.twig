@@ -1,6 +1,6 @@
 {% extends 'baseBack.html.twig' %}
 {% block title %}Gestion Fournisseur {% endblock %}
-{% block contentHeader %} Update Fournisseur {% endblock %}
+{% block contentHeader %} Modifier Fournisseur de Service {% endblock %}
 {% block contentMain %}
     {{ form_start(f) }}
     <section class="content">
@@ -55,8 +55,8 @@
                             {{ form_widget(f.maplocation,{'attr':{'id':"maplocation" ,'class':"form-control"}}) }}
                         </div>
                         <div class="form-group">
-                            {{ form_label(f.categorie,'catégorie',{'attr':{'for':"categorie"}}) }}
-                            {{ form_widget(f.categorie,{'attr':{'id':"categorie" ,'class':"form-control"}}) }}
+                            {{ form_label(f.service,'service',{'attr':{'for':"service"}}) }}
+                            {{ form_widget(f.service,{'attr':{'id':"service" ,'class':"form-control"}}) }}
                         </div>
                     </div>
                     <!-- /.card-body -->
@@ -66,7 +66,7 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <input type="submit" value="modifier" class="btn btn-success float-right">
+                <input type="submit" value="Modifier " class="btn btn-success float-right">
             </div>
         </div>
     </section>

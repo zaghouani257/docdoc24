@@ -78,10 +78,21 @@ class Service
      */
     private $fournisseurs;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Rate::class, mappedBy="service")
+     */
+    private $rates;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $avgrating;
+
     public function __construct()
     {
         $this->fournisseurs = new ArrayCollection();
         $this->stars= array(0,0,0,0,0);
+        $this->rates = new ArrayCollection();
 
     }
 
@@ -190,6 +201,48 @@ class Service
                 $fournisseur->setService(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Rate[]
+     */
+    public function getRates(): Collection
+    {
+        return $this->rates;
+    }
+
+    public function addRate(Rate $rate): self
+    {
+        if (!$this->rates->contains($rate)) {
+            $this->rates[] = $rate;
+            $rate->setService($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRate(Rate $rate): self
+    {
+        if ($this->rates->removeElement($rate)) {
+            // set the owning side to null (unless already changed)
+            if ($rate->getService() === $this) {
+                $rate->setService(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getAvgrating(): ?float
+    {
+        return $this->avgrating;
+    }
+
+    public function setAvgrating(?float $avgrating): self
+    {
+        $this->avgrating = $avgrating;
 
         return $this;
     }

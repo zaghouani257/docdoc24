@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\FourniseurService;
+use App\Entity\Service;
 use App\Form\FournisseurType;
 use App\Repository\FourniseurServiceRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -27,14 +28,41 @@ class FourniseurServiceController extends AbstractController
      */
     public function affiche(){
         $repo=$this->getDoctrine()->getRepository(FourniseurService::class)->findAll();
-        return $this->render('fourniseur_service/affiche.html.twig',['fourniseur'=>$repo]);
+        $repos=$this->getDoctrine()->getRepository(Service::class)->findAll();
+        return $this->render('fourniseur_service/affiche.html.twig',['fourniseur'=>$repo,'services'=>$repos]);
     }
     /**
      * @Route("/fourniseur/service/details/{id}",name="detailsfourniseur")
      */
-    public function affichedetails($id){
-        $repo=$this->getDoctrine()->getRepository(FourniseurServiceRepository::class)->find($id);
-        return $this->render('fourniseur_service//details.html.twig',['fourniseur'=>$repo]);
+    /**
+     * @param Request $request
+     * @return Response
+     * @Route ("/searchFourniseur",name="searchFourniseur")
+     */
+    public function searchFourniseur(Request $request)
+    {
+        $repository = $this->getDoctrine()->getRepository(FourniseurService::class);
+        $searchfield=$request->get('searchValue');
+        $fourniseur = $repository->searchFournniseur($searchfield);
+        return $this->render('fourniseur_service/search.html.twig' ,[
+            "fourniseur"=>$fourniseur
+        ]);
+    }
+    /**
+     * @param Request $request
+     * @return Response
+     * @Route ("/searchFourniseurserv",name="searchFourniseurserv")
+     */
+    public function searchFourniseurServ(Request $request)
+    {
+        $repository = $this->getDoctrine()->getRepository(FourniseurService::class);
+        $repos=$this->getDoctrine()->getRepository(Service::class)->findAll();
+
+        $searchfield=$request->get('searchValue');
+        $fourniseur = $repository->fournisseurParServiceLibelle($searchfield);
+        return $this->render('fourniseur_service/search.html.twig' ,[
+            "fourniseur"=>$fourniseur,'services'=>$repos
+        ]);
     }
     /**
      * @Route("/fourniseur/service/delete/{id}",name="deletefourniseur")
