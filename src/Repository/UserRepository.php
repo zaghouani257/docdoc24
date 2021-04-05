@@ -80,6 +80,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
 
     }
 
+
      function AfficheUserqb($id){
         return $this->createQueryBuilder('u')
             ->addSelect('u')

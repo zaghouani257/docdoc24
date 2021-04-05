@@ -2,55 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b6aa4f9f-21ce-4ce1-9634-6061bbb4702e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Controller/CategorieMedicaleController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/ConsultationController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/QuestionController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/ReponseController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/CategorieMedicale.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Consultation.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Question.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Reponse.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Form/CategorieMedicaleType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Form/ConsultationType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Form/QuestionType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Form/ReponseType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/CategorieMedicaleRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/ConsultationRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/QuestionRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/ReponseRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/categorie_medicale/AddCategorieMedicale.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/categorie_medicale/UpdateCategorieMedicale.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/categorie_medicale/categorieMedicale.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/categorie_medicale/index.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/categorie_medicale/search.ajax.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/categorie_medicale/search.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/consultation/AfficherConsultation.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/consultation/AfficherConsultationMedecin.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/consultation/AfficherConsultationPatient.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/consultation/AjouterConsultation.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/consultation/UpdateConsultation.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/consultation/index.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/question/AfficherQuestion.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/question/AfficherQuestionAdmin.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/question/AfficherUneQuestion.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/question/AfficherUneQuestionModifier.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/question/AjouterQuestion.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/question/UpdateQuestion.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/question/index.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/reponse/AjouterReponse.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/reponse/UpdateReponse.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/reponse/afficherReponse.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/reponse/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/docdoc.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/docdoc.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/baseBack.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/baseBack.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -268,6 +220,7 @@
       <workItem from="1617271406381" duration="23365000" />
       <workItem from="1617310942430" duration="11078000" />
       <workItem from="1617344785492" duration="23423000" />
+      <workItem from="1617465025517" duration="819000" />
     </task>
     <task id="LOCAL-00001" summary="Almost done">
       <created>1617064948629</created>

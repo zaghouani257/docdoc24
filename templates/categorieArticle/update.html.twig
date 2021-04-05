@@ -2,7 +2,7 @@
 {% block title %}Gestion Categories{% endblock %}
 {% block contentHeader %} Modifier la categorie {% endblock %}
 {% block contentMain %}
-    {{ include('categorie/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('admin/categorieArticle/_form.html.twig', {'button_label': 'Update'}) }}
     <button class="button">
     <a href="{{ path('affichercatcategorie') }}">back to list</a>
     </button>

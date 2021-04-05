@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Article;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @method Article|null find($id, $lockMode = null, $lockVersion = null)
@@ -49,6 +50,22 @@ class ArticleRepository extends ServiceEntityRepository
         ;
     }
     */
+//    public function OrderByNameC()
+//    {
+//        return $this->createQueryBuilder('article')
+//            ->orderBy('article.titre','desc')
+//            ->getQuery()
+//            ->getResult();
+//
+//    }
+//    public function OrderByNameD()
+//    {
+//        return $this->createQueryBuilder('article')
+//            ->orderBy('article.titre','asc')
+//            ->getQuery()
+//            ->getResult();
+//
+//    }
     public function recommended(){
         return $this->createQueryBuilder('article')
             ->orderBy('article.nbvue' ,'desc')
@@ -56,5 +73,8 @@ class ArticleRepository extends ServiceEntityRepository
             ->setMaxResults(4)
             ->getResult();
     }
+
+
+
 
 }
