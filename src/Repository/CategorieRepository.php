@@ -48,4 +48,12 @@ class CategorieRepository extends ServiceEntityRepository
     }
     */
 
+    public function findCategorieById($id){
+        return $this->createQueryBuilder('categorie')
+            ->where('categorie.id LIKE :id')
+            ->setParameter('id', '%'.$id.'%')
+            ->getQuery()
+            ->getResult();
+    }
+
 }

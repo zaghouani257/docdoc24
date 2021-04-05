@@ -11,6 +11,8 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 /**
  * @Route("/categorie")
  */
@@ -80,6 +82,19 @@ class CategorieController extends AbstractController
 
         return $this->render("categorie/updateC.html.twig",['form'=>$form->createView()]);
 
+    }
+
+    /**
+     * @Route("/searchCategoriex ", name="searchCategoriex")
+     */
+    public function searchCategoriex(Request $request,NormalizerInterface $Normalizer)
+    {
+        $repository = $this->getDoctrine()->getRepository(Categorie::class);
+        $requestString=$request->get('searchValue');
+        $categories = $repository->findCategorieById($requestString);
+        $jsonContent = $Normalizer->normalize($categories, 'json',['groups'=>'categories']);
+        $retour=json_encode($jsonContent);
+        return new Response($retour);
     }
 
 }

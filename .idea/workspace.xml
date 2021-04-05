@@ -1,56 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="b6aa4f9f-21ce-4ce1-9634-6061bbb4702e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Controller/CategorieMedicaleController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/ConsultationController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/QuestionController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/ReponseController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/CategorieMedicale.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Consultation.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Question.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Reponse.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Form/CategorieMedicaleType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Form/ConsultationType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Form/QuestionType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Form/ReponseType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/CategorieMedicaleRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/ConsultationRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/QuestionRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/ReponseRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/categorie_medicale/AddCategorieMedicale.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/categorie_medicale/UpdateCategorieMedicale.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/categorie_medicale/categorieMedicale.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/categorie_medicale/index.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/categorie_medicale/search.ajax.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/categorie_medicale/search.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/consultation/AfficherConsultation.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/consultation/AfficherConsultationMedecin.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/consultation/AfficherConsultationPatient.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/consultation/AjouterConsultation.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/consultation/UpdateConsultation.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/consultation/index.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/question/AfficherQuestion.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/question/AfficherQuestionAdmin.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/question/AfficherUneQuestion.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/question/AfficherUneQuestionModifier.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/question/AjouterQuestion.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/question/UpdateQuestion.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/question/index.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/reponse/AjouterReponse.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/reponse/UpdateReponse.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/reponse/afficherReponse.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/reponse/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/docdoc.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/docdoc.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/produit/affichemes.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/baseBack.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/baseBack.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/CategorieController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CategorieController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ProduitController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ProduitController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Produit.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Produit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/CategorieRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/CategorieRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/categorie/afficheC.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/categorie/afficheC.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/categorie/ajoutC.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/categorie/ajoutC.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/produit/affiche.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/produit/affiche.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -210,18 +189,19 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/panier" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/produit" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\zagho\OneDrive\Bureau\team 24\docdoc\templates\panier" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\zagho\OneDrive\Bureau\team 24\docdoc\templates\registration" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\anasm\docdoc\docdoc\templates\produit" />
+      <recent name="C:\Users\zagho\OneDrive\Bureau\team 24\docdoc\templates\panier" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -268,6 +248,7 @@
       <workItem from="1617271406381" duration="23365000" />
       <workItem from="1617310942430" duration="11078000" />
       <workItem from="1617344785492" duration="23423000" />
+      <workItem from="1617613734678" duration="7437000" />
     </task>
     <task id="LOCAL-00001" summary="Almost done">
       <created>1617064948629</created>
@@ -281,6 +262,17 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
@@ -341,9 +333,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824/1920.0.1280.680@0.0.1536.824" timestamp="1617203375447" />
-    <state x="425" y="187" key="run.anything.popup" timestamp="1617366309710">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="378" y="165" key="run.anything.popup" timestamp="1617620669924">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state x="378" y="165" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1617620669924" />
     <state x="425" y="187" key="run.anything.popup/0.0.1536.824/-1920.0.1536.824@0.0.1536.824" timestamp="1617243876789" />
     <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1617366309710" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1617290285259">
