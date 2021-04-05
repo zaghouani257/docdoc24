@@ -64,9 +64,10 @@
             <li><a class="active" href="{{ path('UserAfficheMedecinFront')}}"><span>Médecins</span></a></li>
             <li><a class="active" href="{{ path('UserAffichePharamacienFront')}}"><span>Pharmacies</span></a></li>
         {% endif %}
-        <li><a href="../dist/blog.html"><span>Blog</span></a></li>
-        <li><a href="../dist/blog.html"><span>Forum</span></a></li>
-
+        <li><a href="#"><span>Blog</span></a></li>
+        {# ------------------------------ zohra new   ------------------------------------------------ #}
+        <li><a href="{{ path('AffQuestion')}}"><span>Forum</span></a></li>
+        {# ------------------------------ zohra new   ------------------------------------------------ #}
         <li class="ml-res-submenu">
             <span class="ml-res-submenu-trigger glyphicon glyphicon-chevron-right"></span>
             <a href="skin.html"><span>Reclamation</span></a>
@@ -117,7 +118,7 @@
                     </div><!--/.ml-topbar__component-->
                     <div class="ml-topbar__component">
                        <p class="ml-cta-text ml-elem--light ml-hidden-xs">Prenez rendez-vous maintenant!</p>
-                        <a href="../dist/contact.html" class="ml-cta-btn ml-btn ml-btn--style1 ml-btn--rounded hasAnchor" style="background-color: #00cfa1">Prenez rendez-vous</a>
+                        <a href="{{ path('AddConsultation',{'userid':app.user.id}) }}" class="ml-cta-btn ml-btn ml-btn--style1 ml-btn--rounded hasAnchor" style="background-color: #00cfa1">Prenez rendez-vous</a>
                     </div><!--/.ml-topbar__component-->
                 </div><!--/.ml-topbar-->
             </div><!--/.ml-container-->
@@ -232,8 +233,19 @@
                             {% else %}
                                 <li class="ml-mainMenu__item"><a href="{{ path('app_login')}}"><span>Medicaments</span></a></li>
                         {% endif %}
-                        <li class="ml-mainMenu__item"><a href="../dist/blog.html"><span>Blog</span></a></li>
-                        <li class="ml-mainMenu__item"><a href="../dist/blog.html"><span>Forum</span></a></li>
+                        <li class="ml-mainMenu__item"><a href="#"><span>Blog</span></a></li>
+                        {# ------------------------------ zohra new   ------------------------------------------------ #}
+                        <li class="ml-mainMenu__item"><a href="{{ path('AffQuestion')}}"><span>Forum</span></a></li>
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        {% if app.user.type == 'medecin' %}
+                            <li class="ml-mainMenu__item"><a href="{{ path('consultationMedecin',{'id': app.user.id})}}"><span>Consultations</span></a></li>
+                        {% elseif app.user.type == 'patient' %}
+                            <li class="ml-mainMenu__item"><a href="{{ path('consultationPatient', {'id': app.user.id})}}"><span>Consultations</span></a></li>
+                        {% endif %}
+                        {% endif %}
+
+
+                        {# ------------------------------ zohra new   ------------------------------------------------ #}
 
                         <li class="ml-mainMenu__item has-submenu">
                             <a href="#"><span>Réclamation</span></a>
