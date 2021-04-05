@@ -331,6 +331,26 @@
                         <li class="ml-mainMenu__item"><a href="{{ path('about')}}"><span>à propos</span></a></li>
 
                     </ul>
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        {% if app.user.type == 'medecin' or app.user.type == 'pharmacien' %}
+                            <div class="ml-cart info-box">
+                                <a href="#" class="ml-cart__link">
+                                    <span class="note-icon red">{{ app.session.get('number') }}</span>
+                                    <span class="ml-icon-shopping-cart ml-cart__icon"></span>
+                                </a><!--/.ml-cart__link-->
+                                <div class="ml-infoCart">
+                                    <a class="text-black text-lg"> Prix Total: <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ app.session.get('total') }} DT</a>
+                                    <br>
+                                    <br>
+                                    <div >
+                                        <a href="{{ path('panier') }}" class="btn btn-primary ">PANIER</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <a href="{{ path('afficherPaiement', {'userid':app.user.id}) }}" class="btn btn-primary">PAIEMENTS</a>
+                                    </div><!--/.ml-infoCart-buttons-->
+                                </div><!--/.ml-infoCart-->
+                            </div><!--/.ml-cart-->
+                        {% endif %}
+
+                    {% endif %}
 
                     <div class="ml-searchBar">
 
@@ -345,24 +365,7 @@
                                 </form>
                             </div><!--/.ml-search-->
                         </div><!--/.ml-search-->
-                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                    {% if app.user.type == 'medecin' or app.user.type == 'pharmacien' %}
-                        <div class="ml-cart info-box">
-                        <a href="#" class="ml-cart__link">
-                            <span class="info-box-icon">{{ app.session.get('number') }}</span>
-                            <span class="ml-icon-shopping-cart ml-cart__icon"></span>
-                        </a><!--/.ml-cart__link-->
-                        <div class="ml-infoCart">
-                            <a> Prix Total: <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ app.session.get('total') }} DT</a>
-                            <div class="ml-infoCart-buttons">
-                                <a href="{{ path('panier') }}" class="ml-btn ml-btn--white ml-infoCart-btn">VIEW CART</a>
-                                <a href="{{ path('AjouterPaiement') }}" class="ml-btn ml-btn--right ml-infoCart-btn">CHECKOUT</a>
-                            </div><!--/.ml-infoCart-buttons-->
-                        </div><!--/.ml-infoCart-->
-                    </div><!--/.ml-cart-->
-                    {% endif %}
 
-                 {% endif %}
 
 
                     </div><!--/.ml-searchBar-->
