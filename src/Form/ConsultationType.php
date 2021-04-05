@@ -21,7 +21,7 @@ class ConsultationType extends AbstractType
 
             ->add('datehr')
 
-            ->add('userM', EntityType::class, array(
+         /*   ->add('userM', EntityType::class, array(
                 'choice_label' => function ($userM) {
                     return $userM->getNom() . ' ' . $userM->getPrenom();
                 },
@@ -31,7 +31,7 @@ class ConsultationType extends AbstractType
                             ->setParameter('medecin', "medecin")
                             ->orderBy('u.id', 'DESC');
                 },
-            ))
+            ))*/
 
         ;
     }

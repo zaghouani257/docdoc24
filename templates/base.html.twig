@@ -117,8 +117,10 @@
                         </div>
                     </div><!--/.ml-topbar__component-->
                     <div class="ml-topbar__component">
+                        {# ---------------------------------------zohra--------------------------------- #}
                        <p class="ml-cta-text ml-elem--light ml-hidden-xs">Prenez rendez-vous maintenant!</p>
-                        <a href="{{ path('AddConsultation',{'userid':app.user.id}) }}" class="ml-cta-btn ml-btn ml-btn--style1 ml-btn--rounded hasAnchor" style="background-color: #00cfa1">Prenez rendez-vous</a>
+                        <a href="{{ path('consultationPatient', {'id': app.user.id}) }}" class="ml-cta-btn ml-btn ml-btn--style1 ml-btn--rounded hasAnchor" style="background-color: #00cfa1">Prenez rendez-vous</a>
+                        {# ---------------------------------------zohra--------------------------------- #}
                     </div><!--/.ml-topbar__component-->
                 </div><!--/.ml-topbar-->
             </div><!--/.ml-container-->

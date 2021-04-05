@@ -45,12 +45,14 @@ class ConsultationController extends AbstractController
     /**
      * @param Request $request
      * @return Response
-     * @Route ("/ajouter-une-Consultation/{userid}",name="AddConsultation")
+     * @Route ("/ajouter-une-Consultation/{userid}/{idMed}",name="AddConsultation")
      */
 
-    public function Ajouter(Request $request, $userid , UserRepository $repo)
+    public function Ajouter(Request $request, $userid , UserRepository $repo , $idMed , UserRepository $userRepo)
     {
+        $user=$userRepo->find($idMed);
         $consultation = new Consultation();
+        $consultation->setUserM($user);
         $user=$repo->find($userid);
         $consultation->setUser($user);
         $form = $this->createForm(ConsultationType::class, $consultation);
