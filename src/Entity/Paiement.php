@@ -52,6 +52,31 @@ class Paiement
      */
     private $status;
 
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $prix;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $userid;
+
+
+    public function getPrix(): ?float
+    {
+        return $this->prix;
+    }
+
+
+    public function setPrix(float $prix): self
+    {
+        $this->prix = $prix;
+
+        return $this;
+    }
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -136,6 +161,18 @@ class Paiement
     public function setStatus(string $status): self
     {
         $this->status = $status;
+        return $this;
+    }
+
+    public function getUserid(): ?int
+    {
+        return $this->userid;
+    }
+
+    public function setUserid(int $userid): self
+    {
+        $this->userid = $userid;
+
         return $this;
     }
 }

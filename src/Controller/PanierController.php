@@ -46,7 +46,7 @@ class PanierController extends AbstractController
     }
 
     /**
-     * @Route("/panier", name="panier")
+     * @Route("/panier", name="panierservice")
      * @param SessionInterface $session
      * @param ProduitRepository $produitRepository
      * @return
@@ -82,6 +82,23 @@ class PanierController extends AbstractController
      * @param SessionInterface $session
      */
     public function add($id, SessionInterface $session)
+    {
+        $panier = $session->get('panier', []);
+        if(!empty($panier[$id])) {
+            $panier[$id]++;
+        }else{
+            $panier[$id] = 1;
+        }
+        $session->set('panier', $panier);
+        return $this->redirectToRoute("panierservice");
+    }
+
+    /**
+     * @Route("/panier2/add/{id}", name="panier_addd")
+     * @param $id
+     * @param SessionInterface $session
+     */
+    public function addd($id, SessionInterface $session)
     {
         $panier = $session->get('panier', []);
         if(!empty($panier[$id])) {
